@@ -17,13 +17,10 @@
 (push (concat elhome-directory "/site-lisp/recipes/") el-get-recipe-path)
 
 (setq my-packages
-      (append '(expand-region
-		tern
-		js2-mode
-		dsvn
-                elhome
-                )
-              (mapcar 'el-get-source-name el-get-sources)))
+      (append
+       packages-to-load
+       '(elhome)
+       (mapcar 'el-get-source-name el-get-sources)))
 (add-hook 'el-get-post-install-hooks 'el-get-init)
 
 ;; you should be connected to Net at this point
