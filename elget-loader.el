@@ -1,30 +1,36 @@
 ;; ElHome
 (defconst elhome-directory "~/.emacs.d/")
 
-(add-to-list 'load-path (concat (file-name-as-directory elhome-directory) "el-get/el-get"))
+(defun install-elget () 
+  (progn 
+    (add-to-list 'load-path (concat (file-name-as-directory elhome-directory) "el-get/el-get"))
 
-(unless (require 'el-get nil t)
-  (url-retrieve
-   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-   (lambda (s)
-     (let (el-get-master-branch)
-       (end-of-buffer)
-       (eval-print-last-sexp)))))
-(let ((emacswiki-recipes (concat el-get-dir "el-get/recipes/emacswiki")))
-  (unless (file-exists-p emacswiki-recipes)
-    (el-get-emacswiki-refresh emacswiki-recipes t)))
+    (unless (require 'el-get nil t)
+      (url-retrieve
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+       (lambda (s)
+	 (let (el-get-master-branch)
+	   (end-of-buffer)
+	   (eval-print-last-sexp)))))
+    (let ((emacswiki-recipes (concat el-get-dir "el-get/recipes/emacswiki")))
+      (unless (file-exists-p emacswiki-recipes)
+	(el-get-emacswiki-refresh emacswiki-recipes t)))
+    (push (concat elhome-directory "/site-lisp/recipes/") el-get-recipe-path)))
 
-(push (concat elhome-directory "/site-lisp/recipes/") el-get-recipe-path)
+(defun install-and-load (packages-to-load)
+  (progn  
+    (setq my-packages
+	  (append
+	   packages-to-load
+	   '(elhome)
+	   (mapcar 'el-get-source-name el-get-sources)))
+    (add-hook 'el-get-post-install-hooks 'el-get-init)
 
-(setq my-packages
-      (append
-       packages-to-load
-       '(elhome)
-       (mapcar 'el-get-source-name el-get-sources)))
-(add-hook 'el-get-post-install-hooks 'el-get-init)
+    ;; you should be connected to internet at this point
+    (el-get 'sync my-packages)
+    
+    (require 'elhome)
+    (elhome-init)))
 
-;; you should be connected to Net at this point
-(el-get 'sync my-packages)
-
-(require 'elhome)
-(elhome-init)
+(install-elget)
+(provide 'elget-loader)
