@@ -14,3 +14,5 @@
 ;; install packages if they are not installed yet
 (require 'elget-loader)
 (install-and-load packages-to-load)
+
+(require 'fullscreen-toggle)
