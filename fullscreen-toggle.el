@@ -34,16 +34,16 @@
       (fs/toggle-restore-win-conf)))
 
 ;;;###autoload
-(defun fs/toggle-fullscreen ()
+(defun fs/toggle-fullscreen (arg)
   "Toggles fullscreen mode.
 First call will expand current window.
 Second call will restore previous state."
-  (interactive)
+  (interactive "p")
   (fs/toggle-win-conf (function delete-other-windows)))
 
-;;(global-set-key (kbd "C-,") 'fs/save-windows-state-and-expand)
-;;(global-set-key (kbd "C-.") 'fs/restore-windows-state)
-(global-set-key (kbd "C-m") 'fs/toggle-fullscreen)
+(global-set-key (kbd "C-,") 'fs/save-windows-state-and-expand)
+(global-set-key (kbd "C-.") 'fs/restore-windows-state)
+;;(global-set-key (kbd "C-m") 'fs/toggle-fullscreen)
 
 (provide 'fullscreen-toggle)
 

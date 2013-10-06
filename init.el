@@ -16,3 +16,6 @@
 (install-and-load packages-to-load)
 
 (require 'fullscreen-toggle)
+
+(require 'ido)
+(ido-mode t)
