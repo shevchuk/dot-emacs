@@ -8,6 +8,7 @@
     expand-region
     js2-mode
     magit
+    ergoemacs-keybindings
     tern
 ))
 
@@ -19,3 +20,12 @@
 
 (require 'ido)
 (ido-mode t)
+
+;; ergo-emacs
+
+;;to get rid of the log-edit-mode error, delete the line
+;;(eval-when-compile (log-edit-mode))
+;;in the file ergoemacs-keybindings/ergoemacs-mode.el
+(package-initialize)
+(setq ergoemacs-theme "lvl2")
+(ergoemacs-mode 1)
