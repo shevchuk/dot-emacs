@@ -42,6 +42,6 @@
 (setq indent-line-function 'insert-tab)
 
 (when (eq system-type 'darwin) ;; mac specific settings
-  (setq mac-option-modifier 'alt)
+  (setq mac-option-modifier 'control)
   (setq mac-command-modifier 'meta))
 
