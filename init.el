@@ -67,3 +67,4 @@
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
 (global-set-key (kbd "M-0") 'er/expand-region)
 
+(put 'upcase-region 'disabled nil)
