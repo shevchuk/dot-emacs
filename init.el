@@ -8,6 +8,8 @@
     dsvn
     expand-region
     js2-mode
+    yasnippet
+    js2-refactor
     magit
     ergoemacs-keybindings
     tern
