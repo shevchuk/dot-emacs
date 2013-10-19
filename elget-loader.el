@@ -1,6 +1,12 @@
 ;; ElHome
 (defconst elhome-directory "~/.emacs.d/")
 
+;; Additional custom recipes, not yet in the repository:
+(setq el-get-sources
+      '((:name grizzl
+               :type github
+               :pkgname "d11wtq/grizzl")))
+
 (defun install-elget () 
   (progn 
     (add-to-list 'load-path (concat (file-name-as-directory elhome-directory) "el-get/el-get"))

@@ -13,6 +13,7 @@
     magit
     ergoemacs-keybindings
     tern
+    grizzl
     projectile
 ))
 
@@ -29,6 +30,8 @@
       (tern-ac-setup)))
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+(setq projectile-completion-system 'grizzl)
 
 ;; install packages if they are not installed yet
 (require 'elget-loader)
