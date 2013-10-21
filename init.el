@@ -21,6 +21,7 @@
 ;; javascript
 (add-hook 'js2-mode-hook 
 	  (lambda () 
+        (wrap-region-mode t)
 	    (tern-mode t)
 	    (projectile-mode t)
 	    (auto-complete-mode 1)))
@@ -74,4 +75,6 @@
 (global-set-key (kbd "M-0") 'er/expand-region)
 
 (put 'upcase-region 'disabled nil)
-(wrap-region-mode t)
+(require 'wrap-region)
+(wrap-region-add-wrapper "/* " " */" "#" '(javascript-mode css-mode js2-mode))
+
