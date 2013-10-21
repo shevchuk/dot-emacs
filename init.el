@@ -15,6 +15,7 @@
     tern
     grizzl
     projectile
+    wrap-region
 ))
 
 ;; javascript
@@ -73,3 +74,4 @@
 (global-set-key (kbd "M-0") 'er/expand-region)
 
 (put 'upcase-region 'disabled nil)
+(wrap-region-mode t)

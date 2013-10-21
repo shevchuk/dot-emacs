@@ -3,9 +3,14 @@
 
 ;; Additional custom recipes, not yet in the repository:
 (setq el-get-sources
-      '((:name grizzl
+      '((:name wrap-region
+	       :description "Wrap text with punctation or tag"
+	       :type elpa
+	       :prepare)
+	(:name grizzl
                :type github
-               :pkgname "d11wtq/grizzl")))
+               :pkgname "d11wtq/grizzl")
+      ))
 
 (defun install-elget () 
   (progn 
