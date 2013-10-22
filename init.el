@@ -41,6 +41,7 @@
 
 (require 'fullscreen-toggle)
 
+;; ido
 (require 'ido)
 (ido-mode t)
 
@@ -54,19 +55,11 @@
 (ergoemacs-mode 1)
 
 (require 'keymap)
+
 ;; tabs
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
-
-;; keymap
-(when (eq system-type 'darwin) ;; mac specific settings
-  (setq mac-option-modifier 'control)
-  (setq mac-command-modifier 'meta))
-
-;; editor
-(define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
-(global-set-key (kbd "M-0") 'er/expand-region)
 
 (put 'upcase-region 'disabled nil)
 
