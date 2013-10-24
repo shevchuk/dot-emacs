@@ -15,6 +15,7 @@
     tern
     grizzl
     flx
+    smex
     projectile
     wrap-region
 ))
@@ -66,4 +67,4 @@
 
 (require 'wrap-region)
 (wrap-region-add-wrapper "/* " " */" "#" '(javascript-mode css-mode js2-mode))
-
+(global-set-key (kbd "M-a") 'smex)
