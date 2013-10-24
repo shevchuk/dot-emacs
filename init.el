@@ -14,6 +14,7 @@
     ergoemacs-keybindings
     tern
     grizzl
+    flx
     projectile
     wrap-region
 ))
@@ -33,8 +34,6 @@
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
-(setq projectile-completion-system 'grizzl)
-
 ;; install packages if they are not installed yet
 (require 'elget-loader)
 (install-and-load packages-to-load)
@@ -42,8 +41,10 @@
 (require 'fullscreen-toggle)
 
 ;; ido
-(require 'ido)
 (ido-mode t)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+(setq ido-use-faces nil)
 
 ;; ergo-emacs
 

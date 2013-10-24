@@ -10,6 +10,14 @@
 	(:name grizzl
                :type github
                :pkgname "d11wtq/grizzl")
+	(:name flx
+	       :type github
+	       :pkgname "lewang/flx")
+	(:name flx-ido 
+	       :description "flx-ido"
+	       :type http
+	       :url "https://github.com/lewang/flx/flx-ido.el"
+	       :depends flx)
       ))
 
 (defun install-elget () 
