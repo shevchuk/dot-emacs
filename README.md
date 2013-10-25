@@ -14,3 +14,7 @@ Remap caps lock to alt key using this:
     In the Keyboard tab, click Modifier Keys...
     Swap the actions for Caps Lock and Control.
                     
+In order to run tern correctly:
+    npm install acorn
+    npm install glob
+    npm install minimatch
