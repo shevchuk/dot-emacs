@@ -72,3 +72,11 @@
 (require 'wrap-region)
 (wrap-region-add-wrapper "/* " " */" "#" '(javascript-mode css-mode js2-mode))
 (global-set-key (kbd "M-a") 'smex)
+
+(when (string-equal system-type "darwin")
+  (setenv "PATH" 
+          (concat 
+           "/usr/local/bin" ":"
+           (getenv "PATH"))))
+
+;;exec-path
