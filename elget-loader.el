@@ -13,6 +13,9 @@
 	(:name flx
 	       :type github
 	       :pkgname "lewang/flx")
+    (:name org-jira
+           :type github
+           :pkgname "baohaojun/org-jira")
 	(:name flx-ido 
 	       :description "flx-ido"
 	       :type http

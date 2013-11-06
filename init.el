@@ -1,3 +1,4 @@
+;; (set-background-color "lightblue")
 (add-to-list 'load-path "~/.emacs.d")
 ;;; first run will install these
 
@@ -16,6 +17,7 @@
     grizzl
     flx
     smex
+    org-jira
     projectile
     wrap-region
 ))
@@ -40,6 +42,8 @@
 (install-and-load packages-to-load)
 
 (require 'fullscreen-toggle)
+
+;;(setq projectile-indexing-method 'native)
 
 ;; ido
 (ido-mode t)
