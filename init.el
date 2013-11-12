@@ -77,7 +77,7 @@
 (global-set-key (kbd "C-5") 
                 (lambda () 
                   (interactive)
-                  (set-background-color "#66cdaa"))) ;; coral lite
+                  (set-background-color "#fc99aa"))) ;; light red
 
 (global-set-key (kbd "C-6") 
                 (lambda () 
