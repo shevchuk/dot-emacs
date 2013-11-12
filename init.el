@@ -74,6 +74,21 @@
 (wrap-region-add-wrapper "/* " " */" "#" '(javascript-mode css-mode js2-mode))
 (global-set-key (kbd "M-a") 'smex)
 
+(global-set-key (kbd "C-5") 
+                (lambda () 
+                  (interactive)
+                  (set-background-color "#66cdaa"))) ;; coral lite
+
+(global-set-key (kbd "C-6") 
+                (lambda () 
+                  (interactive)
+                  (set-background-color "#76eec6"))) ;; aquamarine (green)
+
+(global-set-key (kbd "C-7") 
+                (lambda () 
+                  (interactive)
+                  (set-background-color "#aaed52"))) ;; olive
+
 (when (string-equal system-type "darwin")
   (setenv "PATH" 
           (concat 
