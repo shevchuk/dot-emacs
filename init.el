@@ -90,6 +90,7 @@
                   (interactive)
                   (set-background-color "#aaed52"))) ;; olive
 
+;; replace following bunch with https://github.com/targzeta/move-lines/blob/master/move-lines.el
 (defun move-text-internal (arg)
    (cond
     ((and mark-active transient-mark-mode)
