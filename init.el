@@ -75,15 +75,8 @@
 (wrap-region-add-wrapper "/* " " */" "#" '(javascript-mode css-mode js2-mode))
 (global-set-key (kbd "M-a") 'smex)
 
-(setq colors '("#ffa9ba" "#76eec6" "#aaed52" "#f0ffff" "#6495ed" "#a1a1a1"))
-(setq left-colors nil)
-(defun cycle-bg-colors ()
-  (interactive)
-  (if (eq left-colors nil)
-      (setq left-colors colors))
-  (set-background-color (pop left-colors)))
-
-(global-set-key (kbd "C-5") 'cycle-bg-colors) 
+(setq-default cycle-bg-colors '("#ffa9ba" "#76eec6" "#aaed52" "#f0ffff" "#b4d5ff" "#c1c1c2"))
+(require 'cycle-bg-colors)
 
 ;; replace following bunch with https://github.com/targzeta/move-lines/blob/master/move-lines.el
 (defun move-text-internal (arg)
