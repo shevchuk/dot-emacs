@@ -78,7 +78,7 @@
 (global-set-key (kbd "C-5") 
                 (lambda () 
                   (interactive)
-                  (set-background-color "#fc99aa"))) ;; light red
+                  (set-background-color "#ffa9ba"))) ;; light red
 
 (global-set-key (kbd "C-6") 
                 (lambda () 
