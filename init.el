@@ -20,7 +20,7 @@
     org-jira
     projectile
     wrap-region
-    uniquify
+;;    uniquify
 ))
 
 ;; javascript
