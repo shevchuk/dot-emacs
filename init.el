@@ -28,7 +28,7 @@
 	  (lambda () 
         (wrap-region-mode t)
 	    (tern-mode t)
-	    ;;(projectile-mode t)
+	    (projectile-mode t)
 	    (auto-complete-mode 1)))
 
 (eval-after-load 'tern
@@ -45,7 +45,7 @@
 (require 'fullscreen-toggle)
 
 ;;(setq projectile-indexing-method 'native)
-(projectile-global-mode)
+;;(projectile-global-mode)
 
 ;; ido
 (ido-mode t)
