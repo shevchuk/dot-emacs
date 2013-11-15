@@ -75,7 +75,7 @@
 (wrap-region-add-wrapper "/* " " */" "#" '(javascript-mode css-mode js2-mode))
 (global-set-key (kbd "M-a") 'smex)
 
-(setq-default cycle-bg-colors '("#ffa9ba" "#76eec6" "#aaed52" "#f0ffff" "#b4d5ff" "#c1c1c2"))
+(setq-default cycle-bg-colors '("#ffa9ba" "#76eec6" "#aaed52" "#fff940" "#b4d5ff" "#c1c1c2"))
 (require 'cycle-bg-colors)
 
 ;; replace following bunch with https://github.com/targzeta/move-lines/blob/master/move-lines.el
@@ -114,6 +114,25 @@
 
 (global-set-key (kbd "M-<up>") 'move-text-up)
 (global-set-key (kbd "M-<down>") 'move-text-down)
+
+(global-set-key (kbd "C-,") 'toggle-kbd-macro-recording-on)
+(global-set-key (kbd "C-.") 'call-last-kbd-macro)
+
+;; todo - move these into separate file
+(defun toggle-kbd-macro-recording-on ()
+  "One-key keyboard macros: turn recording on."
+  (interactive)
+  (define-key global-map (this-command-keys)
+    'toggle-kbd-macro-recording-off)
+  (start-kbd-macro nil))
+
+(defun toggle-kbd-macro-recording-off ()
+  "One-key keyboard macros: turn recording off."
+  (interactive)
+  (define-key global-map (this-command-keys)
+    'toggle-kbd-macro-recording-on)
+  (end-kbd-macro))
+
 
 (when (string-equal system-type "darwin")
   (setenv "PATH" 
