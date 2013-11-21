@@ -20,6 +20,7 @@
     org-jira
     projectile
     wrap-region
+    helm
 ;;    uniquify
 ))
 
@@ -43,6 +44,8 @@
 (install-and-load packages-to-load)
 
 (require 'fullscreen-toggle)
+(require 'tramp)
+(setq tramp-default-method "ssh")
 
 ;;(setq projectile-indexing-method 'native)
 (projectile-global-mode)
