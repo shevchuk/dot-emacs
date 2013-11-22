@@ -29,7 +29,8 @@
 	  (lambda () 
         (wrap-region-mode t)
 	    (tern-mode t)
-	    ;;(projectile-mode t)
+        ;; Activate the folding mode
+        (hs-minor-mode t)
 	    (auto-complete-mode 1)))
 
 (eval-after-load 'tern
@@ -117,6 +118,11 @@
 
 (global-set-key (kbd "M-<up>") 'move-text-up)
 (global-set-key (kbd "M-<down>") 'move-text-down)
+
+(global-set-key (kbd "C-c s") 'hs-show-block)
+(global-set-key (kbd "C-c S") 'hs-show-all)
+(global-set-key (kbd "C-c h") 'hs-hide-block)
+(global-set-key (kbd "C-c H") 'hs-hide-all)
 
 (when (string-equal system-type "darwin")
   (setenv "PATH" 
