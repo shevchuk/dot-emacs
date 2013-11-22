@@ -11,6 +11,7 @@
     js2-mode
     yasnippet
     js2-refactor
+    coffee-mode
     magit
     ergoemacs-keybindings
     tern
