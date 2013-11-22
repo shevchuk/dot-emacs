@@ -142,8 +142,6 @@
     'toggle-kbd-macro-recording-on)
   (end-kbd-macro))
 
->>>>>>> e354b19ce94a7fbcf4554a11bed0b9227baab55c
-
 (when (string-equal system-type "darwin")
   (setenv "PATH" 
           (concat 
