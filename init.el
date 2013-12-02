@@ -28,6 +28,7 @@
 ;; javascript
 (add-hook 'js2-mode-hook 
 	  (lambda () 
+        (global-set-key (kbd "RET") 'newline-and-indent)
         (wrap-region-mode t)
 	    (tern-mode t)
         ;; Activate the folding mode
@@ -128,7 +129,6 @@
 (global-set-key (kbd "C-,") 'toggle-kbd-macro-recording-on)
 (global-set-key (kbd "C-.") 'call-last-kbd-macro)
 
-(global-set-key (kbd "C-j") 'newline-and-indent)
 (global-set-key (kbd "C-k") 'kill-whole-line)
 
 ;; todo - move these into separate file
