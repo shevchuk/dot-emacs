@@ -129,6 +129,7 @@
 (global-set-key (kbd "C-.") 'call-last-kbd-macro)
 
 (global-set-key (kbd "C-j") 'newline-and-indent)
+(global-set-key (kbd "C-k") 'kill-whole-line)
 
 ;; todo - move these into separate file
 (defun toggle-kbd-macro-recording-on ()
