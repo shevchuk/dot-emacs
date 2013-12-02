@@ -128,6 +128,8 @@
 (global-set-key (kbd "C-,") 'toggle-kbd-macro-recording-on)
 (global-set-key (kbd "C-.") 'call-last-kbd-macro)
 
+(global-set-key (kbd "C-j") 'newline-and-indent)
+
 ;; todo - move these into separate file
 (defun toggle-kbd-macro-recording-on ()
   "One-key keyboard macros: turn recording on."
