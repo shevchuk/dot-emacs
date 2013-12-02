@@ -80,7 +80,7 @@
 (wrap-region-add-wrapper "/* " " */" "#" '(javascript-mode css-mode js2-mode))
 (global-set-key (kbd "M-a") 'smex)
 
-(setq-default cycle-bg-colors '("#ffa9ba" "#76eec6" "#aaed52" "#fff940" "#b4d5ff" "#c1c1c2"))
+(setq-default cycle-bg-colors '("#9CE9FF" "#B1FA9D" "#D9FF9C" "#EAC9FF"))
 (require 'cycle-bg-colors)
 
 ;; replace following bunch with https://github.com/targzeta/move-lines/blob/master/move-lines.el
