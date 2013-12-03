@@ -51,7 +51,7 @@
 (setq tramp-default-method "ssh")
 
 ;;(setq projectile-indexing-method 'native)
-;;(projectile-global-mode)
+(projectile-global-mode)
 
 ;; ido
 (ido-mode t)
