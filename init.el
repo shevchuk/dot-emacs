@@ -5,6 +5,7 @@
 ;; these packages will be automatically installed if there is an internet connection
 (defvar packages-to-load
   '(
+    twittering-mode
     auto-complete
     dsvn
     expand-region
