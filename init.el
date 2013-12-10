@@ -43,6 +43,7 @@
       (tern-ac-setup)))
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;;(add-to-list 'auto-mode-alist '("\\.erl\\'" . js2-mode))
 
 ;; install packages if they are not installed yet
 (require 'elget-loader)
@@ -74,11 +75,12 @@
 (require 'js-beautify)
 
 ;; erlang
-(setq load-path (cons "/usr/local/lib/erlang/lib/tools-2.6.11/emacs/" load-path))
-(setq erlang-root-dir "/usr/local/lib/erlang")
-(setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
-(require 'erlang-start)
-(require 'erlang-flymake)
+(defun start-erlang ()
+	  (setq load-path (cons "/usr/local/lib/erlang/lib/tools-2.6.11/emacs/" load-path))
+	  (setq erlang-root-dir "/usr/local/lib/erlang")
+	  (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
+	  (require 'erlang-start)
+	  (require 'erlang-flymake))
 
 ;; tabs
 (setq-default indent-tabs-mode nil)
