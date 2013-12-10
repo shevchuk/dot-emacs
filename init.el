@@ -23,7 +23,8 @@
     projectile
     wrap-region
     helm
-;;    uniquify
+    js-beautify
+    ;;    uniquify
 ))
 
 ;; javascript
@@ -70,7 +71,7 @@
 (ergoemacs-mode 1)
 
 (require 'keymap)
-
+(require 'js-beautify)
 ;; tabs
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
@@ -121,31 +122,6 @@
 
 (global-set-key (kbd "M-<up>") 'move-text-up)
 (global-set-key (kbd "M-<down>") 'move-text-down)
-
-(global-set-key (kbd "C-c s") 'hs-show-block)
-(global-set-key (kbd "C-c S") 'hs-show-all)
-(global-set-key (kbd "C-c h") 'hs-hide-block)
-(global-set-key (kbd "C-c H") 'hs-hide-all)
-
-(global-set-key (kbd "C-,") 'toggle-kbd-macro-recording-on)
-(global-set-key (kbd "C-.") 'call-last-kbd-macro)
-
-(global-set-key (kbd "C-k") 'kill-whole-line)
-
-;; todo - move these into separate file
-(defun toggle-kbd-macro-recording-on ()
-  "One-key keyboard macros: turn recording on."
-  (interactive)
-  (define-key global-map (this-command-keys)
-    'toggle-kbd-macro-recording-off)
-  (start-kbd-macro nil))
-
-(defun toggle-kbd-macro-recording-off ()
-  "One-key keyboard macros: turn recording off."
-  (interactive)
-  (define-key global-map (this-command-keys)
-    'toggle-kbd-macro-recording-on)
-  (end-kbd-macro))
 
 (when (string-equal system-type "darwin")
   (setenv "PATH" 

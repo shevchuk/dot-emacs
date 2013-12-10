@@ -17,6 +17,33 @@
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
 (global-set-key (kbd "M-0") 'er/expand-region)
 
+(global-set-key (kbd "C-c s") 'hs-show-block)
+(global-set-key (kbd "C-c S") 'hs-show-all)
+(global-set-key (kbd "C-c h") 'hs-hide-block)
+(global-set-key (kbd "C-c H") 'hs-hide-all)
+
+;; todo - move these into separate file
+(defun toggle-kbd-macro-recording-on ()
+  "One-key keyboard macros: turn recording on."
+  (interactive)
+  (define-key global-map (this-command-keys)
+    'toggle-kbd-macro-recording-off)
+  (start-kbd-macro nil))
+
+(defun toggle-kbd-macro-recording-off ()
+  "One-key keyboard macros: turn recording off."
+  (interactive)
+  (define-key global-map (this-command-keys)
+    'toggle-kbd-macro-recording-on)
+  (end-kbd-macro))
+
+
+(global-set-key (kbd "C-,") 'toggle-kbd-macro-recording-on)
+(global-set-key (kbd "C-.") 'call-last-kbd-macro)
+
+(global-set-key (kbd "C-k") 'kill-whole-line)
+
+
 ;; mapping to caps/control as C and cmd as alt(meta)
 (when (eq system-type 'darwin) ;; mac specific settings
   (setq mac-option-modifier 'control)

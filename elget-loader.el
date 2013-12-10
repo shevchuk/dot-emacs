@@ -16,6 +16,9 @@
     (:name org-jira
            :type github
            :pkgname "baohaojun/org-jira")
+    (:name js-beautify
+       :type github
+       :pkgname "einars/js-beautify")
 	(:name flx-ido 
 	       :description "flx-ido"
 	       :type http
