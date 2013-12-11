@@ -45,6 +45,8 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.erl\\'" . js2-mode))
 
+(setq projectile-switch-project-action 'projectile-dired)
+
 ;; install packages if they are not installed yet
 (require 'elget-loader)
 (install-and-load packages-to-load)
