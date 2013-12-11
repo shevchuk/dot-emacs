@@ -29,8 +29,8 @@
 
 ;; javascript
 (add-hook 'js2-mode-hook 
-	  (lambda () 
-        (global-set-key (kbd "RET") 'newline-and-indent)
+	  (lambda ()
+        (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
         (wrap-region-mode t)
 	    (tern-mode t)
         ;; Activate the folding mode
