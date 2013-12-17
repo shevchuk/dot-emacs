@@ -137,6 +137,9 @@
 (global-set-key (kbd "M-<up>") 'move-text-up)
 (global-set-key (kbd "M-<down>") 'move-text-down)
 
+;; theme setup
+(load-theme 'misterioso t)
+
 (when (string-equal system-type "darwin")
   (setenv "PATH" 
           (concat 
