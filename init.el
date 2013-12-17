@@ -24,6 +24,7 @@
     wrap-region
     helm
     js-beautify
+    rainbow-mode
     ;;    uniquify
 ))
 
@@ -103,7 +104,7 @@
 (wrap-region-add-wrapper "/* " " */" "#" '(javascript-mode css-mode js2-mode))
 (global-set-key (kbd "M-a") 'smex)
 
-(setq-default cycle-bg-colors '("#9CE9FF" "#B1FA9D" "#D9FF9C" "#EAC9FF"))
+(setq-default cycle-bg-colors '("#3C39cF" "#338837" "#337777" "#882222"))
 (require 'cycle-bg-colors)
 
 ;; replace following bunch with https://github.com/targzeta/move-lines/blob/master/move-lines.el
