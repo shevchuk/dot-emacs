@@ -47,6 +47,12 @@
 
 (setq projectile-switch-project-action 'projectile-dired)
 
+(defun copy-current-filepath-to-clipboard ()
+  "Show the full path file name in the minibuffer and copy it to clipboard"
+  (interactive)
+  (kill-new (buffer-file-name))
+  (message (buffer-file-name)))
+
 ;; install packages if they are not installed yet
 (require 'elget-loader)
 (install-and-load packages-to-load)
