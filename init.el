@@ -33,6 +33,7 @@
 	  (lambda ()
         (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
         (wrap-region-mode t)
+        (linum-mode 1)
 	    (tern-mode t)
         ;; Activate the folding mode
         (hs-minor-mode t)
