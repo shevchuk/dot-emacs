@@ -145,7 +145,7 @@
 
 ;; theme setup
 (load-theme 'misterioso t)
-(set-cursor-color "#ffffcc")
+(set-cursor-color "#ff66ee")
 
 (when (string-equal system-type "darwin")
   (setenv "PATH" 
