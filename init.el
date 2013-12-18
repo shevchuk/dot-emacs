@@ -64,6 +64,7 @@
 (require 'fullscreen-toggle)
 (require 'tramp)
 (setq tramp-default-method "ssh")
+(setq password-cache-expiry nil)
 
 ;;(setq projectile-indexing-method 'native)
 (projectile-global-mode)
