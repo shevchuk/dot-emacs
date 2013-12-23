@@ -25,7 +25,6 @@
     helm
     js-beautify
     rainbow-mode
-    centered-cursor-mode
     ;;    uniquify
 ))
 
@@ -34,7 +33,6 @@
 	  (lambda ()
         (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
         (wrap-region-mode t)
-        (centered-cursor-mode t)
 	(linum-mode 1)
 	    (tern-mode t)
         ;; Activate the folding mode
@@ -51,6 +49,8 @@
 
 (setq projectile-switch-project-action 'projectile-dired)
 
+(global-set-key (kbd "<Scroll_Lock>") 'scroll-lock-mode)
+
 (defun copy-current-filepath-to-clipboard ()
   "Show the full path file name in the minibuffer and copy it to clipboard"
   (interactive)
@@ -65,6 +65,7 @@
 (require 'tramp)
 (setq tramp-default-method "ssh")
 (setq password-cache-expiry nil)
+(setq tramp-verbose 6)
 
 ;;(setq projectile-indexing-method 'native)
 (projectile-global-mode)
