@@ -49,7 +49,7 @@
 
 (setq projectile-switch-project-action 'projectile-dired)
 
-(global-set-key (kbd "<Scroll_Lock>") 'scroll-lock-mode)
+(scroll-lock-mode t)
 
 (defun copy-current-filepath-to-clipboard ()
   "Show the full path file name in the minibuffer and copy it to clipboard"
