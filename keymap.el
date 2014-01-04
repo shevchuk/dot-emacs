@@ -44,6 +44,9 @@
 (global-set-key (kbd "C-k") 'kill-whole-line)
 
 
+(global-set-key (kbd "M-<up>") 'move-text-up)
+(global-set-key (kbd "M-<down>") 'move-text-down)
+
 ;; mapping to caps/control as C and cmd as alt(meta)
 (when (eq system-type 'darwin) ;; mac specific settings
   (setq mac-option-modifier 'control)
