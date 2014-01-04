@@ -51,11 +51,6 @@
 
 (scroll-lock-mode t)
 
-(defun copy-current-filepath-to-clipboard ()
-  "Show the full path file name in the minibuffer and copy it to clipboard"
-  (interactive)
-  (kill-new (buffer-file-name))
-  (message (buffer-file-name)))
 
 ;; install packages if they are not installed yet
 (require 'elget-loader)
@@ -111,7 +106,7 @@
 (setq-default cycle-bg-colors '("#3C39cF" "#338837" "#337777" "#882222"))
 (require 'cycle-bg-colors)
 (require 'move-text)
-
+(require 'swissknife)
 ;; theme setup
 (load-theme 'misterioso t)
 
