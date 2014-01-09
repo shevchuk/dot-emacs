@@ -46,6 +46,9 @@
 (global-set-key (kbd "C-k") 'org-table-kill-row)
 (global-set-key (kbd "C-c M-p") (lambda() (interactive) (find-file "~/Documents/pomodoro.org")))
 
+(global-set-key (kbd "M-<up>") 'move-text-up)
+(global-set-key (kbd "M-<down>") 'move-text-down)
+
 ;; mapping to caps/control as C and cmd as alt(meta)
 (when (eq system-type 'darwin) ;; mac specific settings
   (setq mac-option-modifier 'control)
