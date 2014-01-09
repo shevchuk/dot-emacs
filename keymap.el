@@ -40,9 +40,11 @@
 
 (global-set-key (kbd "C-,") 'toggle-kbd-macro-recording-on)
 (global-set-key (kbd "C-.") 'call-last-kbd-macro)
-
 (global-set-key (kbd "C-k") 'kill-whole-line)
 
+;; org-mode
+(global-set-key (kbd "C-k") 'org-table-kill-row)
+(global-set-key (kbd "C-c M-p") (lambda() (interactive) (find-file "~/Documents/pomodoro.org")))
 
 ;; mapping to caps/control as C and cmd as alt(meta)
 (when (eq system-type 'darwin) ;; mac specific settings
