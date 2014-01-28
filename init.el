@@ -117,4 +117,6 @@
            (getenv "PATH"))))
 
 (require 'keymap)
+
+(setq vc-svn-diff-switches "-x --ignore-eol-style")
 ;;exec-path
