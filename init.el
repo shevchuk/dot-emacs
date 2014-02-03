@@ -103,10 +103,11 @@
 (wrap-region-add-wrapper "/* " " */" "#" '(javascript-mode css-mode js2-mode))
 (global-set-key (kbd "M-a") 'smex)
 
-(setq-default cycle-bg-colors '("#3C39cF" "#338837" "#337777" "#882222"))
+(setq-default cycle-bg-colors '("#27408b" "#00587b" "#004b15"))
 (require 'cycle-bg-colors)
 (require 'move-text)
 (require 'swissknife)
+
 ;; theme setup
 (load-theme 'misterioso t)
 

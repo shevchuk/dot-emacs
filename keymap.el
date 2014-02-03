@@ -15,6 +15,8 @@
 
 ;; editor
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
+(define-key isearch-mode-map "\C-r" 'isearch-yank-region)
+
 (global-set-key (kbd "M-0") 'er/expand-region)
 
 (global-set-key (kbd "C-c s") 'hs-show-block)

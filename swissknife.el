@@ -3,3 +3,8 @@
   (interactive)
   (kill-new (buffer-file-name))
   (message (buffer-file-name)))
+
+(defun isearch-yank-region ()
+  (interactive)                                                                             
+  (isearch-yank-internal (lambda () (mark)))
+  (deactivate-mark))
