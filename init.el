@@ -13,6 +13,7 @@
     yasnippet
     js2-refactor
     coffee-mode
+    ediff-trees
     magit
     ergoemacs-keybindings
     tern

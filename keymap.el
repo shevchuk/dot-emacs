@@ -19,10 +19,10 @@
 
 (global-set-key (kbd "M-0") 'er/expand-region)
 
-(global-set-key (kbd "C-c s") 'hs-show-block)
-(global-set-key (kbd "C-c S") 'hs-show-all)
-(global-set-key (kbd "C-c h") 'hs-hide-block)
-(global-set-key (kbd "C-c H") 'hs-hide-all)
+(global-set-key (kbd "M-=") 'hs-show-block)
+(global-set-key (kbd "M-+") 'hs-show-all)
+(global-set-key (kbd "M--") 'hs-hide-block)
+(global-set-key (kbd "M-_") 'hs-hide-all)
 
 ;; todo - move these into separate file
 (defun toggle-kbd-macro-recording-on ()
