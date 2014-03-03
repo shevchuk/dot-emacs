@@ -6,6 +6,7 @@
 (defvar packages-to-load
   '(
     twittering-mode
+    jade-mode
     auto-complete
     dsvn
     expand-region
