@@ -120,6 +120,8 @@
 (require 'swissknife)
 
 ;; theme setup
+
+(setq-default frame-title-format "%b (%f)")
 (load-theme 'misterioso t)
 
 (when (string-equal system-type "darwin")
