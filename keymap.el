@@ -44,6 +44,7 @@
 (global-set-key (kbd "C-.") 'call-last-kbd-macro)
 (global-set-key (kbd "C-k") 'kill-whole-line)
 
+(global-set-key (kbd "C-l") 'goto-line)
 ;; org-mode
 (global-set-key (kbd "C-k") 'org-table-kill-row)
 (global-set-key (kbd "C-c M-p") (lambda() (interactive) (find-file "~/Documents/pomodoro.org")))

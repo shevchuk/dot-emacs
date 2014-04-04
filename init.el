@@ -27,6 +27,7 @@
     helm
     js-beautify
     rainbow-mode
+    skewer-mode
     ;;    uniquify
 ))
 
@@ -114,7 +115,7 @@
 (wrap-region-add-wrapper "/* " " */" "#" '(javascript-mode css-mode js2-mode))
 (global-set-key (kbd "M-a") 'smex)
 
-(setq-default cycle-bg-colors '("#27408b" "#00587b" "#004b15"))
+(setq-default cycle-bg-colors '("#111122" "#112211" "#221122" "#112222" "#00587b" "#004b15"))
 (require 'cycle-bg-colors)
 (require 'move-text)
 (require 'swissknife)
