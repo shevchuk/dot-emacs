@@ -24,6 +24,15 @@
 (global-set-key (kbd "M--") 'hs-hide-block)
 (global-set-key (kbd "M-_") 'hs-hide-all)
 
+;; comint
+(defun comint-shell-modes-hook ()
+   ;; rebind displaced commands that i still want a key
+   (define-key comint-mode-map (kbd "<up>") 'comint-previous-input)
+   (define-key comint-mode-map (kbd "<down>") 'comint-next-input)
+)
+
+(add-hook 'comint-mode-hook 'comint-shell-modes-hook)
+
 ;; todo - move these into separate file
 (defun toggle-kbd-macro-recording-on ()
   "One-key keyboard macros: turn recording on."
