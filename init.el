@@ -31,10 +31,17 @@
     ;;    uniquify
 ))
 
+(defun run-skewer-repl ()
+  (interactive)
+  (httpd-stop)
+  (httpd-start)
+  (skewer-repl))
+
 ;; javascript
 (add-hook 'js2-mode-hook 
 	  (lambda ()
         (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
+        (define-key js2-mode-map (kbd "C-r") 'run-skewer-repl)
         (wrap-region-mode t)
 	(linum-mode 1)
 	    (tern-mode t)
