@@ -1,0 +1,3 @@
+[submodule "yasnippets/js2-mode"]
+	path = yasnippets/js2-mode
+	url = https://github.com/shevchuk/js-yasnippets

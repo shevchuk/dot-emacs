@@ -39,15 +39,22 @@
 
 ;; javascript
 (add-hook 'js2-mode-hook 
-	  (lambda ()
-        (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
-        (define-key js2-mode-map (kbd "C-r") 'run-skewer-repl)
-        (wrap-region-mode t)
-	(linum-mode 1)
-	    (tern-mode t)
-        ;; Activate the folding mode
-        (hs-minor-mode t)
-	    (auto-complete-mode 1)))
+          (lambda ()
+            (yas-minor-mode)
+            (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
+            (define-key js2-mode-map (kbd "C-r") 'run-skewer-repl)
+            (wrap-region-mode t)
+            (linum-mode 1)
+            (tern-mode t)
+            ;; Activate the folding mode
+            (hs-minor-mode t)
+            (auto-complete-mode 1)))
+
+;;yasnippets
+(setq yas-snippet-dirs
+      '("~/.emacs.d/yasnippets"))
+
+(yas-reload-all)
 
 (eval-after-load 'tern
    '(progn
@@ -126,6 +133,10 @@
 (require 'cycle-bg-colors)
 (require 'move-text)
 (require 'swissknife)
+
+
+;; yasnippet
+
 
 ;; theme setup
 
