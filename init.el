@@ -50,11 +50,6 @@
             (hs-minor-mode t)
             (auto-complete-mode 1)))
 
-;;yasnippets
-(setq yas-snippet-dirs
-      '("~/.emacs.d/yasnippets"))
-
-(yas-reload-all)
 
 (eval-after-load 'tern
    '(progn
@@ -87,6 +82,13 @@
 (setq tramp-default-method "ssh")
 (setq password-cache-expiry nil)
 (setq tramp-verbose 6)
+
+;;yasnippets
+(setq yas-snippet-dirs
+      '("~/.emacs.d/yasnippets"))
+
+(require 'yasnippet)
+(yas/reload-all)
 
 ;;(setq projectile-indexing-method 'native)
 (projectile-global-mode)
