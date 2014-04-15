@@ -33,22 +33,6 @@
 
 (add-hook 'comint-mode-hook 'comint-shell-modes-hook)
 
-;; todo - move these into separate file
-(defun toggle-kbd-macro-recording-on ()
-  "One-key keyboard macros: turn recording on."
-  (interactive)
-  (define-key global-map (this-command-keys)
-    'toggle-kbd-macro-recording-off)
-  (start-kbd-macro nil))
-
-(defun toggle-kbd-macro-recording-off ()
-  "One-key keyboard macros: turn recording off."
-  (interactive)
-  (define-key global-map (this-command-keys)
-    'toggle-kbd-macro-recording-on)
-  (end-kbd-macro))
-
-
 (global-set-key (kbd "C-,") 'toggle-kbd-macro-recording-on)
 (global-set-key (kbd "C-.") 'call-last-kbd-macro)
 (global-set-key (kbd "C-k") 'kill-whole-line)
