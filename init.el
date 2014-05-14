@@ -37,6 +37,15 @@
   (httpd-start)
   (skewer-repl))
 
+;; coffee-mode
+(defun coffee-custom ()
+  "coffee-mode-hook"
+  (linum-mode t))
+
+(add-hook 'coffee-mode-hook '(lambda () (coffee-custom)))
+
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+
 ;; javascript
 (add-hook 'js2-mode-hook 
           (lambda ()

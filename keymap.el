@@ -39,7 +39,6 @@
 
 (global-set-key (kbd "C-l") 'goto-line)
 ;; org-mode
-(global-set-key (kbd "C-k") 'org-table-kill-row)
 (global-set-key (kbd "C-c M-p") (lambda() (interactive) (find-file "~/Documents/pomodoro.org")))
 
 (global-set-key (kbd "M-<up>") 'move-text-up)
