@@ -28,6 +28,7 @@
     js-beautify
     rainbow-mode
     skewer-mode
+    perspective
     ;;    uniquify
 ))
 
@@ -144,7 +145,7 @@
 (require 'cycle-bg-colors)
 (require 'move-text)
 (require 'swissknife)
-
+;; (require 'persp-projectile)
 
 ;; yasnippet
 
