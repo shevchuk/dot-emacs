@@ -165,3 +165,4 @@
 
 (setq vc-svn-diff-switches "-x --ignore-eol-style")
 ;;exec-path
+(put 'downcase-region 'disabled nil)
