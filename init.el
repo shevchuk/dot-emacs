@@ -11,6 +11,10 @@
     dsvn
     expand-region
     js2-mode
+    json-mode
+    log4e
+    yaxception
+    tss
     yasnippet
     js2-refactor
     coffee-mode
@@ -29,6 +33,8 @@
     rainbow-mode
     skewer-mode
     perspective
+    keyfreq
+    exec-path-from-shell
     ;;    uniquify
 ))
 
@@ -146,7 +152,7 @@
 (require 'move-text)
 (require 'swissknife)
 ;; (require 'persp-projectile)
-
+(require 'tern)
 ;; yasnippet
 
 
@@ -162,7 +168,31 @@
            (getenv "PATH"))))
 
 (require 'keymap)
-
 (setq vc-svn-diff-switches "-x --ignore-eol-style")
 ;;exec-path
 (put 'downcase-region 'disabled nil)
+
+(require 'keyfreq)
+(keyfreq-mode 1)
+(keyfreq-autosave-mode 1)
+
+(require 'json-reformat)
+
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
+;; If use bundled typescript.el,
+(require 'typescript)
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+
+(require 'tss)
+
+;; Key binding
+(setq tss-popup-help-key "C-:")
+(setq tss-jump-to-definition-key "C->")
+
+;; Make config suit for you. About the config item, eval the following sexp.
+;; (customize-group "tss")
+
+;; Do setting recommemded configuration
+(tss-config-default)
