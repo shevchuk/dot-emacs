@@ -35,6 +35,7 @@
     perspective
     keyfreq
     exec-path-from-shell
+    nodejs-repl
     ;;    uniquify
 ))
 
