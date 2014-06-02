@@ -196,3 +196,5 @@
 
 ;; Do setting recommemded configuration
 (tss-config-default)
+
+(tool-bar-mode -1)
