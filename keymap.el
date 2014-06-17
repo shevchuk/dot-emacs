@@ -23,6 +23,7 @@
 (global-set-key (kbd "M-+") 'hs-show-all)
 (global-set-key (kbd "M--") 'hs-hide-block)
 (global-set-key (kbd "M-_") 'hs-hide-all)
+(global-set-key (kbd "M-[") 'hs-hide-level)
 
 ;; comint
 (defun comint-shell-modes-hook ()
