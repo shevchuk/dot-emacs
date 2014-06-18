@@ -25,6 +25,11 @@
 (global-set-key (kbd "M-_") 'hs-hide-all)
 (global-set-key (kbd "M-[") 'hs-hide-level)
 
+
+;; projectile
+(global-set-key (kbd "M-O") 'projectile-find-file)
+(global-set-key (kbd "M-F") 'projectile-grep)
+
 ;; comint
 (defun comint-shell-modes-hook ()
    ;; rebind displaced commands that i still want a key
