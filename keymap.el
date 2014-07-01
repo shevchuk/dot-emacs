@@ -46,6 +46,13 @@
 (global-set-key (kbd "C-l") 'goto-line)
 ;; org-mode
 (global-set-key (kbd "C-c M-p") (lambda() (interactive) (find-file "~/Documents/pomodoro.org")))
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+;; todo change keybindings here
+(global-set-key (kbd "C-k") 'kill-whole-line)
+(setq org-log-done t)
+
+
 
 (global-set-key (kbd "M-<up>") 'move-text-up)
 (global-set-key (kbd "M-<down>") 'move-text-down)

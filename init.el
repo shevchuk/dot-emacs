@@ -5,7 +5,6 @@
 ;; these packages will be automatically installed if there is an internet connection
 (defvar packages-to-load
   '(
-    twittering-mode
     jade-mode
     auto-complete
     dsvn
@@ -18,7 +17,6 @@
     yasnippet
     js2-refactor
     coffee-mode
-    ediff-trees
     magit
     ergoemacs-keybindings
     tern
@@ -36,6 +34,7 @@
     keyfreq
     exec-path-from-shell
     nodejs-repl
+    ztree
     ;;    uniquify
 ))
 
@@ -71,7 +70,9 @@
 (eval-after-load 'tern
    '(progn
       (require 'tern-auto-complete)
-      (tern-ac-setup)))
+      (print "tern is used")
+      (tern-ac-setup)
+      (tern-use-server 61111)))
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.erl\\'" . js2-mode))
@@ -126,6 +127,11 @@
 (ergoemacs-mode 1)
 
 (require 'js-beautify)
+
+;; org
+(setq org-agenda-files (list "~/Documents/personal-notes/work.org"
+                             "~/Documents/personal-notes/nodify.org"
+                             "~/Documents/personal-notes/personal.org"))
 
 ;; erlang
 (defun start-erlang ()
