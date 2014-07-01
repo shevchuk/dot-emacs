@@ -162,7 +162,6 @@
 (require 'tern)
 ;; yasnippet
 
-
 ;; theme setup
 
 (setq-default frame-title-format "%b (%f)")

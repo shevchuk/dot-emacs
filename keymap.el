@@ -46,6 +46,17 @@
 (global-set-key (kbd "C-l") 'goto-line)
 ;; org-mode
 (global-set-key (kbd "C-c M-p") (lambda() (interactive) (find-file "~/Documents/pomodoro.org")))
+
+(add-hook 'org-mode-hook 'org-mode-keys)
+
+(defun org-mode-keys ()
+  "my keybindings for org-mode"
+  (local-set-key (kbd "<M-left>") 'org-metaleft)
+  (local-set-key (kbd "<M-right>") 'org-metaright))
+
+;;            (define-key org-mode-map (kbd "M-J") 'org-promote-subtree)
+;;            (define-key org-mode-map (kbd "M-L") 'org-demote-subtree)))
+
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 ;; todo change keybindings here
