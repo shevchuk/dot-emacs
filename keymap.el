@@ -56,6 +56,8 @@
 
 (defun org-mode-keys ()
   "my keybindings for org-mode"
+  (local-set-key (kbd "<M-S-up>") 'org-move-subtree-up)
+  (local-set-key (kbd "<M-S-down>") 'org-move-subtree-down)
   (local-set-key (kbd "<M-left>") 'org-metaleft)
   (local-set-key (kbd "<M-right>") 'org-metaright))
 

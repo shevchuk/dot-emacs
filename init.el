@@ -134,6 +134,7 @@
 
 (add-hook 'org-mode-hook 
           (lambda () 
+            (message "will commit in 10 seconds")
             (add-hook 'after-save-hook 'autocommit-after-save-hook nil 'make-it-local)))
 
 ;; erlang
@@ -191,6 +192,8 @@
 
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
+
+(require 'transpose-frame)
 
 ;; If use bundled typescript.el,
 (require 'typescript)
