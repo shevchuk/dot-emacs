@@ -70,7 +70,6 @@
 (eval-after-load 'tern
    '(progn
       (require 'tern-auto-complete)
-      (print "tern is used")
       (tern-ac-setup)
       (tern-use-server 61111)))
 
@@ -133,6 +132,10 @@
                              "~/Documents/personal-notes/nodify.org"
                              "~/Documents/personal-notes/personal.org"))
 
+(add-hook 'org-mode-hook 
+          (lambda () 
+            (add-hook 'after-save-hook 'autocommit-after-save-hook nil 'make-it-local)))
+
 ;; erlang
 (defun start-erlang ()
   (interactive)
@@ -158,6 +161,8 @@
 (require 'cycle-bg-colors)
 (require 'move-text)
 (require 'swissknife)
+(require 'autocommit)
+
 ;; (require 'persp-projectile)
 (require 'tern)
 ;; yasnippet

@@ -44,6 +44,11 @@
 (global-set-key (kbd "C-k") 'kill-whole-line)
 
 (global-set-key (kbd "C-l") 'goto-line)
+
+;; cua-mode
+(global-set-key (kbd "C-c r") 'cua-copy-region)
+
+
 ;; org-mode
 (global-set-key (kbd "C-c M-p") (lambda() (interactive) (find-file "~/Documents/pomodoro.org")))
 
