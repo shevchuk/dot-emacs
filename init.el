@@ -7,6 +7,7 @@
   '(
     jade-mode
     auto-complete
+    unicode-fonts
     dsvn
     expand-region
     js2-mode
@@ -132,10 +133,17 @@
                              "~/Documents/personal-notes/nodify.org"
                              "~/Documents/personal-notes/personal.org"))
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((ditaa . t))) ; this line activates ditaa
+
+(setq org-startup-with-inline-images t)
 (add-hook 'org-mode-hook 
           (lambda () 
-            (message "will commit in 10 seconds")
+            (require 'unicode-fonts)
+            (unicode-fonts-setup)
             (add-hook 'after-save-hook 'autocommit-after-save-hook nil 'make-it-local)))
+
 
 ;; erlang
 (defun start-erlang ()
