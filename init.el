@@ -5,6 +5,7 @@
 ;; these packages will be automatically installed if there is an internet connection
 (defvar packages-to-load
   '(
+    color-theme
     jade-mode
     auto-complete
     unicode-fonts
@@ -36,6 +37,7 @@
     exec-path-from-shell
     nodejs-repl
     ztree
+    org-reveal
     ;;    uniquify
 ))
 
@@ -133,6 +135,20 @@
                              "~/Documents/personal-notes/nodify.org"
                              "~/Documents/personal-notes/personal.org"))
 
+(require 'color-theme-buffer-local)
+;; create some frames with different color themes
+;; (setq color-theme-is-global nil)
+
+;;logging stuff
+(setq org-log-done (quote time))
+(setq org-log-into-drawer nil)
+(setq org-log-redeadline (quote note))
+(setq org-log-reschedule (quote time))
+;todo keywords
+(setq org-todo-keywords
+      (quote ((sequence "TODO(t!)" "WAITING(w@/!)" "STARTED(s!)" "|" "DONE(d!/!)" "CANCELLED(c@/!)")
+              (sequence "EXPIRED(E@)" "REJECTED(R@)"))))
+
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((ditaa . t))) ; this line activates ditaa
@@ -142,8 +158,11 @@
           (lambda () 
             (require 'unicode-fonts)
             (unicode-fonts-setup)
+            (color-theme-buffer-local 'color-theme-theme-billw (current-buffer))
             (add-hook 'after-save-hook 'autocommit-after-save-hook nil 'make-it-local)))
 
+;; reveal.js
+(setq org-reveal-root "")
 
 ;; erlang
 (defun start-erlang ()
