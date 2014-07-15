@@ -81,7 +81,7 @@
 
 (defvar daylight-last-theme nil
   "The last theme applied by daylight.")
-
+(setq daylight-last-theme 'color-theme-xp)
 
 ;;; Helper functions
 (defun daylight-current-hour ()
@@ -104,7 +104,7 @@
   (let ((theme (daylight-get-theme (daylight-current-hour))))
     (unless (equal theme daylight-last-theme)
       (mapc 'disable-theme custom-enabled-themes)
-      (load-theme theme)
+      (funcall theme)
       (setq daylight-last-theme theme))))
 
 (defun daylight-start ()

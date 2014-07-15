@@ -65,7 +65,6 @@
             (wrap-region-mode t)
             (linum-mode 1)
             (tern-mode t)
-            (color-theme-buffer-local 'color-theme-midnight)
             ;; Activate the folding mode
             (hs-minor-mode t)
             (auto-complete-mode 1)))
@@ -195,7 +194,7 @@
 
 (setq daylight-morning-theme 'color-theme-greiner
       daylight-afternoon-theme 'color-theme-deep-blue
-      daylight-evening-theme 'color-theme-gray30
+      daylight-evening-theme 'color-theme-midnight
       daylight-late-theme 'color-theme-taylor)
 
 (daylight-mode 1)
