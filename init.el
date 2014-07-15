@@ -65,6 +65,7 @@
             (wrap-region-mode t)
             (linum-mode 1)
             (tern-mode t)
+            (color-theme-buffer-local 'color-theme-midnight)
             ;; Activate the folding mode
             (hs-minor-mode t)
             (auto-complete-mode 1)))
@@ -135,10 +136,6 @@
                              "~/Documents/personal-notes/nodify.org"
                              "~/Documents/personal-notes/personal.org"))
 
-(require 'color-theme-buffer-local)
-;; create some frames with different color themes
-;; (setq color-theme-is-global nil)
-
 ;;logging stuff
 (setq org-log-done (quote time))
 (setq org-log-into-drawer nil)
@@ -153,12 +150,16 @@
  'org-babel-load-languages
  '((ditaa . t))) ; this line activates ditaa
 
+(require 'color-theme-buffer-local)
+;; create some frames with different color themes
+;; (setq color-theme-is-global nil)
+
 (setq org-startup-with-inline-images t)
 (add-hook 'org-mode-hook 
           (lambda () 
             (require 'unicode-fonts)
             (unicode-fonts-setup)
-            (color-theme-buffer-local 'color-theme-theme-billw (current-buffer))
+            (color-theme-buffer-local 'color-theme-blue-sea)
             (add-hook 'after-save-hook 'autocommit-after-save-hook nil 'make-it-local)))
 
 ;; reveal.js
@@ -190,7 +191,14 @@
 (require 'move-text)
 (require 'swissknife)
 (require 'autocommit)
+(require 'daylight)
 
+(setq daylight-morning-theme 'color-theme-greiner
+      daylight-afternoon-theme 'color-theme-deep-blue
+      daylight-evening-theme 'color-theme-gray30
+      daylight-late-theme 'color-theme-taylor)
+
+(daylight-mode 1)
 ;; (require 'persp-projectile)
 (require 'tern)
 ;; yasnippet
@@ -198,7 +206,6 @@
 ;; theme setup
 
 (setq-default frame-title-format "%b (%f)")
-(load-theme 'misterioso t)
 
 (when (string-equal system-type "darwin")
   (setenv "PATH" 

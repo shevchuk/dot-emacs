@@ -12,7 +12,7 @@
 (defun set-random-theme-for-current-buffer()
   (interactive)
   (setq th (car (nth (random (length color-themes)) color-themes)))
-  (message "Setting current theme to: %s " th)
+  (message "Setting current buffer theme to: %s " th)
   (color-theme-buffer-local th))
 
 (provide 'cycle-bg-colors)
