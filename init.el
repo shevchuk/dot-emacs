@@ -158,7 +158,7 @@
           (lambda () 
             (require 'unicode-fonts)
             (unicode-fonts-setup)
-            (color-theme-buffer-local 'color-theme-blue-sea)
+            (color-theme-buffer-local 'color-theme-parus)
             (add-hook 'after-save-hook 'autocommit-after-save-hook nil 'make-it-local)))
 
 ;; reveal.js
