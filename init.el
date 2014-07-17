@@ -1,3 +1,4 @@
+(server-start)
 ;; (set-background-color "lightblue")
 (add-to-list 'load-path "~/.emacs.d")
 ;;; first run will install these
@@ -16,16 +17,16 @@
     log4e
     yaxception
     tss
+    color-theme-buffer-local
     yasnippet
     js2-refactor
     coffee-mode
-    magit
     ergoemacs-keybindings
+    magit
     tern
     grizzl
     flx
     smex
-    org-jira
     projectile
     wrap-region
     helm
@@ -36,7 +37,6 @@
     keyfreq
     exec-path-from-shell
     nodejs-repl
-    ztree
     org-reveal
     ;;    uniquify
 ))
@@ -73,8 +73,7 @@
 (eval-after-load 'tern
    '(progn
       (require 'tern-auto-complete)
-      (tern-ac-setup)
-      (tern-use-server 61111)))
+      (tern-ac-setup)))
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.erl\\'" . js2-mode))
@@ -151,6 +150,47 @@
  'org-babel-load-languages
  '((ditaa . t))) ; this line activates ditaa
 
+
+
+;;; define categories that should be excluded
+(setq org-export-exclude-category (list "google" "private"))
+
+;;; define filter. The filter is called on each entry in the agenda.
+;;; It defines a regexp to search for two timestamps, gets the start
+;;; and end point of the entry and does a regexp search. It also
+;;; checks if the category of the entry is in an exclude list and
+;;; returns either t or nil to skip or include the entry.
+
+(defun org-mycal-export-limit ()
+  "Limit the export to items that have a date, time and a range. Also exclude certain categories."
+  (setq org-tst-regexp "<\\([0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} ... [0-9]\\{2\\}:[0-9]\\{2\\}[^\r\n>]*?\
+\)>")
+  (setq org-tstr-regexp (concat org-tst-regexp "--?-?" org-tst-regexp))
+  (save-excursion
+    ; get categories
+    (setq mycategory (org-get-category))
+    ; get start and end of tree
+    (org-back-to-heading t)
+    (setq mystart    (point))
+    (org-end-of-subtree)
+    (setq myend      (point))
+    (goto-char mystart)
+    ; search for timerange
+    (setq myresult (re-search-forward org-tstr-regexp myend t))
+    ; search for categories to exclude
+    (setq mycatp (member mycategory org-export-exclude-category))
+    ; return t if ok, nil when not ok
+    (if (and myresult (not mycatp)) t nil)))
+
+;;; activate filter and call export function
+(defun org-mycal-export ()
+  (let ((org-icalendar-verify-function 'org-mycal-export-limit))
+    (org-icalendar-combine-agenda-files)))
+
+(setq org-agenda-default-appointment-duration 60)
+
+(setq org-icalendar-use-scheduled '(todo-start event-if-todo))
+
 (require 'color-theme-buffer-local)
 ;; create some frames with different color themes
 ;; (setq color-theme-is-global nil)
@@ -158,8 +198,9 @@
 (setq org-startup-with-inline-images t)
 (add-hook 'org-mode-hook 
           (lambda () 
-            (require 'unicode-fonts)
-            (unicode-fonts-setup)
+            (when (eq system-type 'darwin) 
+              (require 'unicode-fonts)
+              (unicode-fonts-setup))
             (color-theme-buffer-local 'color-theme-parus)
             (add-hook 'after-save-hook 'autocommit-after-save-hook nil 'make-it-local)))
 
