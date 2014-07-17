@@ -135,6 +135,8 @@
                              "~/Documents/personal-notes/nodify.org"
                              "~/Documents/personal-notes/personal.org"))
 
+(setq org-default-notes-file (concat "~/Documents/personal-notes/" "notes.org"))
+
 ;;logging stuff
 (setq org-log-done (quote time))
 (setq org-log-into-drawer nil)

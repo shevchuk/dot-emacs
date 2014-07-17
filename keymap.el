@@ -46,7 +46,9 @@
 (global-set-key (kbd "C-l") 'goto-line)
 
 ;; cua-mode
-(global-set-key (kbd "C-c r") 'cua-copy-region)
+;; (global-set-key (kbd "C-c r") 'cua-copy-region)
+
+(global-set-key "\C-cr" 'org-capture)
 
 
 ;; org-mode
