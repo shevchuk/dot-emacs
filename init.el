@@ -160,7 +160,6 @@
           (lambda () 
             (require 'unicode-fonts)
             (unicode-fonts-setup)
-            (color-theme-buffer-local 'color-theme-parus)
             (add-hook 'after-save-hook 'autocommit-after-save-hook nil 'make-it-local)))
 
 ;; reveal.js
@@ -194,8 +193,8 @@
 (require 'autocommit)
 (require 'daylight)
 
-(setq daylight-morning-theme 'color-theme-greiner
-      daylight-afternoon-theme 'color-theme-deep-blue
+(setq daylight-morning-theme 'color-theme-scintilla
+      daylight-afternoon-theme 'color-theme-greiner
       daylight-evening-theme 'color-theme-midnight
       daylight-late-theme 'color-theme-taylor)
 
