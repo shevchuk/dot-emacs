@@ -132,6 +132,7 @@
 ;; org
 (setq org-agenda-files (list "~/Documents/personal-notes/work.org"
                              "~/Documents/personal-notes/nodify.org"
+                             "~/Documents/personal-notes/notes.org"
                              "~/Documents/personal-notes/personal.org"))
 
 (setq org-default-notes-file (concat "~/Documents/personal-notes/" "notes.org"))
@@ -198,10 +199,15 @@
 (setq org-startup-with-inline-images t)
 (add-hook 'org-mode-hook 
           (lambda () 
+<<<<<<< HEAD
             (when (eq system-type 'darwin) 
               (require 'unicode-fonts)
               (unicode-fonts-setup))
             (color-theme-buffer-local 'color-theme-parus)
+=======
+            (require 'unicode-fonts)
+            (unicode-fonts-setup)
+>>>>>>> a4a503bc0b8b7f77b02437e6de63d3a0789cc322
             (add-hook 'after-save-hook 'autocommit-after-save-hook nil 'make-it-local)))
 
 ;; reveal.js
@@ -235,8 +241,8 @@
 (require 'autocommit)
 (require 'daylight)
 
-(setq daylight-morning-theme 'color-theme-greiner
-      daylight-afternoon-theme 'color-theme-deep-blue
+(setq daylight-morning-theme 'color-theme-scintilla
+      daylight-afternoon-theme 'color-theme-greiner
       daylight-evening-theme 'color-theme-midnight
       daylight-late-theme 'color-theme-taylor)
 
