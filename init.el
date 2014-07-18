@@ -199,15 +199,10 @@
 (setq org-startup-with-inline-images t)
 (add-hook 'org-mode-hook 
           (lambda () 
-<<<<<<< HEAD
             (when (eq system-type 'darwin) 
               (require 'unicode-fonts)
               (unicode-fonts-setup))
             (color-theme-buffer-local 'color-theme-parus)
-=======
-            (require 'unicode-fonts)
-            (unicode-fonts-setup)
->>>>>>> a4a503bc0b8b7f77b02437e6de63d3a0789cc322
             (add-hook 'after-save-hook 'autocommit-after-save-hook nil 'make-it-local)))
 
 ;; reveal.js
