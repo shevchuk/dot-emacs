@@ -48,7 +48,15 @@
 ;; cua-mode
 ;; (global-set-key (kbd "C-c r") 'cua-copy-region)
 
-(global-set-key "\C-cr" 'org-capture)
+(global-set-key "\C-c c" 'org-capture)
+
+(setq org-capture-templates
+      '(("w" "Work Todo" entry (file+headline "~/Documents/personal-notes/work.org" "Tasks")
+         "* TODO %?\n  %i\n  %a")
+        ("p" "Personal" entry (file+headline "~/Documents/personal-notes/personal.org" "Tasks")
+         "* TODO %?\n %i\n")
+      ("n" "Nodify Todo" entry (file "~/Documents/personal-notes/nodfiy.org")
+       "* TODO %?\n  %i\n  %a")))
 
 
 ;; org-mode
@@ -60,6 +68,7 @@
   "my keybindings for org-mode"
   (local-set-key (kbd "<M-S-up>") 'org-move-subtree-up)
   (local-set-key (kbd "<M-S-down>") 'org-move-subtree-down)
+  (local-set-key (kbd "C-n") 'next-error)
   (local-set-key (kbd "<M-left>") 'org-metaleft)
   (local-set-key (kbd "<M-right>") 'org-metaright))
 
