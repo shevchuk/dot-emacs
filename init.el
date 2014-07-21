@@ -202,7 +202,6 @@
             (when (eq system-type 'darwin) 
               (require 'unicode-fonts)
               (unicode-fonts-setup))
-            (color-theme-buffer-local 'color-theme-parus)
             (auto-revert-mode t)
             (add-hook 'after-save-hook 'autocommit-after-save-hook nil 'make-it-local)))
 
