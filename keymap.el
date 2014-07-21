@@ -48,7 +48,7 @@
 ;; cua-mode
 ;; (global-set-key (kbd "C-c r") 'cua-copy-region)
 
-(global-set-key "\C-c c" 'org-capture)
+(global-set-key (kbd "C-c c") 'org-capture)
 
 (setq org-capture-templates
       '(("w" "Work Todo" entry (file+headline "~/Documents/personal-notes/work.org" "Tasks")
