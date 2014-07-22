@@ -238,8 +238,8 @@
 
 (setq daylight-morning-theme 'color-theme-scintilla
       daylight-afternoon-theme 'color-theme-aalto-light
-      daylight-evening-theme 'color-theme-midnight
-      daylight-late-theme 'color-theme-taylor)
+      daylight-evening-theme 'color-theme-parus
+      daylight-late-theme 'color-theme-comidia)
 
 (daylight-mode 1)
 ;; (require 'persp-projectile)
