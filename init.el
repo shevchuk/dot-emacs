@@ -202,8 +202,8 @@
             (when (eq system-type 'darwin) 
               (require 'unicode-fonts)
               (unicode-fonts-setup))
-            (auto-revert-mode t)
-            (add-hook 'after-save-hook 'autocommit-after-save-hook nil 'make-it-local)))
+            (auto-revert-mode t)))
+            ;;(add-hook 'after-save-hook 'autocommit-after-save-hook nil 'make-it-local)))
 
 ;; reveal.js
 (setq org-reveal-root "")
