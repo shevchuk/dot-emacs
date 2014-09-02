@@ -38,6 +38,11 @@
     exec-path-from-shell
     nodejs-repl
     org-reveal
+    wanderlust
+    ztree
+    leuven-theme
+    tangotango-theme
+    cyberpunk-theme
     ;;    uniquify
 ))
 
@@ -192,6 +197,36 @@
 
 (setq org-icalendar-use-scheduled '(todo-start event-if-todo))
 
+;; эта часть настроек для доступа к Gmail по IMAP
+(setq elmo-imap4-default-server "imap.gmail.com"
+      elmo-imap4-default-user "mikhail.shevchuk@gmail.com"
+      elmo-imap4-default-authenticate-type 'clear
+      elmo-imap4-default-port '993
+      elmo-imap4-default-stream-type 'ssl
+      elmo-imap4-use-modified-utf7 t)
+
+;; тут настройки отвечающие за SMTP
+(setq wl-smtp-connection-type 'starttls
+      wl-smtp-posting-port 587
+      wl-smtp-authenticate-type "plain"
+      wl-smtp-posting-user "mikhail.shevchuk"
+      wl-smtp-posting-server "smtp.gmail.com"
+      wl-local-domain "gmail.com"
+      wl-message-id-domain "smtp.gmail.com")
+
+(setq wl-from "Mike Shevchuk"
+
+    ;; настройки папок IMAP
+    ;; если у вас в настройках gmail стоит русский язык то копируйте все как есть
+    ;; gmail создает имена папок в зависимости от локали
+    wl-default-folder "%inbox"
+    wl-draft-folder   "%[Gmail]/Черновики"
+    wl-trash-folder   "%[Gmail]/Корзина"
+    wl-fcc            "%[Gmail]/Отправленные"
+
+    wl-fcc-force-as-read    t
+    wl-default-spec "%")
+
 (require 'color-theme-buffer-local)
 ;; create some frames with different color themes
 ;; (setq color-theme-is-global nil)
@@ -247,6 +282,8 @@
 ;; yasnippet
 
 ;; theme setup
+;;(load-theme 'leuven t)
+(load-theme 'cyberpunk t)
 
 (setq-default frame-title-format "%b (%f)")
 
