@@ -269,14 +269,16 @@
 (require 'move-text)
 (require 'swissknife)
 (require 'autocommit)
-(require 'daylight)
 
-(setq daylight-morning-theme 'color-theme-scintilla
-      daylight-afternoon-theme 'color-theme-aalto-light
-      daylight-evening-theme 'color-theme-parus
-      daylight-late-theme 'color-theme-comidia)
+;;(require 'daylight)
+;;
+;;(setq daylight-morning-theme 'color-theme-scintilla
+;;      daylight-afternoon-theme 'color-theme-aalto-light
+;;      daylight-evening-theme 'color-theme-parus
+;;      daylight-late-theme 'color-theme-comidia)
+;;
+;;(daylight-mode 1)
 
-(daylight-mode 1)
 ;; (require 'persp-projectile)
 (require 'tern)
 ;; yasnippet

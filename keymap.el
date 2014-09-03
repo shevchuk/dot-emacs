@@ -45,6 +45,10 @@
 
 (global-set-key (kbd "C-l") 'goto-line)
 
+(global-set-key (kbd "M-J") 'beginning-of-line)
+(global-set-key (kbd "M-L") 'end-of-line)
+
+
 ;; cua-mode
 ;; (global-set-key (kbd "C-c r") 'cua-copy-region)
 
