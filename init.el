@@ -40,6 +40,7 @@
     org-reveal
     wanderlust
     ztree
+    htmlize
     leuven-theme
     tangotango-theme
     cyberpunk-theme
@@ -117,6 +118,7 @@
 ;;(setq projectile-indexing-method 'native)
 (projectile-global-mode)
 
+(setq column-number-mode 1)
 ;; ido
 (ido-mode t)
 (ido-everywhere 1)
@@ -156,7 +158,7 @@
  'org-babel-load-languages
  '((ditaa . t))) ; this line activates ditaa
 
-
+(setq org-src-fontify-natively t)
 
 ;;; define categories that should be excluded
 (setq org-export-exclude-category (list "google" "private"))
