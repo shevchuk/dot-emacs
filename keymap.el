@@ -6,6 +6,9 @@
 (defconst ergoemacs-split-window-below (kbd "M-8"))
 (defconst ergoemacs-split-window-right (kbd "M-9"))
 
+(defconst ergoemacs-isearch-forward-key	(kbd "M-;"))
+(defconst ergoemacs-isearch-backward-key (kbd "M-:"))
+
 (define-key ergoemacs-keymap ergoemacs-move-end-of-line-key 'move-end-of-line)
 (define-key ergoemacs-keymap ergoemacs-move-beginning-of-line-key 'move-beginning-of-line)
 (define-key ergoemacs-keymap ergoemacs-split-window-below 'split-window-below)
@@ -17,6 +20,8 @@
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
 (define-key isearch-mode-map "\C-r" 'isearch-yank-region)
 
+(global-set-key (kbd "\C-r") 'isearch-backward)
+
 (global-set-key (kbd "M-0") 'er/expand-region)
 
 (global-set-key (kbd "M-=") 'hs-show-block)
@@ -24,7 +29,6 @@
 (global-set-key (kbd "M--") 'hs-hide-block)
 (global-set-key (kbd "M-_") 'hs-hide-all)
 (global-set-key (kbd "M-[") 'hs-hide-level)
-
 
 ;; projectile
 (global-set-key (kbd "M-O") 'projectile-find-file)
