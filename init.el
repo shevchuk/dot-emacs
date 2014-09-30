@@ -144,6 +144,10 @@
 
 (setq org-default-notes-file (concat "~/Documents/personal-notes/" "notes.org"))
 
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook
+          '(lambda() (set-fill-column 120)))
+
 ;;logging stuff
 (setq org-log-done (quote time))
 (setq org-log-into-drawer nil)
