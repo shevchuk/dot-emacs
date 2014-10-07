@@ -108,6 +108,19 @@
 (setq password-cache-expiry nil)
 (setq tramp-verbose 6)
 
+
+(add-hook
+ 'eshell-mode-hook
+ (lambda ()
+   (setq pcomplete-cycle-completions nil)))
+
+(defadvice pcomplete (around avoid-remote-connections activate)
+   (let ((file-name-handler-alist (copy-alist file-name-handler-alist)))
+     (setq file-name-handler-alist
+           (delete (rassoc 'tramp-completion-file-name-handler
+                           file-name-handler-alist) file-name-handler-alist))
+     ad-do-it))
+
 ;;yasnippets
 (setq yas-snippet-dirs
       '("~/.emacs.d/yasnippets"))
@@ -290,8 +303,8 @@
 ;; yasnippet
 
 ;; theme setup
-;;(load-theme 'leuven t)
-(load-theme 'cyberpunk t)
+(load-theme 'leuven t)
+;;(load-theme 'cyberpunk t)
 
 (setq-default frame-title-format "%b (%f)")
 
@@ -322,6 +335,29 @@
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 
 (require 'tss)
+
+(defun eshell-execute-command (esh-buffer-name text)
+  "Execute command in eshell"
+  (interactive)
+  (require 'eshell)
+  (let ((buf (current-buffer)))
+    (unless (get-buffer esh-buffer-name)
+      (eshell))
+    (display-buffer esh-buffer-name t)
+    (switch-to-buffer-other-window esh-buffer-name)
+    (end-of-buffer)
+    (eshell-kill-input)
+    (insert text)
+    (eshell-send-input)
+    (end-of-buffer)
+    (switch-to-buffer-other-window buf)))
+
+(defun run-blackpearl-wl-command (branchname)
+  (interactive "sEnter branch name: ")
+  (shell-with-name "*eshell-wl-interactive*")
+  (eshell-execute-command "*eshell-wl-interactive*" (format "cd /blackpearl:/home/mico/src/wl-interactive/; node app.js -b %s -e 50X --dev" branchname)))
+
+
 
 ;; Key binding
 (setq tss-popup-help-key "C-:")

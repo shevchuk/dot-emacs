@@ -89,8 +89,6 @@
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (setq org-log-done t)
 
-
-
 (global-set-key (kbd "M-<up>") 'move-text-up)
 (global-set-key (kbd "M-<down>") 'move-text-down)
 

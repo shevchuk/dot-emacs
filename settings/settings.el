@@ -14,4 +14,6 @@
  '(custom-enabled-themes (quote (cyberpunk)))
  '(custom-safe-themes (quote ("f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" "5d9351cd410bff7119978f8e69e4315fd1339aa7b3af6d398c5ca6fac7fd53c7" "45bd43da80a95b4f5157b1992350eb4207025bdeefb55c68548dcb34bf403124" default)))
  '(jiralib-url "http://jira.ringcentral.com")
+ '(multi-eshell-name "*eshell*")
+ '(multi-eshell-shell-function (quote (eshell)))
  '(org-ditaa-jar-path "/Users/mico/.emacs.d/contrib/ditaa/ditaa0_9.jar"))
