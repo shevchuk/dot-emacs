@@ -29,7 +29,7 @@
 (defun nordigy-run-blackpearl-wl-command-non-interactive (branchname environment)
   (let ((shell-buffer-name (nordigy-get-web-launcher-eshell-buffer-name branchname environment)))
     (shell-with-name shell-buffer-name)
-  (eshell-execute-command shell-buffer-name (format "cd /blackpearl:/home/mico/src/wl-interactive/; node app.js -b %s -e %s --dev" branchname environment))))
+  (nordigy-eshell-execute-command shell-buffer-name (format "cd /blackpearl:/home/mico/src/wl-interactive/; node app.js -b %s -e %s --dev" branchname environment))))
 
 (defun nordigy-get-compass-buffer-name (branchname)
   (concat "*eshell-compass-" branchname "*"))
@@ -37,4 +37,4 @@
 (defun nordigy-run-compass-in (branchname)
   (interactive "sEnter branch name:")
   (shell-with-name (nordigy-get-compass-buffer-name branchname))
-  (eshell-execute-command (nordigy-get-compass-buffer-name branchname) (format "cd /blackpearl:/home/mico/src/%s/utils/compass; sh compass-compile.bash" branchname)))
+  (nordigy-eshell-execute-command (nordigy-get-compass-buffer-name branchname) (format "cd /blackpearl:/home/mico/src/%s/utils/compass; sh compass-compile.bash" branchname)))
