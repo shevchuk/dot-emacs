@@ -1,5 +1,4 @@
-
-(defun eshell-execute-command (esh-buffer-name text)
+(defun nordigy-eshell-execute-command (esh-buffer-name text)
   "Execute command in eshell"
   (interactive)
   (require 'eshell)
@@ -16,9 +15,26 @@
     (switch-to-buffer-other-window buf)))
 
 
-(defun run-blackpearl-wl-command-50x (branchname)
+(defun nordigy-run-blackpearl-wl-command-50x (branchname)
   (interactive "sEnter branch name: ")
-  (shell-with-name "*eshell-wl-interactive*")
-  (eshell-execute-command "*eshell-wl-interactive*" (format "cd /blackpearl:/home/mico/src/wl-interactive/; node app.js -b %s -e 50X --dev" branchname)))
+  (nordigy-run-blackpearl-wl-command-non-interactive branchname "50X"))
 
+(defun nordigy-run-blackpearl-wl-command (branchname environment)
+  (interactive "sEnter branch name: \nsEnter environment name: ")
+  (nordigy-run-blackpearl-wl-command-non-interactive branchname environment))
 
+(defun nordigy-get-web-launcher-eshell-buffer-name (branchname environment)
+  (concat "*eshell-web-launcher-" branchname "-" environment "*"))
+
+(defun nordigy-run-blackpearl-wl-command-non-interactive (branchname environment)
+  (let ((shell-buffer-name (nordigy-get-web-launcher-eshell-buffer-name branchname environment)))
+    (shell-with-name shell-buffer-name)
+  (eshell-execute-command shell-buffer-name (format "cd /blackpearl:/home/mico/src/wl-interactive/; node app.js -b %s -e %s --dev" branchname environment))))
+
+(defun nordigy-get-compass-buffer-name (branchname)
+  (concat "*eshell-compass-" branchname "*"))
+
+(defun nordigy-run-compass-in (branchname)
+  (interactive "sEnter branch name:")
+  (shell-with-name (nordigy-get-compass-buffer-name branchname))
+  (eshell-execute-command (nordigy-get-compass-buffer-name branchname) (format "cd /blackpearl:/home/mico/src/%s/utils/compass; sh compass-compile.bash" branchname)))
