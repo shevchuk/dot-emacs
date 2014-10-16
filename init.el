@@ -41,6 +41,7 @@
     wanderlust
     ztree
     htmlize
+    smartparens
     leuven-theme
     tangotango-theme
     cyberpunk-theme
