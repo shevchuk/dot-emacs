@@ -20,6 +20,9 @@
 (global-set-key (kbd "<mouse-2>") 'split-window-vertically)
 (global-set-key (kbd "<mouse-3>") 'split-window-horizontally)
 
+(global-set-key (kbd "<wheel-up>") 'delete-window)
+(global-set-key (kbd "<wheel-down>") 'delete-other-windows)
+
 ;; editor
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
 (define-key isearch-mode-map "\C-r" 'isearch-yank-region)
