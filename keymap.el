@@ -16,6 +16,10 @@
 (define-key ergoemacs-keymap ergoemacs-delete-window 'delete-window)
 (define-key ergoemacs-keymap ergoemacs-delete-other-windows 'delete-other-windows)
 
+
+(global-set-key (kbd "<mouse-2>") 'split-window-vertically)
+(global-set-key (kbd "<mouse-3>") 'split-window-horizontally)
+
 ;; editor
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
 (define-key isearch-mode-map "\C-r" 'isearch-yank-region)
