@@ -331,6 +331,8 @@
 
 (require 'transpose-frame)
 
+;; use Shift+arrow_keys to move cursor around split panes
+(windmove-default-keybindings)
 
 (require 'multi-eshell)
 (require 'nordigy)
