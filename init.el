@@ -304,8 +304,10 @@
 ;; yasnippet
 
 ;; theme setup
-(load-theme 'leuven t)
+;;(load-theme 'leuven t)
 ;;(load-theme 'cyberpunk t)
+
+(color-theme-parus)
 
 (setq-default frame-title-format "%b (%f)")
 
