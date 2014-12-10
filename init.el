@@ -9,6 +9,7 @@
     color-theme
     jade-mode
     auto-complete
+    multi-eshell
     unicode-fonts
     dsvn
     expand-region
