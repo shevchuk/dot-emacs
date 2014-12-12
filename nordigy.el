@@ -38,3 +38,17 @@
   (interactive "sEnter branch name:")
   (shell-with-name (nordigy-get-compass-buffer-name branchname))
   (nordigy-eshell-execute-command (nordigy-get-compass-buffer-name branchname) (format "cd /blackpearl:/home/mico/src/%s/utils/compass; sh compass-compile.bash" branchname)))
+
+(defun nordigy-get-test-name ()
+  "Gets a path to a current script + name without extensions"
+  (interactive)
+  (let ((script-name 
+         (car (split-string
+          (car (last 
+                (split-string (or load-file-name buffer-file-name) "/"))) "."))))
+        (message (concat  
+         (file-name-directory (or load-file-name buffer-file-name))
+         script-name
+         ))))
+
+(concat "asdf" "asdf")
