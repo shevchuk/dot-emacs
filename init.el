@@ -308,6 +308,17 @@
 ;;(load-theme 'leuven t)
 ;;(load-theme 'cyberpunk t)
 
+;; show full path in frame title for current buffer
+(setq frame-title-format
+  '(:eval
+    (if buffer-file-name
+        (replace-regexp-in-string
+         "\\\\" "/"
+         (replace-regexp-in-string
+          (regexp-quote (getenv "HOME")) "~"
+          (convert-standard-filename buffer-file-name)))
+      (buffer-name))))
+
 (color-theme-parus)
 
 (setq-default frame-title-format "%b (%f)")
