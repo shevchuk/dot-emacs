@@ -59,6 +59,10 @@
 (global-set-key (kbd "M-J") 'beginning-of-line)
 (global-set-key (kbd "M-L") 'end-of-line)
 
+(global-set-key (kbd "<M-S-right>") 'buf-move-right)
+(global-set-key (kbd "<M-S-left>") 'buf-move-left)
+(global-set-key (kbd "<M-S-up>") 'buf-move-up)
+(global-set-key (kbd "<M-S-down>") 'buf-move-down)
 
 ;; cua-mode
 ;; (global-set-key (kbd "C-c r") 'cua-copy-region)

@@ -6,6 +6,7 @@
 ;; these packages will be automatically installed if there is an internet connection
 (defvar packages-to-load
   '(
+    buffer-move
     color-theme
     jade-mode
     auto-complete
@@ -339,6 +340,7 @@
 ;;exec-path
 (put 'downcase-region 'disabled nil)
 
+(require 'buffer-move)
 (require 'keyfreq)
 (keyfreq-mode 1)
 (keyfreq-autosave-mode 1)
