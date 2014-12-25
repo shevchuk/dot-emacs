@@ -46,7 +46,6 @@
     leuven-theme
     tangotango-theme
     cyberpunk-theme
-    ;;    uniquify
 ))
 
 (defun run-skewer-repl ()
@@ -249,6 +248,12 @@
     wl-default-spec "%")
 
 (require 'color-theme-buffer-local)
+
+(require 'uniquify)
+(setq 
+  uniquify-buffer-name-style 'post-forward
+  uniquify-separator ":")
+
 ;; create some frames with different color themes
 ;; (setq color-theme-is-global nil)
 
