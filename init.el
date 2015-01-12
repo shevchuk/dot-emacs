@@ -358,5 +358,9 @@
 (require 'multi-eshell)
 (require 'nordigy)
 
+(require 'hiwin)
+(hiwin-activate)                           ;; hiwin-mode
+(set-face-background 'hiwin-face "midnightblue") ;; 
+
 (require 'tscript)
 (tool-bar-mode -1)
