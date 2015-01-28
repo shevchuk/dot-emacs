@@ -3,6 +3,8 @@ dot-emacs
 
 My current Emacs config
 
+Install Inconsolata fonts
+    
 Run el-get-elpa-build-local-recipes to build all needed recipes
 
 To get rid of the log-edit-mode error, delete the line
