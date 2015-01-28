@@ -179,6 +179,8 @@
 
 (setq org-src-fontify-natively t)
 
+(set-default-font "Inconsolata LGC 14")
+
 ;;; define categories that should be excluded
 (setq org-export-exclude-category (list "google" "private"))
 
@@ -269,6 +271,15 @@
 
 ;; reveal.js
 (setq org-reveal-root "")
+
+;; mobileorg
+
+;; Set to the location of your Org files on your local system
+(setq org-directory "~/Documents/personal-notes")
+;; Set to the name of the file where new notes will be stored
+(setq org-mobile-inbox-for-pull "~/Documents/personal-notes/from-mobile.org")
+;; Set to <your Dropbox root directory>/MobileOrg.
+(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
 
 ;; erlang
 (defun start-erlang ()
