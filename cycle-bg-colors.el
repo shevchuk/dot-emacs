@@ -3,7 +3,8 @@
   (interactive)
   (if (eq left-cycle-bg-colors nil)
       (setq left-cycle-bg-colors cycle-bg-colors))
-  (set-background-color (pop left-cycle-bg-colors)))
+  (set-background-color (pop left-cycle-bg-colors))
+  (sleep-for 1))
 
 (global-set-key (kbd "C-5") 'cycle-bg-colors)
 

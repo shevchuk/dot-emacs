@@ -3,11 +3,7 @@
 
 ;; Additional custom recipes, not yet in the repository:
 (setq el-get-sources
-      '((:name wrap-region
-	       :description "Wrap text with punctation or tag"
-	       :type elpa
-	       :prepare)
-	(:name grizzl
+      '((:name grizzl
                :type github
                :pkgname "d11wtq/grizzl")
 	(:name flx
@@ -16,6 +12,9 @@
     (:name org-jira
            :type github
            :pkgname "baohaojun/org-jira")
+    (:name ztree
+	   :type github
+	   :pkgname "fourier/ztree")
     (:name js-beautify
        :type github
        :pkgname "einars/js-beautify")
@@ -37,7 +36,7 @@
 	 (let (el-get-master-branch)
 	   (end-of-buffer)
 	   (eval-print-last-sexp)))))
-    (let ((emacswiki-recipes (concat el-get-dir "el-get/recipes/emacswiki")))
+    (let ((emacswiki-recipes (concat el-get-dir "/el-get/recipes/emacswiki")))
       (unless (file-exists-p emacswiki-recipes)
 	(el-get-emacswiki-refresh emacswiki-recipes t)))
     (push (concat elhome-directory "/site-lisp/recipes/") el-get-recipe-path)))

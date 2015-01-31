@@ -4,9 +4,7 @@
 
 ;; these packages will be automatically installed if there is an internet connection
 (defvar packages-to-load
-  '(
-    jade-mode
-    auto-complete
+  '(auto-complete
     unicode-fonts
     dsvn
     expand-region
@@ -26,17 +24,17 @@
     smex
     org-jira
     projectile
-    wrap-region
+    ;;wrap-region
     helm
     js-beautify
     rainbow-mode
     skewer-mode
     perspective
-    keyfreq
     exec-path-from-shell
     nodejs-repl
     ztree
     ;;    uniquify
+    ;;jade-mode
 ))
 
 (defun run-skewer-repl ()
@@ -71,8 +69,7 @@
 (eval-after-load 'tern
    '(progn
       (require 'tern-auto-complete)
-      (tern-ac-setup)
-      (tern-use-server 61111)))
+      (tern-ac-setup)))
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.erl\\'" . js2-mode))
