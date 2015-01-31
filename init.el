@@ -8,7 +8,6 @@
   '(auto-complete
     buffer-move
     color-theme
-    jade-mode
     auto-complete
     multi-eshell
     unicode-fonts
@@ -19,7 +18,6 @@
     log4e
     yaxception
     tss
-    color-theme-buffer-local
     yasnippet
     js2-refactor
     coffee-mode
@@ -45,9 +43,6 @@
     ;;jade-mode
     htmlize
     smartparens
-    leuven-theme
-    tangotango-theme
-    cyberpunk-theme
 ))
 
 (defun run-skewer-repl ()
@@ -250,8 +245,6 @@
 
     wl-fcc-force-as-read    t
     wl-default-spec "%")
-
-(require 'color-theme-buffer-local)
 
 (require 'uniquify)
 (setq 
