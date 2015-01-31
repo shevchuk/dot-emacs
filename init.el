@@ -364,8 +364,7 @@
 (require 'nordigy)
 
 (require 'hiwin)
-(hiwin-activate)                           ;; hiwin-mode
-(set-face-background 'hiwin-face "midnightblue") ;; 
+(hiwin-mode t)
 
 (require 'tscript)
 (tool-bar-mode -1)
