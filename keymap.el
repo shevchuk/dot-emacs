@@ -6,6 +6,9 @@
 (defconst ergoemacs-split-window-below (kbd "M-8"))
 (defconst ergoemacs-split-window-right (kbd "M-9"))
 
+(defconst ergoemacs-isearch-forward-key	(kbd "M-;"))
+(defconst ergoemacs-isearch-backward-key (kbd "M-:"))
+
 (define-key ergoemacs-keymap ergoemacs-move-end-of-line-key 'move-end-of-line)
 (define-key ergoemacs-keymap ergoemacs-move-beginning-of-line-key 'move-beginning-of-line)
 (define-key ergoemacs-keymap ergoemacs-split-window-below 'split-window-below)
@@ -13,9 +16,18 @@
 (define-key ergoemacs-keymap ergoemacs-delete-window 'delete-window)
 (define-key ergoemacs-keymap ergoemacs-delete-other-windows 'delete-other-windows)
 
+
+(global-set-key (kbd "<mouse-2>") 'split-window-vertically)
+(global-set-key (kbd "<mouse-3>") 'split-window-horizontally)
+
+(global-set-key (kbd "<wheel-up>") 'delete-window)
+(global-set-key (kbd "<wheel-down>") 'delete-other-windows)
+
 ;; editor
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
 (define-key isearch-mode-map "\C-r" 'isearch-yank-region)
+
+(global-set-key (kbd "\C-r") 'isearch-backward)
 
 (global-set-key (kbd "M-0") 'er/expand-region)
 
@@ -24,7 +36,6 @@
 (global-set-key (kbd "M--") 'hs-hide-block)
 (global-set-key (kbd "M-_") 'hs-hide-all)
 (global-set-key (kbd "M-[") 'hs-hide-level)
-
 
 ;; projectile
 (global-set-key (kbd "M-O") 'projectile-find-file)
@@ -45,8 +56,26 @@
 
 (global-set-key (kbd "C-l") 'goto-line)
 
+(global-set-key (kbd "M-J") 'beginning-of-line)
+(global-set-key (kbd "M-L") 'end-of-line)
+
+(global-set-key (kbd "<M-S-right>") 'buf-move-right)
+(global-set-key (kbd "<M-S-left>") 'buf-move-left)
+(global-set-key (kbd "<M-S-up>") 'buf-move-up)
+(global-set-key (kbd "<M-S-down>") 'buf-move-down)
+
 ;; cua-mode
-(global-set-key (kbd "C-c r") 'cua-copy-region)
+;; (global-set-key (kbd "C-c r") 'cua-copy-region)
+
+(global-set-key (kbd "C-c c") 'org-capture)
+
+(setq org-capture-templates
+      '(("w" "Work Todo" entry (file+headline "~/Documents/personal-notes/work.org" "Tasks")
+         "* TODO %?\n  %i\n  %a")
+        ("p" "Personal" entry (file+headline "~/Documents/personal-notes/personal.org" "Tasks")
+         "* TODO %?\n %i\n")
+      ("n" "Nodify Todo" entry (file "~/Documents/personal-notes/nodfiy.org")
+       "* TODO %?\n  %i\n  %a")))
 
 
 ;; org-mode
@@ -58,6 +87,7 @@
   "my keybindings for org-mode"
   (local-set-key (kbd "<M-S-up>") 'org-move-subtree-up)
   (local-set-key (kbd "<M-S-down>") 'org-move-subtree-down)
+  (local-set-key (kbd "C-n") 'next-error)
   (local-set-key (kbd "<M-left>") 'org-metaleft)
   (local-set-key (kbd "<M-right>") 'org-metaright))
 
@@ -69,8 +99,6 @@
 ;; todo change keybindings here
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (setq org-log-done t)
-
-
 
 (global-set-key (kbd "M-<up>") 'move-text-up)
 (global-set-key (kbd "M-<down>") 'move-text-down)

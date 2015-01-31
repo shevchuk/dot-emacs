@@ -1,3 +1,4 @@
+(server-start)
 ;; (set-background-color "lightblue")
 (add-to-list 'load-path "~/.emacs.d")
 ;;; first run will install these
@@ -5,6 +6,11 @@
 ;; these packages will be automatically installed if there is an internet connection
 (defvar packages-to-load
   '(auto-complete
+    buffer-move
+    color-theme
+    jade-mode
+    auto-complete
+    multi-eshell
     unicode-fonts
     dsvn
     expand-region
@@ -13,16 +19,16 @@
     log4e
     yaxception
     tss
+    color-theme-buffer-local
     yasnippet
     js2-refactor
     coffee-mode
-    magit
     ergoemacs-keybindings
+    magit
     tern
     grizzl
     flx
     smex
-    org-jira
     projectile
     ;;wrap-region
     helm
@@ -32,9 +38,16 @@
     perspective
     exec-path-from-shell
     nodejs-repl
+    org-reveal
+    wanderlust
     ztree
     ;;    uniquify
     ;;jade-mode
+    htmlize
+    smartparens
+    leuven-theme
+    tangotango-theme
+    cyberpunk-theme
 ))
 
 (defun run-skewer-repl ()
@@ -98,6 +111,19 @@
 (setq password-cache-expiry nil)
 (setq tramp-verbose 6)
 
+
+(add-hook
+ 'eshell-mode-hook
+ (lambda ()
+   (setq pcomplete-cycle-completions nil)))
+
+(defadvice pcomplete (around avoid-remote-connections activate)
+   (let ((file-name-handler-alist (copy-alist file-name-handler-alist)))
+     (setq file-name-handler-alist
+           (delete (rassoc 'tramp-completion-file-name-handler
+                           file-name-handler-alist) file-name-handler-alist))
+     ad-do-it))
+
 ;;yasnippets
 (setq yas-snippet-dirs
       '("~/.emacs.d/yasnippets"))
@@ -108,6 +134,7 @@
 ;;(setq projectile-indexing-method 'native)
 (projectile-global-mode)
 
+(setq column-number-mode 1)
 ;; ido
 (ido-mode t)
 (ido-everywhere 1)
@@ -128,19 +155,132 @@
 ;; org
 (setq org-agenda-files (list "~/Documents/personal-notes/work.org"
                              "~/Documents/personal-notes/nodify.org"
+                             "~/Documents/personal-notes/notes.org"
                              "~/Documents/personal-notes/personal.org"))
+
+(setq org-default-notes-file (concat "~/Documents/personal-notes/" "notes.org"))
+
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook
+          '(lambda() (set-fill-column 120)))
+
+;;logging stuff
+(setq org-log-done (quote time))
+(setq org-log-into-drawer nil)
+(setq org-log-redeadline (quote note))
+(setq org-log-reschedule (quote time))
+;todo keywords
+(setq org-todo-keywords
+      (quote ((sequence "TODO(t!)" "WAITING(w@/!)" "STARTED(s!)" "|" "DONE(d!/!)" "CANCELLED(c@/!)")
+              (sequence "EXPIRED(E@)" "REJECTED(R@)"))))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((ditaa . t))) ; this line activates ditaa
 
+(setq org-src-fontify-natively t)
+
+(set-default-font "Inconsolata LGC 14")
+
+;;; define categories that should be excluded
+(setq org-export-exclude-category (list "google" "private"))
+
+;;; define filter. The filter is called on each entry in the agenda.
+;;; It defines a regexp to search for two timestamps, gets the start
+;;; and end point of the entry and does a regexp search. It also
+;;; checks if the category of the entry is in an exclude list and
+;;; returns either t or nil to skip or include the entry.
+
+(defun org-mycal-export-limit ()
+  "Limit the export to items that have a date, time and a range. Also exclude certain categories."
+  (setq org-tst-regexp "<\\([0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} ... [0-9]\\{2\\}:[0-9]\\{2\\}[^\r\n>]*?\
+\)>")
+  (setq org-tstr-regexp (concat org-tst-regexp "--?-?" org-tst-regexp))
+  (save-excursion
+    ; get categories
+    (setq mycategory (org-get-category))
+    ; get start and end of tree
+    (org-back-to-heading t)
+    (setq mystart    (point))
+    (org-end-of-subtree)
+    (setq myend      (point))
+    (goto-char mystart)
+    ; search for timerange
+    (setq myresult (re-search-forward org-tstr-regexp myend t))
+    ; search for categories to exclude
+    (setq mycatp (member mycategory org-export-exclude-category))
+    ; return t if ok, nil when not ok
+    (if (and myresult (not mycatp)) t nil)))
+
+;;; activate filter and call export function
+(defun org-mycal-export ()
+  (let ((org-icalendar-verify-function 'org-mycal-export-limit))
+    (org-icalendar-combine-agenda-files)))
+
+(setq org-agenda-default-appointment-duration 60)
+
+(setq org-icalendar-use-scheduled '(todo-start event-if-todo))
+
+;; эта часть настроек для доступа к Gmail по IMAP
+(setq elmo-imap4-default-server "imap.gmail.com"
+      elmo-imap4-default-user "mikhail.shevchuk@gmail.com"
+      elmo-imap4-default-authenticate-type 'clear
+      elmo-imap4-default-port '993
+      elmo-imap4-default-stream-type 'ssl
+      elmo-imap4-use-modified-utf7 t)
+
+;; тут настройки отвечающие за SMTP
+(setq wl-smtp-connection-type 'starttls
+      wl-smtp-posting-port 587
+      wl-smtp-authenticate-type "plain"
+      wl-smtp-posting-user "mikhail.shevchuk"
+      wl-smtp-posting-server "smtp.gmail.com"
+      wl-local-domain "gmail.com"
+      wl-message-id-domain "smtp.gmail.com")
+
+(setq wl-from "Mike Shevchuk"
+
+    ;; настройки папок IMAP
+    ;; если у вас в настройках gmail стоит русский язык то копируйте все как есть
+    ;; gmail создает имена папок в зависимости от локали
+    wl-default-folder "%inbox"
+    wl-draft-folder   "%[Gmail]/Черновики"
+    wl-trash-folder   "%[Gmail]/Корзина"
+    wl-fcc            "%[Gmail]/Отправленные"
+
+    wl-fcc-force-as-read    t
+    wl-default-spec "%")
+
+(require 'color-theme-buffer-local)
+
+(require 'uniquify)
+(setq 
+  uniquify-buffer-name-style 'post-forward
+  uniquify-separator ":")
+
+;; create some frames with different color themes
+;; (setq color-theme-is-global nil)
+
 (setq org-startup-with-inline-images t)
 (add-hook 'org-mode-hook 
           (lambda () 
-            (require 'unicode-fonts)
-            (unicode-fonts-setup)
-            (add-hook 'after-save-hook 'autocommit-after-save-hook nil 'make-it-local)))
+            (when (eq system-type 'darwin) 
+              (require 'unicode-fonts)
+              (unicode-fonts-setup))
+            (auto-revert-mode t)))
+            ;;(add-hook 'after-save-hook 'autocommit-after-save-hook nil 'make-it-local)))
 
+;; reveal.js
+(setq org-reveal-root "")
+
+;; mobileorg
+
+;; Set to the location of your Org files on your local system
+(setq org-directory "~/Documents/personal-notes")
+;; Set to the name of the file where new notes will be stored
+(setq org-mobile-inbox-for-pull "~/Documents/personal-notes/from-mobile.org")
+;; Set to <your Dropbox root directory>/MobileOrg.
+(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
 
 ;; erlang
 (defun start-erlang ()
@@ -169,14 +309,37 @@
 (require 'swissknife)
 (require 'autocommit)
 
+;;(require 'daylight)
+;;
+;;(setq daylight-morning-theme 'color-theme-scintilla
+;;      daylight-afternoon-theme 'color-theme-aalto-light
+;;      daylight-evening-theme 'color-theme-parus
+;;      daylight-late-theme 'color-theme-comidia)
+;;
+;;(daylight-mode 1)
+
 ;; (require 'persp-projectile)
 (require 'tern)
 ;; yasnippet
 
 ;; theme setup
+;;(load-theme 'leuven t)
+;;(load-theme 'cyberpunk t)
+
+;; show full path in frame title for current buffer
+(setq frame-title-format
+  '(:eval
+    (if buffer-file-name
+        (replace-regexp-in-string
+         "\\\\" "/"
+         (replace-regexp-in-string
+          (regexp-quote (getenv "HOME")) "~"
+          (convert-standard-filename buffer-file-name)))
+      (buffer-name))))
+
+(color-theme-parus)
 
 (setq-default frame-title-format "%b (%f)")
-(load-theme 'misterioso t)
 
 (when (string-equal system-type "darwin")
   (setenv "PATH" 
@@ -189,6 +352,7 @@
 ;;exec-path
 (put 'downcase-region 'disabled nil)
 
+(require 'buffer-move)
 (require 'keyfreq)
 (keyfreq-mode 1)
 (keyfreq-autosave-mode 1)
@@ -200,20 +364,15 @@
 
 (require 'transpose-frame)
 
-;; If use bundled typescript.el,
-(require 'typescript)
-(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+;; use Shift+arrow_keys to move cursor around split panes
+(windmove-default-keybindings)
 
-(require 'tss)
+(require 'multi-eshell)
+(require 'nordigy)
 
-;; Key binding
-(setq tss-popup-help-key "C-:")
-(setq tss-jump-to-definition-key "C->")
+(require 'hiwin)
+(hiwin-activate)                           ;; hiwin-mode
+(set-face-background 'hiwin-face "midnightblue") ;; 
 
-;; Make config suit for you. About the config item, eval the following sexp.
-;; (customize-group "tss")
-
-;; Do setting recommemded configuration
-(tss-config-default)
-
+(require 'tscript)
 (tool-bar-mode -1)

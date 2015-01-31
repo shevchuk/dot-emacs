@@ -8,7 +8,7 @@
   (if (null (member dn autocommit-dir-set))
       (progn
        (run-with-idle-timer
-        10 nil
+        45 nil
         (lambda (dn)
           (setq autocommit-dir-set (remove dn autocommit-dir-set))
           (message (concat "Committing org files in " dn))

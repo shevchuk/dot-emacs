@@ -3,6 +3,10 @@ dot-emacs
 
 My current Emacs config
 
+Install Inconsolata fonts
+    
+Run el-get-elpa-build-local-recipes to build all needed recipes
+
 To get rid of the log-edit-mode error, delete the line
 (eval-when-compile (log-edit-mode))
 in the file ergoemacs-keybindings/ergoemacs-mode.el

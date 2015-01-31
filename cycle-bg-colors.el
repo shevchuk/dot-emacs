@@ -8,4 +8,12 @@
 
 (global-set-key (kbd "C-5") 'cycle-bg-colors)
 
+(global-set-key (kbd "C-6") 'set-random-theme-for-current-buffer)
+
+(defun set-random-theme-for-current-buffer()
+  (interactive)
+  (setq th (car (nth (random (length color-themes)) color-themes)))
+  (message "Setting current buffer theme to: %s " th)
+  (color-theme-buffer-local th))
+
 (provide 'cycle-bg-colors)
