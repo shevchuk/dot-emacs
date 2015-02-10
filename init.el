@@ -8,9 +8,9 @@
   '(
     elfeed ;; rss feed
     ido-vertical-mode
+    auto-complete
     buffer-move
     color-theme
-    jade-mode
     auto-complete
     multi-eshell
     unicode-fonts
@@ -21,7 +21,6 @@
     log4e
     yaxception
     tss
-    color-theme-buffer-local
     yasnippet
     js2-refactor
     coffee-mode
@@ -32,23 +31,21 @@
     flx
     smex
     projectile
-    wrap-region
+    ;;wrap-region
     helm
     js-beautify
     rainbow-mode
     skewer-mode
     perspective
-    keyfreq
     exec-path-from-shell
     nodejs-repl
     org-reveal
     wanderlust
     ztree
+    ;;    uniquify
+    ;;jade-mode
     htmlize
     smartparens
-    leuven-theme
-    tangotango-theme
-    cyberpunk-theme
 ))
 
 (defun run-skewer-repl ()
@@ -252,8 +249,6 @@
     wl-fcc-force-as-read    t
     wl-default-spec "%")
 
-(require 'color-theme-buffer-local)
-
 (require 'uniquify)
 (setq 
   uniquify-buffer-name-style 'post-forward
@@ -380,8 +375,7 @@
 (require 'nordigy)
 
 (require 'hiwin)
-(hiwin-activate)                           ;; hiwin-mode
-(set-face-background 'hiwin-face "midnightblue") ;; 
+(hiwin-mode t)
 
 (require 'tscript)
 (tool-bar-mode -1)

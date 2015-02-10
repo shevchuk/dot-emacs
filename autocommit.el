@@ -30,3 +30,5 @@
   (interactive)
   (message "Set up autocommit save hook for this buffer.")
   (add-hook 'after-save-hook 'autocommit-after-save-hook nil t))
+
+(provide 'autocommit)
