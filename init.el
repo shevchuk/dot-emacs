@@ -6,6 +6,8 @@
 ;; these packages will be automatically installed if there is an internet connection
 (defvar packages-to-load
   '(
+    elfeed ;; rss feed
+    ido-vertical-mode
     buffer-move
     color-theme
     jade-mode
@@ -98,7 +100,7 @@
     ad-do-it))
 
 (scroll-lock-mode t)
-
+(ido-vertical-mode t)
 
 ;; install packages if they are not installed yet
 (require 'elget-loader)
@@ -345,6 +347,14 @@
           (concat 
            "/usr/local/bin" ":"
            (getenv "PATH"))))
+
+;; elfeed
+(setq elfeed-feeds
+      '(("http://alkatrion.com/?feed=rss2" velo)
+        ("http://nullprogram.com/feed/" emacs)
+        ("http://planet.emacsen.org/atom.xml" emacs)
+        ("http://emacsredux.com/atom.xml" emacs)
+        ("http://sachachua.com/blog/category/geek/emacs/feed/" emacs)))
 
 (require 'keymap)
 (setq vc-svn-diff-switches "-x --ignore-eol-style")
