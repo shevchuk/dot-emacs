@@ -7,7 +7,6 @@
 (defvar packages-to-load
   '(
     elfeed ;; rss feed
-    ido-vertical-mode
     auto-complete
     buffer-move
     color-theme
@@ -97,7 +96,7 @@
     ad-do-it))
 
 (scroll-lock-mode t)
-(ido-vertical-mode t)
+;;(ido-vertical-mode t)
 
 ;; install packages if they are not installed yet
 (require 'elget-loader)
