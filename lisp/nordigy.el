@@ -29,7 +29,13 @@
 (defun nordigy-run-blackpearl-wl-command-non-interactive (branchname environment)
   (let ((shell-buffer-name (nordigy-get-web-launcher-eshell-buffer-name branchname environment)))
     (shell-with-name shell-buffer-name)
-  (nordigy-eshell-execute-command shell-buffer-name (format "cd /blackpearl:/home/mico/src/wl-interactive/; node app.js -b %s -e %s --dev" branchname environment))))
+    (nordigy-eshell-execute-command shell-buffer-name (format "cd /blackpearl:/home/mico/src/wl-interactive/; node app.js -b %s -e %s --dev" branchname environment))))
+
+(defun nordigy-connect-via-ssh ()
+  (interactive)
+  (let ((shell-buffer-name "*connect-to-vfs*"))
+    (shell-with-name shell-buffer-name)
+    (nordigy-eshell-execute-command shell-buffer-name (format "~/connect_vfs.sh"))))
 
 (defun nordigy-get-compass-buffer-name (branchname)
   (concat "*eshell-compass-" branchname "*"))
@@ -50,5 +56,3 @@
          (file-name-directory (or load-file-name buffer-file-name))
          script-name
          ))))
-
-(concat "asdf" "asdf")
