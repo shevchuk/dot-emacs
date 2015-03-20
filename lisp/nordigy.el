@@ -19,9 +19,18 @@
   (interactive "sEnter branch name: ")
   (nordigy-run-blackpearl-wl-command-non-interactive branchname "50X"))
 
+(defun nordigy-run-localhost-wl-command-50x (branchname)
+  (interactive "sEnter branch name: ")
+  (nordigy-run-localhost-wl-command-non-interactive branchname "50X"))
+
 (defun nordigy-run-blackpearl-wl-command (branchname environment)
   (interactive "sEnter branch name: \nsEnter environment name: ")
   (nordigy-run-blackpearl-wl-command-non-interactive branchname environment))
+
+
+(defun nordigy-run-localhost-wl-command (branchname environment)
+  (interactive "sEnter branch name: \nsEnter environment name: ")
+  (nordigy-run-localhost-wl-command-non-interactive environment))
 
 (defun nordigy-get-web-launcher-eshell-buffer-name (branchname environment)
   (concat "*eshell-web-launcher-" branchname "-" environment "*"))
@@ -30,6 +39,11 @@
   (let ((shell-buffer-name (nordigy-get-web-launcher-eshell-buffer-name branchname environment)))
     (shell-with-name shell-buffer-name)
     (nordigy-eshell-execute-command shell-buffer-name (format "cd /blackpearl:/home/mico/src/wl-interactive/; node app.js -b %s -e %s --dev" branchname environment))))
+
+(defun nordigy-run-localhost-wl-command-non-interactive (branchname environment)
+  (let ((shell-buffer-name (nordigy-get-web-launcher-eshell-buffer-name branchname environment)))
+    (shell-with-name shell-buffer-name)
+    (nordigy-eshell-execute-command shell-buffer-name (format "cd ~/src/wl-interactive/; node app.js -b %s -e %s --dev" branchname environment))))
 
 (defun nordigy-connect-via-ssh ()
   (interactive)

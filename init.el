@@ -287,6 +287,9 @@
 ;; use Shift+arrow_keys to move cursor around split panes
 (windmove-default-keybindings)
 
+;;(require 'tumblesocks)
+;;(setq tumblesocks-blog "micoblog.tumblr.com")
+
 (require 'multi-eshell)
 (require 'nordigy)
 
