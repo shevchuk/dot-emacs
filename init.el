@@ -47,6 +47,8 @@
     ;;jade-mode
     htmlize
     smartparens
+    ;; themes
+    monokai-theme
 ))
 
 (defun run-skewer-repl ()
@@ -237,7 +239,7 @@
 
 ;; theme setup
 ;;(load-theme 'leuven t)
-;;(load-theme 'cyberpunk t)
+(load-theme 'monokai t)
 
 ;; show full path in frame title for current buffer
 (setq frame-title-format
@@ -250,7 +252,7 @@
           (convert-standard-filename buffer-file-name)))
       (buffer-name))))
 
-(color-theme-parus)
+;; (color-theme-parus)
 
 (setq-default frame-title-format "%b (%f)")
 
