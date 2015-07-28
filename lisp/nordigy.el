@@ -14,10 +14,13 @@
     (end-of-buffer)
     (switch-to-buffer-other-window buf)))
 
-
 (defun nordigy-run-blackpearl-wl-command-50x (branchname)
   (interactive "sEnter branch name: ")
   (nordigy-run-blackpearl-wl-command-non-interactive branchname "50X"))
+
+(defun nordigy-run-localhost-wl-command-ams (branchname)
+  (interactive "sEnter branch name: ")
+  (nordigy-run-localhost-wl-command-non-interactive branchname "AMS"))
 
 (defun nordigy-run-localhost-wl-command-50x (branchname)
   (interactive "sEnter branch name: ")
@@ -26,7 +29,6 @@
 (defun nordigy-run-blackpearl-wl-command (branchname environment)
   (interactive "sEnter branch name: \nsEnter environment name: ")
   (nordigy-run-blackpearl-wl-command-non-interactive branchname environment))
-
 
 (defun nordigy-run-localhost-wl-command (branchname environment)
   (interactive "sEnter branch name: \nsEnter environment name: ")

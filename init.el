@@ -10,6 +10,7 @@
     auto-complete
     buffer-move
     color-theme
+    zoom-window
     auto-complete
     multi-eshell
     unicode-fonts
@@ -17,6 +18,7 @@
     expand-region
     js2-mode
     json-mode
+    jsx-mode
     log4e
     yaxception
     tss
@@ -82,6 +84,7 @@
       (tern-ac-setup)))
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.erl\\'" . js2-mode))
 
 (setq projectile-switch-project-action 'projectile-dired)
