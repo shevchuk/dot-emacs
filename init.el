@@ -101,7 +101,7 @@
     ad-do-it))
 
 (scroll-lock-mode t)
-;;(ido-vertical-mode t)
+(ido-vertical-mode t)
 
 ;; install packages if they are not installed yet
 (require 'elget-loader)
@@ -272,6 +272,7 @@
         ("karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-only.xml" emacs)
         ("http://sachachua.com/blog/category/geek/emacs/feed/" emacs)))
 
+
 (require 'keymap)
 (setq vc-svn-diff-switches "-x --ignore-eol-style")
 ;;exec-path
@@ -303,3 +304,5 @@
 
 (require 'tscript)
 (tool-bar-mode -1)
+
+(require 'macros)

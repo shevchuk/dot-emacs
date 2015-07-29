@@ -38,6 +38,10 @@
 (global-set-key (kbd "M-O") 'projectile-find-file)
 (global-set-key (kbd "M-F") 'projectile-grep)
 
+(global-set-key (kbd "C-z") 'zoom-window-zoom)
+
+(global-set-key (kbd "<f5>") 'revert-buffer)
+
 ;; comint
 (defun comint-shell-modes-hook ()
    ;; rebind displaced commands that i still want a key
