@@ -21,7 +21,7 @@
 	(:name flx-ido 
 	       :description "flx-ido"
 	       :type http
-	       :url "https://github.com/lewang/flx/flx-ido.el"
+	       :url "https://github.com/lewang/flx/blob/master/flx-ido.el"
 	       :depends flx)
       ))
 

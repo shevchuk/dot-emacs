@@ -11,6 +11,7 @@
     buffer-move
     color-theme
     zoom-window
+    ido-vertical-mode
     auto-complete
     multi-eshell
     unicode-fonts
@@ -25,6 +26,7 @@
     yasnippet
     js2-refactor
     coffee-mode
+    ergoemacs-mode
     ergoemacs-keybindings
     magit
     tern
@@ -101,7 +103,6 @@
     ad-do-it))
 
 (scroll-lock-mode t)
-(ido-vertical-mode t)
 
 ;; install packages if they are not installed yet
 (require 'elget-loader)
@@ -140,6 +141,8 @@
 ;; ido
 (ido-mode t)
 (ido-everywhere 1)
+(ido-vertical-mode t)
+
 (flx-ido-mode 1)
 (setq ido-use-faces nil)
 
