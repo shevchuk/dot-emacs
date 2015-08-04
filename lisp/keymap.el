@@ -1,8 +1,8 @@
 ;; Move to beginning/ending of line
 (defconst ergoemacs-move-beginning-of-line-key	(kbd "M-H"))
 (defconst ergoemacs-move-end-of-line-key	(kbd "M-L"))
-(defconst ergoemacs-delete-window (kbd "M-3"))
-(defconst ergoemacs-delete-other-windows (kbd "M-4"))
+(defconst ergoemacs-delete-window (kbd "M-d"))
+(defconst ergoemacs-delete-other-windows (kbd "M-1"))
 (defconst ergoemacs-split-window-below (kbd "M-8"))
 (defconst ergoemacs-split-window-right (kbd "M-9"))
 

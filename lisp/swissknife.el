@@ -53,4 +53,17 @@
           (error "No number at point"))
       (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
 
+
+(defun switch-buffers-between-frames ()
+  "switch-buffers-between-frames switches the buffers between the two last frames"
+  (interactive)
+  (let ((this-frame-buffer nil)
+	(other-frame-buffer nil))
+    (setq this-frame-buffer (car (frame-parameter nil 'buffer-list)))
+    (other-frame 1)
+    (setq other-frame-buffer (car (frame-parameter nil 'buffer-list)))
+    (switch-to-buffer this-frame-buffer)
+    (other-frame 1)
+    (switch-to-buffer other-frame-buffer)))
+
 (provide 'swissknife)
