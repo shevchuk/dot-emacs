@@ -88,6 +88,7 @@
       (tern-ac-setup)))
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.es6\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.erl\\'" . js2-mode))
 
@@ -156,7 +157,7 @@
 (ergoemacs-mode 1)
 
 (require 'js-beautify)
-(set-default-font "Inconsolata LGC 14")
+(set-default-font "Inconsolata LGC 10")
 
 (require 'orginit)
 ;; эта часть настроек для доступа к Gmail по IMAP
@@ -241,8 +242,21 @@
 ;; yasnippet
 
 ;; theme setup
-;;(load-theme 'leuven t)
-(load-theme 'monokai t)
+(load-theme 'leuven t)
+;;(load-theme 'monokai t)
+
+(fringe-mode '(8 . 0))
+
+(setq default-frame-alist
+      '(
+        (scroll-bar-width . 8)
+        ))
+
+ ;; scroll one line at a time (less "jumpy" than defaults)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+(setq scroll-step 1) ;; keyboard scroll one line at a time
 
 ;; show full path in frame title for current buffer
 (setq frame-title-format
@@ -261,9 +275,15 @@
 
 (when (string-equal system-type "darwin")
   (setenv "PATH" 
-          (concat 
+          (concat
+           "/opt/oracle/instantclient" ":"
            "/usr/local/bin" ":"
            (getenv "PATH"))))
+
+(setenv "LD_LIBRARY_PATH"
+        (concat
+         "/opt/oracle/instantclient" ":"
+         (getenv "LD_LIBRARY_PATH")))
 
 ;; elfeed
 (setq elfeed-feeds
@@ -302,10 +322,43 @@
 (require 'multi-eshell)
 (require 'nordigy)
 
-(require 'hiwin)
-(hiwin-mode t)
+;; (require 'hiwin)
+;; (hiwin-mode t)
 
 (require 'tscript)
 (tool-bar-mode -1)
 
 (require 'macros)
+(require 'eshell-misc)
+
+
+;Авто определение формата по расширению файла
+(add-to-list 'auto-mode-alist '(".fb2$" . fb2-mode-view))
+ 
+;Функция для файлов .fb2 в режиме просмотра
+ (defun fb2-mode-view()
+     (vc-toggle-read-only)
+     (interactive)
+     (sgml-mode)
+     (sgml-tags-invisible 0))
+ 
+;Функция для файлов .fb2 в режиме редактирования
+(defun fb2-mode-edit()
+     (vc-toggle-read-only nil)
+     (interactive)
+     (sgml-mode)
+     (sgml-tags-invisible 0))
+
+;; gnus+davmail bug, so I have to use pop3 for davmail
+;; http://permalink.gmane.org/gmane.emacs.gnus.general/83301
+;; but delete all the mails on server is scary
+(setq pop3-leave-mail-on-server t)
+
+(setq gnus-select-method '(nntp "127.0.0.1"))
+
+(setq mail-sources
+      '((pop :server "127.0.0.1" ;; davmail is set up on localhost
+         :port 1110
+         :user "mikhail.shevchuk"
+         :password "good_vibrations10"
+         :stream network))) ;; by default, davmail don't encrypt mail

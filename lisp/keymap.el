@@ -1,7 +1,7 @@
 ;; Move to beginning/ending of line
 (defconst ergoemacs-move-beginning-of-line-key	(kbd "M-H"))
 (defconst ergoemacs-move-end-of-line-key	(kbd "M-L"))
-(defconst ergoemacs-delete-window (kbd "M-d"))
+(defconst ergoemacs-delete-window (kbd "M-2"))
 (defconst ergoemacs-delete-other-windows (kbd "M-1"))
 (defconst ergoemacs-split-window-below (kbd "M-8"))
 (defconst ergoemacs-split-window-right (kbd "M-9"))
@@ -27,6 +27,7 @@
 (global-set-key (kbd "\C-r") 'isearch-backward)
 
 (global-set-key (kbd "M-0") 'er/expand-region)
+(global-set-key (kbd "<f4>") 'ido-kill-buffer)
 
 (global-set-key (kbd "M-=") 'hs-show-block)
 (global-set-key (kbd "M-+") 'hs-show-all)
