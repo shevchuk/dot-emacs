@@ -29,7 +29,7 @@
     ergoemacs-mode
     ergoemacs-keybindings
     magit
-    tern
+    ;;tern
     grizzl
     flx
     smex
@@ -74,18 +74,18 @@
             (yas-minor-mode)
             (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
             (define-key js2-mode-map (kbd "C-r") 'run-skewer-repl)
+            ;;(define-key js2-mode-map (kbd "M-.") nil)
             (wrap-region-mode t)
             (linum-mode 1)
-            (tern-mode t)
+            ;;(tern-mode t)
             ;; Activate the folding mode
             (hs-minor-mode t)
             (auto-complete-mode 1)))
 
-
-(eval-after-load 'tern
-   '(progn
-      (require 'tern-auto-complete)
-      (tern-ac-setup)))
+;;(eval-after-load 'tern
+;;   '(progn
+;;      (require 'tern-auto-complete)
+;;      (tern-ac-setup)))
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.es6\\'" . js2-mode))
@@ -226,6 +226,7 @@
 (require 'cycle-bg-colors)
 (require 'move-text)
 (require 'swissknife)
+(require 'etags-select)
 (require 'autocommit)
 
 ;;(require 'daylight)
@@ -238,11 +239,12 @@
 ;;(daylight-mode 1)
 
 ;; (require 'persp-projectile)
-(require 'tern)
+;;(require 'tern)
 ;; yasnippet
 
 ;; theme setup
-(load-theme 'leuven t)
+;;(load-theme 'leuven t)
+(load-theme 'aurora t)
 ;;(load-theme 'monokai t)
 
 (fringe-mode '(8 . 0))

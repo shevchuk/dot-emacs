@@ -35,6 +35,14 @@
 (global-set-key (kbd "M-_") 'hs-hide-all)
 (global-set-key (kbd "M-[") 'hs-hide-level)
 
+(add-hook 'js2-mode-hook 'js-mode-keys)
+(add-hook 'jsx-mode-hook 'js-mode-keys)
+
+(defun js-mode-keys ()
+  "my keybindings for js2-mode"
+  (local-set-key (kbd "M-.") 'etags-select-find-tag-at-point)
+  (local-set-key (kbd "M-?") 'etags-select-find-tag))
+
 ;; projectile
 (global-set-key (kbd "M-O") 'projectile-find-file)
 (global-set-key (kbd "M-F") 'projectile-grep)
