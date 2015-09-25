@@ -51,6 +51,7 @@
     smartparens
     ;; themes
     monokai-theme
+    diff-hl
 ))
 
 (defun run-skewer-repl ()
@@ -76,6 +77,7 @@
             (define-key js2-mode-map (kbd "C-r") 'run-skewer-repl)
             ;;(define-key js2-mode-map (kbd "M-.") nil)
             (wrap-region-mode t)
+            (diff-hl 1)
             (linum-mode 1)
             ;;(tern-mode t)
             ;; Activate the folding mode
