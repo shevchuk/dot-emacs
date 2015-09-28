@@ -29,14 +29,18 @@
 (global-set-key (kbd "M-0") 'er/expand-region)
 (global-set-key (kbd "<f4>") 'ido-kill-buffer)
 
-(global-set-key (kbd "M-=") 'hs-show-block)
-(global-set-key (kbd "M-+") 'hs-show-all)
-(global-set-key (kbd "M--") 'hs-hide-block)
-(global-set-key (kbd "M-_") 'hs-hide-all)
-(global-set-key (kbd "M-[") 'hs-hide-level)
-
+(add-hook 'hs-minor-mode-hook 'hs-minor-mode-keys)
 (add-hook 'js2-mode-hook 'js-mode-keys)
 (add-hook 'jsx-mode-hook 'js-mode-keys)
+
+
+(defun hs-minor-mode-keys ()
+  "hide-show code blocks minor mode"
+  (local-set-key (kbd "M-=") 'hs-show-block)
+  (local-set-key (kbd "M-+") 'hs-show-all)
+  (local-set-key (kbd "M--") 'hs-hide-block)
+  (local-set-key (kbd "M-_") 'hs-hide-all)
+  (local-set-key (kbd "M-[") 'hs-hide-level))
 
 (defun js-mode-keys ()
   "my keybindings for js2-mode"

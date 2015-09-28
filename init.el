@@ -81,11 +81,11 @@
             (define-key js2-mode-map (kbd "C-r") 'run-skewer-repl)
             ;;(define-key js2-mode-map (kbd "M-.") nil)
             (wrap-region-mode t)
-            (diff-hl-mode 1)
             (linum-mode 1)
             ;;(tern-mode t)
             ;; Activate the folding mode
             (hs-minor-mode t)
+            (diff-hl-mode 1)
             (auto-complete-mode 1)))
 
 ;;(eval-after-load 'tern
@@ -369,3 +369,4 @@
          :user "mikhail.shevchuk"
          :password "good_vibrations10"
          :stream network))) ;; by default, davmail don't encrypt mail
+(put 'narrow-to-region 'disabled nil)
