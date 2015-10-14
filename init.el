@@ -34,6 +34,7 @@
     flx
     smex
     projectile
+    dired+
     ;;wrap-region
     helm
     js-beautify
@@ -71,6 +72,7 @@
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
+            (linum-mode 1)
             (diff-hl-mode 1)))
 
 ;; javascript
@@ -79,6 +81,7 @@
             (yas-minor-mode)
             (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
             (define-key js2-mode-map (kbd "C-r") 'run-skewer-repl)
+            (face-remap-add-relative 'mode-line '((:foreground "ivory" :background "magenta4") mode-line))
             ;;(define-key js2-mode-map (kbd "M-.") nil)
             (wrap-region-mode t)
             (linum-mode 1)
@@ -121,19 +124,6 @@
 (setq password-cache-expiry nil)
 (setq tramp-verbose 6)
 
-
-(add-hook
- 'eshell-mode-hook
- (lambda ()
-   (setq pcomplete-cycle-completions nil)))
-
-(defadvice pcomplete (around avoid-remote-connections activate)
-   (let ((file-name-handler-alist (copy-alist file-name-handler-alist)))
-     (setq file-name-handler-alist
-           (delete (rassoc 'tramp-completion-file-name-handler
-                           file-name-handler-alist) file-name-handler-alist))
-     ad-do-it))
-
 ;;yasnippets
 (setq yas-snippet-dirs
       '("~/.emacs.d/yasnippets"))
@@ -144,12 +134,18 @@
 ;;(setq projectile-indexing-method 'native)
 (projectile-global-mode)
 
+;; no startup msg  
+(setq inhibit-startup-message t)
+(setq initial-scratch-message "")
+;; disable top menu 
+(menu-bar-mode -99)
+
 (setq column-number-mode 1)
 ;; ido
 (ido-mode t)
 (ido-everywhere 1)
 (ido-vertical-mode t)
-
+(diredp-toggle-find-file-reuse-dir 1)
 (flx-ido-mode 1)
 (setq ido-use-faces nil)
 
@@ -159,7 +155,8 @@
 ;;(eval-when-compile (log-edit-mode))
 ;;in the file ergoemacs-keybindings/ergoemacs-mode.el
 (package-initialize)
-(setq ergoemacs-theme "lvl2")
+;;(setq ergoemacs-theme "lvl2")
+(setq ergoemacs-theme nil)
 (ergoemacs-mode 1)
 
 (require 'js-beautify)
