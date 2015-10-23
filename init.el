@@ -53,6 +53,7 @@
     ;; themes
     monokai-theme
     diff-hl
+    fancy-narrow
 ))
 
 (defun run-skewer-repl ()
@@ -81,10 +82,11 @@
             (yas-minor-mode)
             (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
             (define-key js2-mode-map (kbd "C-r") 'run-skewer-repl)
-            (face-remap-add-relative 'mode-line '((:foreground "ivory" :background "magenta4") mode-line))
+            (face-remap-add-relative 'mode-line '((:foreground "ivory" :background "DeepPink4") mode-line))
             ;;(define-key js2-mode-map (kbd "M-.") nil)
             (wrap-region-mode t)
             (linum-mode 1)
+            (js2-refactor-mode t)
             ;;(tern-mode t)
             ;; Activate the folding mode
             (hs-minor-mode t)

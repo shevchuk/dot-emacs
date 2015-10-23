@@ -42,8 +42,11 @@
   (local-set-key (kbd "M-_") 'hs-hide-all)
   (local-set-key (kbd "M-[") 'hs-hide-level))
 
+(js2r-add-keybindings-with-prefix "<f6>")
+
 (defun js-mode-keys ()
   "my keybindings for js2-mode"
+  (local-set-key (kbd "C-b") 'js-beautify)
   (local-set-key (kbd "M-.") 'etags-select-find-tag-at-point)
   (local-set-key (kbd "M-?") 'etags-select-find-tag))
 
@@ -69,6 +72,9 @@
 (global-set-key (kbd "C-k") 'kill-whole-line)
 
 (global-set-key (kbd "C-l") 'goto-line)
+
+(global-set-key (kbd "<home>") 'beginning-of-buffer)
+(global-set-key (kbd "<end>") 'end-of-buffer)
 
 (global-set-key (kbd "M-J") 'beginning-of-line)
 (global-set-key (kbd "M-L") 'end-of-line)
