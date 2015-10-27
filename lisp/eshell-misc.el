@@ -3,8 +3,9 @@
 (add-hook 'eshell-mode-hook
           #'(lambda ()
               (face-remap-add-relative 'mode-line '((:foreground "ivory" :background "chartreuse4") mode-line))
-              (setq pcomplete-cycle-completions nil)
-              (eshell-command "export LD_LIBRARY_PATH=/opt/oracle/instantclient:$LD_LIBRARY_PATH")))
+              (setq pcomplete-cycle-completions nil)))
+
+;;(eshell-command "export LD_LIBRARY_PATH=/opt/oracle/instantclient:$LD_LIBRARY_PATH")
 
 (defadvice pcomplete (around avoid-remote-connections activate)
    (let ((file-name-handler-alist (copy-alist file-name-handler-alist)))
@@ -13,22 +14,29 @@
                            file-name-handler-alist) file-name-handler-alist))
      ad-do-it))
 
-(defun eshell-with-name (name)
-  (interactive "sEnter eshell buffer name:")
-  (require 'eshell)
-  (with-current-buffer
-      (eshell-mode t)
-    (rename-buffer name)))
+(defun run-shell-command (buffer-name sh-command)
+  (interactive "sBuffer name: \nsSh: ")
+  (let ((buffer-name-formatted (format "*%s*" buffer-name)))
+    (shell-with-name buffer-name-formatted)
+    (eshell-execute-command buffer-name-formatted sh-command)))
 
-(defun eshell-with-name-2 (esh-buffer-name)
+(display-buffer "*ooo*" t)
+(switch-to-buffer-other-window "*ooo*")
+
+(defun eshell-execute-command (esh-buffer-name text)
   "Execute command in eshell"
-  (interactive "sEnter eshell buffer name:")
+  (interactive)
   (require 'eshell)
   (let ((buf (current-buffer)))
     (unless (get-buffer esh-buffer-name)
       (eshell))
     (display-buffer esh-buffer-name t)
-    (switch-to-buffer-other-window esh-buffer-name)
+    ;;(switch-to-buffer-other-window esh-buffer-name)
     (end-of-buffer)
-    (switch-to-buffer-other-window buf)))
+    (eshell-kill-input)
+    (insert text)
+    (eshell-send-input)
+    (end-of-buffer)
+    ;;(switch-to-buffer-other-window buf)
+    ))
 

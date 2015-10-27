@@ -93,6 +93,11 @@
             (diff-hl-mode 1)
             (auto-complete-mode 1)))
 
+(define-minor-mode sticky-buffer-mode
+  "Make the current window always display this buffer."
+  nil " sticky" nil
+  (set-window-dedicated-p (selected-window) sticky-buffer-mode))
+
 ;;(eval-after-load 'tern
 ;;   '(progn
 ;;      (require 'tern-auto-complete)
