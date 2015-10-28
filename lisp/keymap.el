@@ -16,7 +16,7 @@
 (define-key ergoemacs-keymap ergoemacs-delete-window 'delete-window)
 (define-key ergoemacs-keymap ergoemacs-delete-other-windows 'delete-other-windows)
 
-
+(global-set-key (kbd "C-j") 'dired-jump)
 (global-set-key (kbd "<mouse-2>") 'split-window-vertically)
 (global-set-key (kbd "<mouse-3>") 'split-window-horizontally)
 
@@ -32,7 +32,6 @@
 (add-hook 'hs-minor-mode-hook 'hs-minor-mode-keys)
 (add-hook 'js2-mode-hook 'js-mode-keys)
 (add-hook 'jsx-mode-hook 'js-mode-keys)
-
 
 (defun hs-minor-mode-keys ()
   "hide-show code blocks minor mode"
@@ -57,6 +56,19 @@
 (global-set-key (kbd "C-z") 'zoom-window-zoom)
 
 (global-set-key (kbd "<f5>") 'revert-buffer)
+
+;; key sequence
+(progn
+  ;; define a prefix keymap
+  (define-prefix-command 'vc-modes-key-map)
+  (define-key vc-modes-key-map (kbd "g") 'magit-status)
+  (define-key vc-modes-key-map (kbd "m") 'monky-status)
+  (define-key vc-modes-key-map (kbd "a") 'vc-annotate)
+  )
+
+;; <f9> is a leader key
+(global-set-key (kbd "<f9>") vc-modes-key-map)
+
 
 ;; comint
 (defun comint-shell-modes-hook ()
