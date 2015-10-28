@@ -33,6 +33,8 @@
     grizzl
     flx
     smex
+    ahg
+    unbound
     projectile
     dired+
     ;;wrap-region
