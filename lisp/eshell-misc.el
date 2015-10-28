@@ -20,6 +20,11 @@
     (shell-with-name buffer-name-formatted)
     (eshell-execute-command buffer-name-formatted sh-command)))
 
+(defun eshell-here ()
+  (interactive)
+  (let ((buffer-name-formatted (format "*eshell:%s*" default-directory)))
+    (shell-with-name buffer-name-formatted)))
+
 (defun eshell-execute-command (esh-buffer-name text)
   "Execute command in eshell"
   (interactive)
