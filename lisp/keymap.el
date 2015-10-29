@@ -16,7 +16,7 @@
 (define-key ergoemacs-keymap ergoemacs-delete-window 'delete-window)
 (define-key ergoemacs-keymap ergoemacs-delete-other-windows 'delete-other-windows)
 
-(global-set-key (kbd "C-j") 'dired-jump)
+(global-set-key (kbd "C-x C-j") 'dired-jump)
 (global-set-key (kbd "<mouse-2>") 'split-window-vertically)
 (global-set-key (kbd "<mouse-3>") 'split-window-horizontally)
 
