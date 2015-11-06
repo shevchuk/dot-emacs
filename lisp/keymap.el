@@ -24,6 +24,9 @@
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
 (define-key isearch-mode-map "\C-r" 'isearch-yank-region)
 
+(global-set-key (kbd "C-b") 'bookmark-set)
+(global-set-key (kbd "M-b") 'bookmark-jump)
+
 (global-set-key (kbd "\C-r") 'isearch-backward)
 
 (global-set-key (kbd "M-0") 'er/expand-region)
@@ -45,7 +48,7 @@
 
 (defun js-mode-keys ()
   "my keybindings for js2-mode"
-  (local-set-key (kbd "C-b") 'js-beautify)
+  (local-set-key (kbd "C-c C-b") 'js-beautify)
   (local-set-key (kbd "M-.") 'etags-select-find-tag-at-point)
   (local-set-key (kbd "M-?") 'etags-select-find-tag))
 

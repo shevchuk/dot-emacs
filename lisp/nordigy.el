@@ -72,3 +72,11 @@
          (file-name-directory (or load-file-name buffer-file-name))
          script-name
          ))))
+
+
+;; new functions
+(defun run-weblauncher ()
+  (interactive)
+  (let ((buffer-name-formatted (format "*%s*" "weblauncher")))
+    (shell-with-name buffer-name-formatted)
+    (eshell-execute-command buffer-name-formatted "cd ~/src/weblauncher; node index.js")))
