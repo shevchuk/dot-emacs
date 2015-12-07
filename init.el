@@ -56,6 +56,11 @@
     monokai-theme
     diff-hl
     fancy-narrow
+    s
+    dash
+    powerline
+    spaceline
+    yandex-weather
 ))
 
 (defun run-skewer-repl ()
@@ -84,7 +89,7 @@
             (yas-minor-mode)
             (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
             (define-key js2-mode-map (kbd "C-r") 'run-skewer-repl)
-            (face-remap-add-relative 'mode-line '((:foreground "ivory" :background "DeepPink4") mode-line))
+            ;;(face-remap-add-relative 'mode-line '((:foreground "ivory" :background "DeepPink4") mode-line))
             ;;(define-key js2-mode-map (kbd "M-.") nil)
             (wrap-region-mode t)
             (linum-mode 1)
@@ -99,6 +104,11 @@
   "Make the current window always display this buffer."
   nil " sticky" nil
   (set-window-dedicated-p (selected-window) sticky-buffer-mode))
+
+(add-hook 'sticky-buffer-mode-hook
+          (lambda ()
+            ;;(face-remap-add-relative 'mode-line '((:foreground "blue4" :background "OliveDrab1") mode-line))
+            ))
 
 ;;(eval-after-load 'tern
 ;;   '(progn
@@ -170,6 +180,9 @@
 
 (require 'js-beautify)
 (set-default-font "Inconsolata LGC 10")
+
+(require 'spaceline-config)
+(spaceline-spacemacs-theme)
 
 (require 'orginit)
 ;; эта часть настроек для доступа к Gmail по IMAP

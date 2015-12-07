@@ -38,6 +38,7 @@
  '(multi-eshell-name "*eshell*")
  '(multi-eshell-shell-function (quote (eshell)))
  '(org-ditaa-jar-path "/Users/mico/.emacs.d/contrib/ditaa/ditaa0_9.jar")
+ '(org-yandex-weather-format "%C: %i %c, [%l,%h]%s %d%w")
  '(sqlplus-command "/opt/oracle/instantclient/sqlplus")
  '(tool-bar-mode nil)
  '(vc-annotate-background nil)
