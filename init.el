@@ -11,6 +11,7 @@
     buffer-move
     color-theme
     zoom-window
+    sublime-themes
     ido-vertical-mode
     auto-complete
     multi-eshell
@@ -269,7 +270,8 @@
 
 ;; theme setup
 ;;(load-theme 'leuven t)
-(load-theme 'aurora t)
+;;(load-theme 'mccarthy t)
+(load-theme 'hickey t)
 ;;(load-theme 'monokai t)
 (fringe-mode '(17 . 0))
 
