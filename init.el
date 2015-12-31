@@ -269,10 +269,9 @@
 ;; yasnippet
 
 ;; theme setup
-;;(load-theme 'leuven t)
-;;(load-theme 'mccarthy t)
-(load-theme 'hickey t)
-;;(load-theme 'monokai t)
+(load-theme 'hickey t) ;; looks nice, dark one
+;;(load-theme 'flatui t) ;; not bad, lighter (grey) with no major bugs
+
 (fringe-mode '(17 . 0))
 
 (setq default-frame-alist
