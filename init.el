@@ -1,4 +1,5 @@
 (server-start)
+
 ;; (set-background-color "lightblue")
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 ;;; first run will install these
@@ -20,7 +21,7 @@
     expand-region
     js2-mode
     json-mode
-    jsx-mode
+    ;;jsx-mode
     log4e
     yaxception
     tss
@@ -46,7 +47,7 @@
     perspective
     exec-path-from-shell
     nodejs-repl
-    org-reveal
+    ;;org-reveal
     wanderlust
     ztree
     ;;    uniquify
@@ -63,6 +64,7 @@
     spaceline
     yandex-weather
 ))
+
 
 (defun run-skewer-repl ()
   (interactive)
