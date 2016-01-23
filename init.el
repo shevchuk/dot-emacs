@@ -5,6 +5,7 @@
 ;;; first run will install these
 
 ;; these packages will be automatically installed if there is an internet connection
+
 (defvar packages-to-load
   '(
     elfeed ;; rss feed
@@ -21,14 +22,14 @@
     expand-region
     js2-mode
     json-mode
-    ;;jsx-mode
+    jsx-mode
     log4e
     yaxception
     tss
     yasnippet
     js2-refactor
     coffee-mode
-    ergoemacs-mode
+    ;;ergoemacs-mode
     ergoemacs-keybindings
     magit
     ;;tern
