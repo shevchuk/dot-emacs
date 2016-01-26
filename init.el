@@ -1,9 +1,11 @@
 (server-start)
+
 ;; (set-background-color "lightblue")
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 ;;; first run will install these
 
 ;; these packages will be automatically installed if there is an internet connection
+
 (defvar packages-to-load
   '(
     elfeed ;; rss feed
@@ -27,7 +29,7 @@
     yasnippet
     js2-refactor
     coffee-mode
-    ergoemacs-mode
+    ;;ergoemacs-mode
     ergoemacs-keybindings
     magit
     ;;tern
@@ -46,7 +48,7 @@
     perspective
     exec-path-from-shell
     nodejs-repl
-    org-reveal
+    ;;org-reveal
     wanderlust
     ztree
     ;;    uniquify
@@ -63,6 +65,7 @@
     spaceline
     yandex-weather
 ))
+
 
 (defun run-skewer-repl ()
   (interactive)
@@ -379,18 +382,3 @@
      (interactive)
      (sgml-mode)
      (sgml-tags-invisible 0))
-
-;; gnus+davmail bug, so I have to use pop3 for davmail
-;; http://permalink.gmane.org/gmane.emacs.gnus.general/83301
-;; but delete all the mails on server is scary
-(setq pop3-leave-mail-on-server t)
-
-(setq gnus-select-method '(nntp "127.0.0.1"))
-
-(setq mail-sources
-      '((pop :server "127.0.0.1" ;; davmail is set up on localhost
-         :port 1110
-         :user "mikhail.shevchuk"
-         :password "good_vibrations10"
-         :stream network))) ;; by default, davmail don't encrypt mail
-(put 'narrow-to-region 'disabled nil)
