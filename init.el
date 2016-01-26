@@ -227,13 +227,6 @@
 ;; create some frames with different color themes
 ;; (setq color-theme-is-global nil)
 
-;; reveal.js
-(setq org-reveal-root "")
-;; (setq org-html-htmlize-output-type 'inline-css) ;; default
-(setq org-html-htmlize-output-type 'css)
-;; (setq org-html-htmlize-font-prefix "") ;; default
-(setq org-html-htmlize-font-prefix "org-")
-
 ;; erlang
 (defun start-erlang ()
   (interactive)

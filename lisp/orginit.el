@@ -84,3 +84,31 @@
 ;; Set to <your Dropbox root directory>/MobileOrg.
 (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
 
+
+;; reveal.js
+(setq org-reveal-root "")
+;; (setq org-html-htmlize-output-type 'inline-css) ;; default
+(setq org-html-htmlize-output-type 'css)
+;; (setq org-html-htmlize-font-prefix "") ;; default
+(setq org-html-htmlize-font-prefix "org-")
+(setq org-ehtml-allow-agenda t)
+
+;; org-ehtml (editable org pages - web interface)
+(setq org-ehtml-docroot (expand-file-name "~/Documents/personal-notes/public/"))
+
+(require 'org-ehtml)
+(ws-start org-ehtml-handler 8888)
+
+;; org-footnote patch for handling [0] in your org files (use [fn:0] for making footnotes)
+(setq org-footnote-re
+      (concat "\\[\\(?:"
+          ;; Match inline footnotes.
+          (org-re "fn:\\([-_[:word:]]+\\)?:\\|")
+          ;; Match other footnotes.
+          ;; "\\(?:\\([0-9]+\\)\\]\\)\\|"
+          (org-re "\\(fn:[-_[:word:]]+\\)")
+          "\\)"))
+
+(setq org-footnote-definition-re
+      (org-re "^\\[\\(fn:[-_[:word:]]+\\)\\]"))
+
