@@ -91,7 +91,6 @@
 (setq org-html-htmlize-output-type 'css)
 ;; (setq org-html-htmlize-font-prefix "") ;; default
 (setq org-html-htmlize-font-prefix "org-")
-(setq org-ehtml-allow-agenda t)
 
 ;; org-ehtml (editable org pages - web interface)
 (setq org-ehtml-docroot (expand-file-name "~/Documents/personal-notes/public/"))

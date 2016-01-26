@@ -32,6 +32,7 @@
     ;;ergoemacs-mode
     ergoemacs-keybindings
     magit
+    org-ehtml
     ;;tern
     grizzl
     flx
@@ -113,6 +114,16 @@
           (lambda ()
             ;;(face-remap-add-relative 'mode-line '((:foreground "blue4" :background "OliveDrab1") mode-line))
             ))
+
+;; git shows branch + changes
+(defadvice vc-git-mode-line-string (after plus-minus (file) compile activate)
+  (setq ad-return-value
+    (concat ad-return-value
+            (let ((plus-minus (vc-git--run-command-string
+                               file "diff" "--numstat" "--")))
+              (and plus-minus
+                   (string-match "^\\([0-9]+\\)\t\\([0-9]+\\)\t" plus-minus)
+                   (format " +%s-%s" (match-string 1 plus-minus) (match-string 2 plus-minus)))))))
 
 ;;(eval-after-load 'tern
 ;;   '(progn
