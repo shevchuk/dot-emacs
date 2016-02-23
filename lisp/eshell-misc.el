@@ -2,7 +2,7 @@
 
 (add-hook 'eshell-mode-hook
           #'(lambda ()
-              (face-remap-add-relative 'mode-line '((:foreground "ivory" :background "chartreuse4") mode-line))
+              ;;(face-remap-add-relative 'mode-line '((:foreground "ivory" :background "chartreuse4") mode-line))
               (setq pcomplete-cycle-completions nil)))
 
 ;;(eshell-command "export LD_LIBRARY_PATH=/opt/oracle/instantclient:$LD_LIBRARY_PATH")

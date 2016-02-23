@@ -394,7 +394,9 @@
 
 (require 'moe-theme)
 (moe-light)
+;;(moe-dark)
 ;;(load-theme 'moe-light)
 ;;(moe-theme-set-color 'magenta)
 (powerline-moe-theme)
 (moe-theme-set-color 'yellow)
+;; (require 'moe-theme-switcher) - autoswitch theme
