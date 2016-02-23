@@ -138,6 +138,9 @@
 (setq projectile-switch-project-action 'projectile-dired)
 (setq projectile-enable-caching t)
 
+(add-to-list 'projectile-globally-ignored-directories "node_modules")
+(add-to-list 'projectile-globally-ignored-directories "dist")
+
 (defadvice projectile-on (around exlude-tramp activate)
     (unless  (--any? (and it (file-remote-p it))
         (list
