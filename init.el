@@ -65,6 +65,7 @@
     powerline
     spaceline
     yandex-weather
+    moe-theme
 ))
 
 
@@ -138,8 +139,8 @@
 (setq projectile-switch-project-action 'projectile-dired)
 (setq projectile-enable-caching t)
 
-(add-to-list 'projectile-globally-ignored-directories "node_modules")
-(add-to-list 'projectile-globally-ignored-directories "dist")
+;;(add-to-list 'projectile-globally-ignored-directories "node_modules")
+;;(add-to-list 'projectile-globally-ignored-directories "dist")
 
 (defadvice projectile-on (around exlude-tramp activate)
     (unless  (--any? (and it (file-remote-p it))
@@ -283,15 +284,16 @@
 ;; yasnippet
 
 ;; theme setup
-(load-theme 'hickey t) ;; looks nice, dark one
+;;(load-theme 'hickey t) ;; looks nice, dark one
 ;;(load-theme 'flatui t) ;; not bad, lighter (grey) with no major bugs
+;;(require 'moe-theme)
 
-(fringe-mode '(17 . 0))
+;;(fringe-mode '(17 . 0))
 
-(setq default-frame-alist
-      '(
-        (scroll-bar-width . 8)
-        ))
+;;(setq default-frame-alist
+;;      '(
+;;        (scroll-bar-width . 8)
+;;        ))
 
  ;; scroll one line at a time (less "jumpy" than defaults)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
@@ -389,3 +391,10 @@
      (interactive)
      (sgml-mode)
      (sgml-tags-invisible 0))
+
+(require 'moe-theme)
+(moe-light)
+;;(load-theme 'moe-light)
+;;(moe-theme-set-color 'magenta)
+(powerline-moe-theme)
+(moe-theme-set-color 'yellow)

@@ -93,7 +93,7 @@ PWD is not in a hg repo (or the hg command is not found)."
               (if (> (length hg-output) 0)
                   (substring hg-output 0 -1)
                 "(no branch)")
-              "]") 'face `(:foreground "green"))
+              "]") 'face `(:foreground "DarkOliveGreen"))
       )))
 
 (setq eshell-prompt-function
@@ -113,7 +113,7 @@ PWD is not in a hg repo (or the hg command is not found)."
               (mapconcat (lambda (elm) elm)
                          p-lst
                          "/")))
-          (split-string (pwd-repl-home (eshell/pwd)) "/")) 'face `(:foreground "yellow"))
+          (split-string (pwd-repl-home (eshell/pwd)) "/")) 'face `(:foreground "DeepPink"))
          (or (curr-dir-hg-branch-string (eshell/pwd)))
          (or (curr-dir-git-branch-string (eshell/pwd)))
          (propertize "# " 'face 'default))))
