@@ -32,7 +32,7 @@
   (let ((buf (current-buffer)))
     (unless (get-buffer esh-buffer-name)
       (eshell))
-    (display-buffer esh-buffer-name t)
+    ;;(display-buffer esh-buffer-name t)
     ;;(switch-to-buffer-other-window esh-buffer-name)
     (end-of-buffer)
     (eshell-kill-input)
@@ -119,3 +119,4 @@ PWD is not in a hg repo (or the hg command is not found)."
          (propertize "# " 'face 'default))))
 
 (setq eshell-highlight-prompt nil)
+

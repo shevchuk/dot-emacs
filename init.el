@@ -12,6 +12,7 @@
     auto-complete
     buffer-move
     color-theme
+    diminish ;; hides modes from mode-line
     zoom-window
     sublime-themes
     ido-vertical-mode
@@ -52,6 +53,7 @@
     ;;org-reveal
     wanderlust
     ztree
+    undo-tree
     ;;    uniquify
     ;;jade-mode
     htmlize
@@ -151,6 +153,8 @@
     ad-do-it))
 
 (scroll-lock-mode t)
+(global-undo-tree-mode 1)
+(diminish 'undo-tree-mode)
 
 ;; install packages if they are not installed yet
 (require 'elget-loader)
@@ -321,13 +325,23 @@
           (concat
            "/opt/oracle/instantclient" ":"
            "/usr/local/bin" ":"
+           "/home/mico/.nvm/versions/node/v5.7.0/bin" ":"
            (getenv "PATH"))))
+
+(when (string-equal system-type 'gnu/linux )
+  (setenv "PATH" 
+          (concat
+         "/home/mico/.nvm/versions/node/v5.7.0/bin" ":"
+         (getenv "PATH"))))
 
 (setenv "LD_LIBRARY_PATH"
         (concat
          "/opt/oracle/instantclient" ":"
          (getenv "LD_LIBRARY_PATH")))
 
+;; export NVM_DIR="$HOME/.nvm"
+(setenv "NVM_DIR" (concat (getenv "HOME") "/.nvm"))
+ 
 ;; elfeed
 (setq elfeed-feeds
       '(("http://alkatrion.com/?feed=rss2" velo)
@@ -392,6 +406,7 @@
      (sgml-mode)
      (sgml-tags-invisible 0))
 
+;; https://github.com/kuanyui/moe-theme.el
 (require 'moe-theme)
 (moe-light)
 ;;(moe-dark)
@@ -399,4 +414,6 @@
 ;;(moe-theme-set-color 'magenta)
 (powerline-moe-theme)
 (moe-theme-set-color 'yellow)
+
+(moe-theme-random-color)
 ;; (require 'moe-theme-switcher) - autoswitch theme

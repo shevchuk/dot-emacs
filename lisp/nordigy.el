@@ -80,3 +80,24 @@
   (let ((buffer-name-formatted (format "*%s*" "weblauncher")))
     (shell-with-name buffer-name-formatted)
     (eshell-execute-command buffer-name-formatted "cd ~/src/weblauncher; node index.js")))
+
+(defun run-test ()
+  "run a command on the current file and revert the buffer"
+  (interactive)
+  (setq environments  (list "DEV-ATT-50X" "DEV-FTR-AMS"))
+  (setq env (ido-completing-read "Select environment? " environments))
+  (run-shell-command "test"
+   (format "node-debug --no-preload %s -e %s"
+           (shell-quote-argument (replace-regexp-in-string "/src/tests/src/" "/src/tests/dist/" (buffer-file-name)))
+           env
+           ))
+  (revert-buffer t t t))
+
+(defun run-vpn ()
+  "run a command on the current file and revert the buffer"
+  (interactive)
+  (run-shell-command "vpn"
+   "sudo openconnect --juniper https://vpn.nordigy.ru/dana-na/auth/url_2/welcome.cgi")
+  (revert-buffer t t t))
+
+(global-set-key (kbd "<f8> e") 'run-test)

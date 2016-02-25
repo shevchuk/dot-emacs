@@ -72,6 +72,21 @@
 ;; <f9> is a leader key
 (global-set-key (kbd "<f9>") vc-modes-key-map)
 
+;; key sequence
+(progn
+  ;; define a prefix keymap
+  (define-prefix-command 'eshell-cmd-key-map)
+  (define-key eshell-cmd-key-map (kbd "r") 'run-test)
+  (define-key eshell-cmd-key-map (kbd "v") 'run-vpn)
+  )
+
+;; <f8> is a leader key
+(global-set-key (kbd "<f8>") eshell-cmd-key-map)
+
+
+(defalias 'redo 'undo-tree-redo)
+(global-set-key (kbd "C-z") 'undo) ; 【Ctrl+z】
+(global-set-key (kbd "C-S-z") 'redo) ; 【Ctrl+Shift+z】;  Mac style
 
 ;; comint
 (defun comint-shell-modes-hook ()
@@ -99,6 +114,7 @@
 (global-set-key (kbd "<M-S-up>") 'buf-move-up)
 (global-set-key (kbd "<M-S-down>") 'buf-move-down)
 
+(global-set-key (kbd "M-R") 'rename-buffer)
 ;; cua-mode
 ;; (global-set-key (kbd "C-c r") 'cua-copy-region)
 
