@@ -84,9 +84,9 @@
 (defun run-test ()
   "run a command on the current file and revert the buffer"
   (interactive)
-  (setq environments  (list "DEV-ATT-50X" "DEV-FTR-AMS"))
+  (setq environments  (list "DEV-FT2-AMS" "DEV-FT2-AMS-local" "DEV-ATT-50X" "DEV-FTR-AMS"))
   (setq env (ido-completing-read "Select environment? " environments))
-  (run-shell-command "test"
+  (run-shell-command (format "webtest:%s" (car (last (split-string buffer-file-name "/"))))
    (format "node-debug --no-preload %s -e %s"
            (shell-quote-argument (replace-regexp-in-string "/src/tests/src/" "/src/tests/dist/" (buffer-file-name)))
            env
@@ -101,3 +101,25 @@
   (revert-buffer t t t))
 
 (global-set-key (kbd "<f8> e") 'run-test)
+
+(defun run-babel-watch ()
+  "run a command on the current file and revert the buffer"
+  (interactive)
+  (run-shell-command "babel-watch"
+   "npm run watch")
+  (revert-buffer t t t))
+
+(global-set-key (kbd "<f8> w") 'run-babel-watch)
+
+(defun copy-current-filepath-to-clipboard ()
+  "Show the full path file name in the minibuffer and copy it to clipboard"
+  (interactive)
+  (kill-new (buffer-file-name))
+  (message (buffer-file-name)))
+
+
+(defun copy-current-testpath-to-clipboard ()
+  "Show the full path file name in the minibuffer and copy it to clipboard"
+  (interactive)
+  (kill-new (replace-regexp-in-string "/home/mico/src/tests/src/tests" "" (buffer-file-name)))
+  (message (replace-regexp-in-string "/home/mico/src/tests/src/tests" "" (buffer-file-name))))

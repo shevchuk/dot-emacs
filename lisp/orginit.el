@@ -20,9 +20,9 @@
       (quote ((sequence "TODO(t!)" "WAITING(w@/!)" "STARTED(s!)" "|" "DONE(d!/!)" "CANCELLED(c@/!)")
               (sequence "EXPIRED(E@)" "REJECTED(R@)"))))
 
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((ditaa . t))) ; this line activates ditaa
+;;(org-babel-do-load-languages
+;; 'org-babel-load-languages
+;; '((ditaa . t))) ; this line activates ditaa
 
 (setq org-src-fontify-natively t)
 

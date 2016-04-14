@@ -17,6 +17,7 @@
     sublime-themes
     ido-vertical-mode
     auto-complete
+    super-save-mode
     multi-eshell
     unicode-fonts
     dsvn
@@ -53,7 +54,7 @@
     ;;org-reveal
     wanderlust
     ztree
-    undo-tree
+    ;;undo-tree
     ;;    uniquify
     ;;jade-mode
     htmlize
@@ -153,8 +154,9 @@
     ad-do-it))
 
 (scroll-lock-mode t)
-(global-undo-tree-mode 1)
-(diminish 'undo-tree-mode)
+;;(require 'undo-tree)
+;;(global-undo-tree-mode 1)
+;;(diminish 'undo-tree-mode)
 
 ;; install packages if they are not installed yet
 (require 'elget-loader)
@@ -338,6 +340,12 @@
         (concat
          "/opt/oracle/instantclient" ":"
          (getenv "LD_LIBRARY_PATH")))
+
+(setenv "OCI_LIB_DIR"
+        "/opt/oracle/instantclient")
+
+(setenv "OCI_INC_DIR"
+        "/opt/oracle/instantclient/sdk/include")
 
 ;; export NVM_DIR="$HOME/.nvm"
 (setenv "NVM_DIR" (concat (getenv "HOME") "/.nvm"))
