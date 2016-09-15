@@ -11,13 +11,14 @@
     elfeed ;; rss feed
     auto-complete
     buffer-move
+    restclient
     color-theme
     diminish ;; hides modes from mode-line
     zoom-window
     sublime-themes
     ido-vertical-mode
     auto-complete
-    super-save-mode
+    super-save
     multi-eshell
     unicode-fonts
     dsvn
@@ -70,6 +71,7 @@
     yandex-weather
     moe-theme
 ))
+
 
 
 (defun run-skewer-repl ()
@@ -141,9 +143,10 @@
 
 (setq projectile-switch-project-action 'projectile-dired)
 (setq projectile-enable-caching t)
-
 ;;(add-to-list 'projectile-globally-ignored-directories "node_modules")
 ;;(add-to-list 'projectile-globally-ignored-directories "dist")
+
+;;(add-to-list 'projectile-globally-ignored-directories "node_modules")
 
 (defadvice projectile-on (around exlude-tramp activate)
     (unless  (--any? (and it (file-remote-p it))
@@ -202,6 +205,11 @@
 ;;(setq ergoemacs-theme "lvl2")
 (setq ergoemacs-theme nil)
 (ergoemacs-mode 1)
+
+(super-save-mode 1)
+
+(setq mode-icons-desaturate-active t)
+(mode-icons-mode t)
 
 (require 'js-beautify)
 (set-default-font "Inconsolata LGC 10")
@@ -330,10 +338,14 @@
            "/home/mico/.nvm/versions/node/v5.7.0/bin" ":"
            (getenv "PATH"))))
 
+(setenv "webdriver.chrome.driver" "/usr/lib/chromium/chromedriver")
+(getenv "webdriver.chrome.driver")
+
 (when (string-equal system-type 'gnu/linux )
   (setenv "PATH" 
           (concat
-         "/home/mico/.nvm/versions/node/v5.7.0/bin" ":"
+           "/usr/lib/chromium" ":"
+           "/home/mico/.nvm/versions/node/v5.7.0/bin" ":"
          (getenv "PATH"))))
 
 (setenv "LD_LIBRARY_PATH"
@@ -414,6 +426,9 @@
      (sgml-mode)
      (sgml-tags-invisible 0))
 
+
+(require 'sqlplus)
+
 ;; https://github.com/kuanyui/moe-theme.el
 (require 'moe-theme)
 (moe-light)
@@ -423,5 +438,7 @@
 (powerline-moe-theme)
 (moe-theme-set-color 'yellow)
 
-(moe-theme-random-color)
+
+
+;;(moe-theme-random-color)
 ;; (require 'moe-theme-switcher) - autoswitch theme

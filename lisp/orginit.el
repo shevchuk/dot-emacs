@@ -96,7 +96,7 @@
 (setq org-ehtml-docroot (expand-file-name "~/Documents/personal-notes/public/"))
 
 (require 'org-ehtml)
-(ws-start org-ehtml-handler 8888)
+(ws-start org-ehtml-handler 8887)
 
 ;; org-footnote patch for handling [0] in your org files (use [fn:0] for making footnotes)
 (setq org-footnote-re

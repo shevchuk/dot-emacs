@@ -99,6 +99,8 @@ PWD is not in a hg repo (or the hg command is not found)."
 (setq eshell-prompt-function
       (lambda ()
         (concat
+         (concat (format-time-string "(%Y-%m-%d %H:%M)" (current-time))
+                 (if (= (user-uid) 0) " # " " "))
          (propertize ((lambda (p-lst)
             (if (> (length p-lst) 3)
                 (concat
