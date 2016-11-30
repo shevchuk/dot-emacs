@@ -28,6 +28,7 @@
 (global-set-key (kbd "M-b") 'bookmark-jump)
 
 (global-set-key (kbd "\C-r") 'isearch-backward)
+(global-set-key (kbd "<f7>") 'isearch-forward)
 
 (global-set-key (kbd "M-0") 'er/expand-region)
 (global-set-key (kbd "<f4>") 'ido-kill-buffer)

@@ -1,3 +1,5 @@
+(setq jiralib-url "https://jira.ringcentral.com")
+
 ;; todo - move these into separate file
 (defun toggle-kbd-macro-recording-on ()
   "One-key keyboard macros: turn recording on."

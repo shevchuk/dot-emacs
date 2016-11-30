@@ -212,7 +212,10 @@
 (mode-icons-mode t)
 
 (require 'js-beautify)
-(set-default-font "Inconsolata LGC 10")
+;;(set-default-font "Inconsolata LGC 10")
+(set-default-font "Hack 9")
+
+;;(set-frame-font "Hack:pixelsize=12")
 
 (require 'spaceline-config)
 (spaceline-spacemacs-theme)
@@ -408,6 +411,8 @@
 (require 'macros)
 (require 'eshell-misc)
 
+;; Emacs gets annoyed when you navigate around your document one char at a time. 
+(annoying-arrows-mode t)
 
 ;Авто определение формата по расширению файла
 (add-to-list 'auto-mode-alist '(".fb2$" . fb2-mode-view))
@@ -427,16 +432,26 @@
      (sgml-tags-invisible 0))
 
 
-(require 'sqlplus)
+;;(require 'sqlplus)
 
 ;; https://github.com/kuanyui/moe-theme.el
-(require 'moe-theme)
-(moe-light)
+;;(require 'moe-theme)
+;;(moe-light)
 ;;(moe-dark)
 ;;(load-theme 'moe-light)
-;;(moe-theme-set-color 'magenta)
-(powerline-moe-theme)
-(moe-theme-set-color 'yellow)
+;;(moe-theme-set-color 'yellow)
+;;(powerline-moe-theme)
+;;(moe-theme-set-color 'blue)
+
+;;(smart-mode-line-powerline-theme)
+;;(require 'material-light-theme)
+;;(load-theme 'material-light)
+;;(powerline-vim-theme)
+
+(require 'airline-themes)
+(load-theme 'airline-sol)
+(load-theme 'anti-zenburn)
+
 
 
 
