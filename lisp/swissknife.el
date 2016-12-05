@@ -62,4 +62,23 @@
     (other-frame 1)
     (switch-to-buffer other-frame-buffer)))
 
+;; projectile tags generation
+(defun my-create-tags-if-needed (SRC-DIR CTAGS-OPTS &optional FORCE)
+  "return the full path of tags file"
+  ;; TODO save the CTAGS-OPTS into hash
+  (let ((dir (file-name-as-directory (file-truename SRC-DIR)) )
+       file
+       cmd)
+    (setq file (concat dir "TAGS"))
+    (when (or FORCE (not (file-exists-p file)))
+      (setq cmd (format "find %s -type f -not -iwholename '*TAGS' -not -size +1024k | ctags -f %s -e  %s -L -" dir file CTAGS-OPTS))
+      (shell-command cmd))
+    file))
+
+(defun projectile-generate-tags-in-this-project ()
+  (interactive)
+  (my-create-tags-if-needed (car (projectile-get-project-directories)) "" t))
+
+(concat (projectile-get-project-directories)
+
 (provide 'swissknife)
