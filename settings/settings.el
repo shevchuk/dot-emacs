@@ -31,7 +31,7 @@
      ("http://planet.emacsen.org/atom.xml" emacs)
      ("http://emacsredux.com/atom.xml" emacs)
      ("karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-only.xml" emacs)
-     ("http://sachachua.com/blog/category/geek/emacs/feed/" emacs))))
+     ("http://sachachua.com/blog/category/geek/emacs/feed/" emacs))) t)
  '(fci-rule-color "#49483E")
  '(highlight-changes-colors ("#FD5FF0" "#AE81FF"))
  '(highlight-tail-colors
@@ -48,12 +48,28 @@
  '(magit-diff-use-overlays nil)
  '(multi-eshell-name "*eshell*")
  '(multi-eshell-shell-function (quote (eshell)))
+ '(org-capture-templates
+   (quote
+    (("w" "Work Todo" entry
+      (file+headline "~/Documents/personal-notes/work.org" "Tasks")
+      "* TODO %?
+  %i
+  %a")
+     ("p" "Personal" entry
+      (file+headline "~/Documents/personal-notes/personal.org" "Tasks")
+      "* TODO %?
+ %i
+"))) t)
  '(org-ditaa-jar-path "/Users/mico/.emacs.d/contrib/ditaa/ditaa0_9.jar")
  '(org-yandex-weather-format "%C: %i %c, [%l,%h]%s %d%w")
+ '(package-selected-packages
+   (quote
+    (easy-kill anti-zenburn-theme airline-themes annoying-arrows-mode mode-icons rainbow-mode unbound web-server jsx-mode multi-eshell super-save)))
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "./dist/" "./node_modules/")))
  '(projectile-globally-ignored-file-suffixes (quote (".jar" ".zip" ".exe" ".min.js")))
+ '(select-enable-primary nil)
  '(sml/mode-width
    (if
        (eq

@@ -32,8 +32,6 @@
     yasnippet
     js2-refactor
     coffee-mode
-    ;;ergoemacs-mode
-    ergoemacs-keybindings
     magit
     org-ehtml
     ;;tern
@@ -46,6 +44,8 @@
     dired+
     ;;wrap-region
     helm
+    helm-projectile
+    easy-kill
     js-beautify
     rainbow-mode
     skewer-mode
@@ -65,10 +65,14 @@
     diff-hl
     fancy-narrow
     s
+    mode-icons
     dash
+    annoying-arrows-mode
     powerline
     spaceline
     yandex-weather
+    airline-themes
+    ;;anti-zenburn
     moe-theme
 ))
 
@@ -196,15 +200,7 @@
 (flx-ido-mode 1)
 (setq ido-use-faces nil)
 
-;; ergo-emacs
-
-;;to get rid of the log-edit-mode error, delete the line
-;;(eval-when-compile (log-edit-mode))
-;;in the file ergoemacs-keybindings/ergoemacs-mode.el
 (package-initialize)
-;;(setq ergoemacs-theme "lvl2")
-(setq ergoemacs-theme nil)
-(ergoemacs-mode 1)
 
 (super-save-mode 1)
 
@@ -250,6 +246,8 @@
 
     wl-fcc-force-as-read    t
     wl-default-spec "%")
+
+(delete-selection-mode)
 
 (require 'uniquify)
 (setq 
@@ -451,9 +449,3 @@
 (require 'airline-themes)
 (load-theme 'airline-sol)
 (load-theme 'anti-zenburn)
-
-
-
-
-;;(moe-theme-random-color)
-;; (require 'moe-theme-switcher) - autoswitch theme

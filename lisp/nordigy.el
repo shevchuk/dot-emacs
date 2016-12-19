@@ -84,7 +84,7 @@
 (defun run-test ()
   "run a command on the current file and revert the buffer"
   (interactive)
-  (setq environments  (list "DEV-FT2-AMS" "DEV-FT2-AMS-local" "DEV-ATT-50X" "DEV-FTR-AMS"))
+  (setq environments  (list "DEV-FT2-AMS" "DEV-FT2-AMS-local" "DEV-ATT-50X" "DEV-FTR-AMS" "DEV-FTR-AMS-tds01"))
   (setq env (ido-completing-read "Select environment? " environments))
   (run-shell-command (format "webtest:%s" (car (last (split-string buffer-file-name "/"))))
    (format "node-debug --no-preload %s -e %s"
@@ -109,6 +109,13 @@
    "npm run watch")
   (revert-buffer t t t))
 
+(defun run-vnc ()
+  "run vinagre to automation host"
+  (interactive)
+  (run-shell-command "vnc ftw01-t01-tds01.lab.nordigy.ru"
+                     "vinagre ftw01-t01-tds01.lab.nordigy.ru")
+  (revert-buffer t t t))
+ 
 (global-set-key (kbd "<f8> w") 'run-babel-watch)
 
 (defun copy-current-filepath-to-clipboard ()
@@ -123,3 +130,4 @@
   (interactive)
   (kill-new (replace-regexp-in-string "/home/mico/src/tests/src/tests" "" (buffer-file-name)))
   (message (replace-regexp-in-string "/home/mico/src/tests/src/tests" "" (buffer-file-name))))
+

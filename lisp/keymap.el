@@ -9,16 +9,38 @@
 (defconst ergoemacs-isearch-forward-key	(kbd "M-;"))
 (defconst ergoemacs-isearch-backward-key (kbd "M-:"))
 
-(define-key ergoemacs-keymap ergoemacs-move-end-of-line-key 'move-end-of-line)
-(define-key ergoemacs-keymap ergoemacs-move-beginning-of-line-key 'move-beginning-of-line)
-(define-key ergoemacs-keymap ergoemacs-split-window-below 'split-window-below)
-(define-key ergoemacs-keymap ergoemacs-split-window-right 'split-window-right)
-(define-key ergoemacs-keymap ergoemacs-delete-window 'delete-window)
-(define-key ergoemacs-keymap ergoemacs-delete-other-windows 'delete-other-windows)
+(global-set-key (kbd "M-c") 'kill-ring-save)
+(global-set-key (kbd "M-v") 'yank)
+(global-set-key (kbd "<f2>") 'save-buffer)
+
+(defun copy-line (arg)
+      "Copy lines (as many as prefix argument) in the kill ring"
+      (interactive "p")
+      (kill-ring-save (line-beginning-position)
+                      (line-beginning-position (+ 1 arg)))
+      (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
+
+(global-set-key (kbd "M-7") 'copy-line)
+
+;;(global-set-key [remap kill-ring-save] 'easy-kill)
+
+(global-set-key (kbd "<mouse-2>") 'x-clipboard-yank)
+(global-set-key (kbd "C-f") 'isearch-forward)
+
+
+(global-set-key (kbd "M-3") 'delete-other-windows)
+(global-set-key (kbd "M-9") 'split-window-right)
+(global-set-key (kbd "M-s") 'other-window)
+
+
+;;(DEFINE-key ergoemacs-keymap ergoemacs-move-end-of-line-key 'move-end-of-line)
+;;(define-key ergoemacs-keymap ergoemacs-move-beginning-of-line-key 'move-beginning-of-line)
+;;(define-key ergoemacs-keymap ergoemacs-split-window-below 'split-window-below)
+;;(define-key ergoemacs-keymap ergoemacs-split-window-right 'split-window-right)
+;;(define-key ergoemacs-keymap ergoemacs-delete-window 'delete-window)
+;;(define-key ergoemacs-keymap ergoemacs-delete-other-windows 'delete-other-windows)
 
 (global-set-key (kbd "C-x C-j") 'dired-jump)
-(global-set-key (kbd "<mouse-2>") 'split-window-vertically)
-(global-set-key (kbd "<mouse-3>") 'split-window-horizontally)
 
 ;; editor
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
@@ -31,7 +53,7 @@
 (global-set-key (kbd "<f7>") 'isearch-forward)
 
 (global-set-key (kbd "M-0") 'er/expand-region)
-(global-set-key (kbd "<f4>") 'ido-kill-buffer)
+(global-set-key (kbd "<f4>") 'ido-find-file)
 
 (add-hook 'hs-minor-mode-hook 'hs-minor-mode-keys)
 (add-hook 'js2-mode-hook 'js-mode-keys)
@@ -79,6 +101,7 @@
   (define-prefix-command 'eshell-cmd-key-map)
   (define-key eshell-cmd-key-map (kbd "r") 'run-test)
   (define-key eshell-cmd-key-map (kbd "v") 'run-vpn)
+  (define-key eshell-cmd-key-map (kbd "t") 'run-vnc)
   )
 
 ;; <f8> is a leader key
@@ -93,7 +116,7 @@
 (defun comint-shell-modes-hook ()
    ;; rebind displaced commands that i still want a key
    (define-key comint-mode-map (kbd "<up>") 'comint-previous-input)
-   (define-key comint-mode-map (kbd "<down>") 'comint-next-input)
+   (define-key comint-mode-map (kbd "<down>"и) 'comint-next-input)
 )
 
 (add-hook 'comint-mode-hook 'comint-shell-modes-hook)
@@ -115,6 +138,16 @@
 (global-set-key (kbd "<M-S-up>") 'buf-move-up)
 (global-set-key (kbd "<M-S-down>") 'buf-move-down)
 
+(global-set-key (kbd "M-u") 'backward-word)
+(global-set-key (kbd "M-o") 'forward-word)
+(global-set-key (kbd "M-j") 'backward-char)
+(global-set-key (kbd "M-l") 'forward-char)
+(global-set-key (kbd "M-i") 'previous-line)
+(global-set-key (kbd "M-k") 'next-line)
+
+(global-set-key (kbd "M-K") 'scroll-up-command)
+(global-set-key (kbd "M-I") 'scroll-down-command)
+
 (global-set-key (kbd "M-R") 'rename-buffer)
 ;; cua-mode
 ;; (global-set-key (kbd "C-c r") 'cua-copy-region)
@@ -125,9 +158,7 @@
       '(("w" "Work Todo" entry (file+headline "~/Documents/personal-notes/work.org" "Tasks")
          "* TODO %?\n  %i\n  %a")
         ("p" "Personal" entry (file+headline "~/Documents/personal-notes/personal.org" "Tasks")
-         "* TODO %?\n %i\n")
-      ("n" "Nodify Todo" entry (file "~/Documents/personal-notes/nodfiy.org")
-       "* TODO %?\n  %i\n  %a")))
+         "* TODO %?\n %i\n")))
 
 
 ;; org-mode

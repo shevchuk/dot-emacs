@@ -1,5 +1,6 @@
 (setq jiralib-url "https://jira.ringcentral.com")
 
+
 ;; todo - move these into separate file
 (defun toggle-kbd-macro-recording-on ()
   "One-key keyboard macros: turn recording on."
@@ -79,6 +80,5 @@
   (interactive)
   (my-create-tags-if-needed (car (projectile-get-project-directories)) "" t))
 
-(concat (projectile-get-project-directories)
 
 (provide 'swissknife)
