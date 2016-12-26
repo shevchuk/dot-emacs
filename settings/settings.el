@@ -14,6 +14,7 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#272822" "#F92672" "#A6E22E" "#E6DB74" "#66D9EF" "#FD5FF0" "#A1EFE4" "#F8F8F2"])
+ '(aw-dispatch-always t)
  '(column-number-mode 1)
  '(comment-style (quote box-multi))
  '(compilation-message-face (quote default))
@@ -61,6 +62,11 @@
  %i
 "))) t)
  '(org-ditaa-jar-path "/Users/mico/.emacs.d/contrib/ditaa/ditaa0_9.jar")
+ '(org-refile-targets
+   (quote
+    (("~/Documents/personal-notes/today.org" :todo . "")
+     ("~/Documents/personal-notes/this_week.org" :maxlevel . 9)
+     ("~/Documents/personal-notes/later.org" :maxlevel . 9))))
  '(org-yandex-weather-format "%C: %i %c, [%l,%h]%s %d%w")
  '(package-selected-packages
    (quote

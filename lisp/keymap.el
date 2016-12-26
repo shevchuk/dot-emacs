@@ -1,4 +1,5 @@
 ;; Move to beginning/ending of line
+
 (defconst ergoemacs-move-beginning-of-line-key	(kbd "M-H"))
 (defconst ergoemacs-move-end-of-line-key	(kbd "M-L"))
 (defconst ergoemacs-delete-window (kbd "M-2"))
@@ -9,7 +10,8 @@
 (defconst ergoemacs-isearch-forward-key	(kbd "M-;"))
 (defconst ergoemacs-isearch-backward-key (kbd "M-:"))
 
-(global-set-key (kbd "M-c") 'kill-ring-save)
+(global-unset-key (kbd "M-c"))
+(global-set-key (kbd "M-x") 'kill-region)
 (global-set-key (kbd "M-v") 'yank)
 (global-set-key (kbd "<f2>") 'save-buffer)
 
@@ -20,18 +22,24 @@
                       (line-beginning-position (+ 1 arg)))
       (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
 
-(global-set-key (kbd "M-7") 'copy-line)
+(global-set-key (kbd "M-c") 'kill-ring-save)
+(global-set-key (kbd "M-C") 'copy-line)
+(global-set-key (kbd "M-K") 'kill-whole-line)
 
 ;;(global-set-key [remap kill-ring-save] 'easy-kill)
-
+(global-set-key (kbd "M-e") 'backward-kill-word)
 (global-set-key (kbd "<mouse-2>") 'x-clipboard-yank)
 (global-set-key (kbd "C-f") 'isearch-forward)
 
-
-(global-set-key (kbd "M-3") 'delete-other-windows)
+(global-set-key (kbd "M-3") 'delete-other-windows)                                                
+(global-set-key (kbd "M-8") 'split-window-below)
 (global-set-key (kbd "M-9") 'split-window-right)
 (global-set-key (kbd "M-s") 'other-window)
 
+(global-set-key (kbd "M-p") 'ace-window)
+
+(define-key minibuffer-local-map (kbd "M-r") 'kill-word) ; was previous-matching-history-element.
+(define-key minibuffer-local-map (kbd "M-s") 'other-window) ; was nest-matching-history-element
 
 ;;(DEFINE-key ergoemacs-keymap ergoemacs-move-end-of-line-key 'move-end-of-line)
 ;;(define-key ergoemacs-keymap ergoemacs-move-beginning-of-line-key 'move-beginning-of-line)
@@ -109,8 +117,9 @@
 
 
 (defalias 'redo 'undo-tree-redo)
-(global-set-key (kbd "C-z") 'undo) ; 【Ctrl+z】
-(global-set-key (kbd "C-S-z") 'redo) ; 【Ctrl+Shift+z】;  Mac style
+(global-set-key (kbd "M-z") 'undo)
+(global-set-key (kbd "C-z") 'undo)
+
 
 ;; comint
 (defun comint-shell-modes-hook ()
@@ -155,11 +164,7 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (setq org-capture-templates
-      '(("w" "Work Todo" entry (file+headline "~/Documents/personal-notes/work.org" "Tasks")
-         "* TODO %?\n  %i\n  %a")
-        ("p" "Personal" entry (file+headline "~/Documents/personal-notes/personal.org" "Tasks")
-         "* TODO %?\n %i\n")))
-
+      '(("i" "Inbox" entry (file+headline "~/Documents/personal-notes/inbox.org" "Tasks"))))
 
 ;; org-mode
 (global-set-key (kbd "C-c M-p") (lambda() (interactive) (find-file "~/Documents/pomodoro.org")))
@@ -182,10 +187,7 @@
 ;; todo change keybindings here
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (setq org-log-done t)
-
-(global-set-key (kbd "M-<up>") 'move-text-up)
-(global-set-key (kbd "M-<down>") 'move-text-down)
-
+                                
 ;; mapping to caps/control as C and cmd as alt(meta)
 (when (eq system-type 'darwin) ;; mac specific settings
   (setq mac-option-modifier 'control)

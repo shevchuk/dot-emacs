@@ -29,6 +29,7 @@
     log4e
     yaxception
     tss
+    ace-window
     yasnippet
     js2-refactor
     coffee-mode
@@ -60,6 +61,7 @@
     ;;jade-mode
     htmlize
     smartparens
+    drag-stuff
     ;; themes
     monokai-theme
     diff-hl
@@ -280,7 +282,7 @@
 
 (setq-default cycle-bg-colors '("#111122" "#112211" "#221122" "#112222" "#00587b" "#004b15"))
 (require 'cycle-bg-colors)
-(require 'move-text)
+
 (require 'swissknife)
 (require 'etags-select)
 (require 'autocommit)
@@ -400,6 +402,8 @@
 (require 'multi-eshell)
 (require 'nordigy)
 
+(drag-stuff-global-mode t)
+(drag-stuff-define-keys)
 ;; (require 'hiwin)
 ;; (hiwin-mode t)
 
