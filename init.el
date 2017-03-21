@@ -39,8 +39,8 @@
     grizzl
     flx
     smex
-    ahg
     unbound
+    helm-swoop
     projectile
     dired+
     ;;wrap-region
@@ -209,6 +209,7 @@
 (setq mode-icons-desaturate-active t)
 (mode-icons-mode t)
 
+(require 'bind-key)
 (require 'js-beautify)
 ;;(set-default-font "Inconsolata LGC 10")
 (set-default-font "Hack 9")
@@ -347,6 +348,7 @@
 (when (string-equal system-type 'gnu/linux )
   (setenv "PATH" 
           (concat
+           "/usr/bin" ":"
            "/usr/lib/chromium" ":"
            "/home/mico/.nvm/versions/node/v5.7.0/bin" ":"
          (getenv "PATH"))))
@@ -395,6 +397,10 @@
 
 ;; use Shift+arrow_keys to move cursor around split panes
 (windmove-default-keybindings)
+
+(setq-default cursor-type 'bar) 
+(blink-cursor-mode 0)
+(set-cursor-color "#000077")
 
 ;;(require 'tumblesocks)
 ;;(setq tumblesocks-blog "micoblog.tumblr.com")
