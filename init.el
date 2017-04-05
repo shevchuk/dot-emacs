@@ -34,7 +34,8 @@
     js2-refactor
     coffee-mode
     magit
-    org-ehtml
+    auto-highlight-symbol
+    highlight-parentheses
     ;;tern
     grizzl
     flx
@@ -48,7 +49,6 @@
     helm-projectile
     easy-kill
     js-beautify
-    rainbow-mode
     skewer-mode
     perspective
     exec-path-from-shell
@@ -58,16 +58,13 @@
     ztree
     ;;undo-tree
     ;;    uniquify
-    ;;jade-mode
     htmlize
     smartparens
     drag-stuff
     ;; themes
     monokai-theme
-    diff-hl
     fancy-narrow
     s
-    mode-icons
     dash
     annoying-arrows-mode
     powerline
@@ -76,6 +73,7 @@
     airline-themes
     ;;anti-zenburn
     moe-theme
+    bind-key
 ))
 
 
@@ -206,13 +204,16 @@
 
 (super-save-mode 1)
 
-(setq mode-icons-desaturate-active t)
-(mode-icons-mode t)
+;;(setq mode-icons-desaturate-active t)
+;;(mode-icons-mode t)
 
 (require 'bind-key)
 (require 'js-beautify)
 ;;(set-default-font "Inconsolata LGC 10")
-(set-default-font "Hack 9")
+;;(set-default-font "Fira Code Medium 13")
+(set-default-font "Input Mono Narrow 13")
+(add-to-list 'default-frame-alist
+             '(font . "Input Mono Narrow 13"))
 
 ;;(set-frame-font "Hack:pixelsize=12")
 
@@ -399,8 +400,13 @@
 (windmove-default-keybindings)
 
 (setq-default cursor-type 'bar) 
-(blink-cursor-mode 0)
+(blink-cursor-mode 1)
 (set-cursor-color "#000077")
+
+;;(add-to-list 'load-path
+;;             "/home/mico/.emacs.d/contrib/ecb")
+
+;;(require 'ecb)
 
 ;;(require 'tumblesocks)
 ;;(setq tumblesocks-blog "micoblog.tumblr.com")
@@ -408,6 +414,7 @@
 (require 'multi-eshell)
 (require 'nordigy)
 
+(setq transient-mark-mode t)
 (drag-stuff-global-mode t)
 (drag-stuff-define-keys)
 ;; (require 'hiwin)
@@ -418,6 +425,10 @@
 
 (require 'macros)
 (require 'eshell-misc)
+
+
+(auto-highlight-symbol-mode t)
+(highlight-parentheses-mode t)
 
 ;; Emacs gets annoyed when you navigate around your document one char at a time. 
 (annoying-arrows-mode t)
@@ -456,6 +467,8 @@
 ;;(load-theme 'material-light)
 ;;(powerline-vim-theme)
 
+
+
 (require 'airline-themes)
 (load-theme 'airline-sol)
-(load-theme 'anti-zenburn)
+;;(load-theme 'anti-zenburn)

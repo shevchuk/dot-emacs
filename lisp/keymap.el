@@ -151,6 +151,7 @@
  ("M-o" . forward-word)
  ("M-j" . backward-char)
  ("M-l" . forward-char)
+ ("<escape> <escape>" . kill-this-buffer)
  ("M-i" . previous-line)
  ("M-k" . next-line)
  ("M-K" . scroll-up-command)

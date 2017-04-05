@@ -73,7 +73,6 @@
 
 (setq org-icalendar-use-scheduled '(todo-start event-if-todo))
 
-
 (setq org-startup-with-inline-images t)
 (add-hook 'org-mode-hook 
           (lambda () 
@@ -101,21 +100,10 @@
 (setq org-html-htmlize-font-prefix "org-")
 
 ;; org-ehtml (editable org pages - web interface)
-(setq org-ehtml-docroot (expand-file-name "~/Documents/personal-notes/public/"))
+;;(setq org-ehtml-docroot (expand-file-name "~/Documents/personal-notes/public/"))
 
-(require 'org-ehtml)
-(ws-start org-ehtml-handler 8887)
+;;(require 'org-ehtml)
+;;(ws-start org-ehtml-handler 8887)
 
-;; org-footnote patch for handling [0] in your org files (use [fn:0] for making footnotes)
-(setq org-footnote-re
-      (concat "\\[\\(?:"
-          ;; Match inline footnotes.
-          (org-re "fn:\\([-_[:word:]]+\\)?:\\|")
-          ;; Match other footnotes.
-          ;; "\\(?:\\([0-9]+\\)\\]\\)\\|"
-          (org-re "\\(fn:[-_[:word:]]+\\)")
-          "\\)"))
 
-(setq org-footnote-definition-re
-      (org-re "^\\[\\(fn:[-_[:word:]]+\\)\\]"))
 
