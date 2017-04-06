@@ -71,7 +71,8 @@
     spaceline
     yandex-weather
     airline-themes
-    ;;anti-zenburn
+    anti-zenburn-theme
+    dracula-theme
     moe-theme
     bind-key
 ))
@@ -469,6 +470,12 @@
 
 
 
-(require 'airline-themes)
-(load-theme 'airline-sol)
+;; use these together for anti-zenburn (grey colors)
+;; <from here>
+;;(require 'airline-themes)
+;;(load-theme 'airline-sol)
 ;;(load-theme 'anti-zenburn)
+;; <till here>
+
+;; dracula is a nice vibrant dark blue theme
+(require 'dracula-theme)
