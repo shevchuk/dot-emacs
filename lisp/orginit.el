@@ -1,12 +1,14 @@
 ;; org
-(setq org-agenda-files (list "~/Documents/personal-notes/work.org"
-                             "~/Documents/personal-notes/nodify.org"
-                             "~/Documents/personal-notes/notes.org"
-                             "~/Documents/personal-notes/today.org"
-                             "~/Documents/personal-notes/later.org"
-                             "~/Documents/personal-notes/inbox.org"
-                             "~/Documents/personal-notes/thisweek.org"
-                             "~/Documents/personal-notes/personal.org"))
+
+(setq org-agenda-files (list "~/Documents/personal-notes/"))
+;;(setq org-agenda-files (list "~/Documents/personal-notes/work.org"
+;;                             "~/Documents/personal-notes/nodify.org"
+;;                             "~/Documents/personal-notes/notes.org"
+;;                             "~/Documents/personal-notes/today.org"
+;;                             "~/Documents/personal-notes/later.org"
+;;                             "~/Documents/personal-notes/inbox.org"
+;;                             "~/Documents/personal-notes/thisweek.org"
+;;                             "~/Documents/personal-notes/personal.org"))
 
 (setq org-default-notes-file (concat "~/Documents/personal-notes/" "notes.org"))
 

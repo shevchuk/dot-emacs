@@ -1,10 +1,3 @@
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(cursor ((t (:background "maroon1" :width extra-expanded))))
- '(region ((t (:background "DeepSkyBlue3" :foreground "#e1e1e0")))))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -67,14 +60,16 @@
    (quote
     (("~/Documents/personal-notes/today.org" :todo . "")
      ("~/Documents/personal-notes/this_week.org" :maxlevel . 9)
-     ("~/Documents/personal-notes/later.org" :maxlevel . 9))))
+     ("~/Documents/personal-notes/later.org" :maxlevel . 9)
+     ("~/Documents/personal-notes/test_automation.org" :maxlevel . 9)
+     )) t)
  '(org-yandex-weather-format "%C: %i %c, [%l,%h]%s %d%w")
  '(package-selected-packages
    (quote
-    (dracula-theme easy-kill anti-zenburn-theme airline-themes annoying-arrows-mode mode-icons rainbow-mode unbound web-server jsx-mode multi-eshell super-save)))
+    (rjsx-mode company company-tern tern-auto-complete tern js2-refactor dracula-theme easy-kill anti-zenburn-theme airline-themes annoying-arrows-mode mode-icons rainbow-mode unbound web-server jsx-mode multi-eshell super-save)))
  '(projectile-globally-ignored-directories
    (quote
-    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "./dist/" "./node_modules/")))
+    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "./dist/" "./node_modules/" "./src/bower_components/")))
  '(projectile-globally-ignored-file-suffixes (quote (".jar" ".zip" ".exe" ".min.js")))
  '(select-enable-primary nil)
  '(sml/mode-width

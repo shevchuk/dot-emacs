@@ -26,6 +26,7 @@
     js2-mode
     json-mode
     jsx-mode
+    rjsx-mode
     log4e
     yaxception
     tss
@@ -102,6 +103,7 @@
 ;; javascript
 (add-hook 'js2-mode-hook 
           (lambda ()
+            (auto-complete-mode 0)
             (yas-minor-mode)
             (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
             (define-key js2-mode-map (kbd "C-r") 'run-skewer-repl)
@@ -114,7 +116,8 @@
             ;; Activate the folding mode
             (hs-minor-mode t)
             (diff-hl-mode 1)
-            (auto-complete-mode 1)))
+            (tern-mode 1)
+            ))
 
 (define-minor-mode sticky-buffer-mode
   "Make the current window always display this buffer."
@@ -141,9 +144,16 @@
 ;;      (require 'tern-auto-complete)
 ;;      (tern-ac-setup)))
 
+(add-hook 'after-init-hook 'global-company-mode)
+
+
+;;(add-to-list 'company-backends 'company-tern)
+
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.es6\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+
 ;;(add-to-list 'auto-mode-alist '("\\.erl\\'" . js2-mode))
 
 (setq projectile-switch-project-action 'projectile-dired)
@@ -293,7 +303,8 @@
 ;;(require 'daylight)
 ;;
 ;;(setq daylight-morning-theme 'color-theme-scintilla
-;;      daylight-afternoon-theme 'color-theme-aalto-light
+;;      daylight-af
+;;oon-theme 'color-theme-aalto-light
 ;;      daylight-evening-theme 'color-theme-parus
 ;;      daylight-late-theme 'color-theme-comidia)
 ;;

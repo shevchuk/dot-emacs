@@ -39,6 +39,7 @@
 (defun js-mode-keys ()
   "my keybindings for js2-mode"
   (local-set-key (kbd "C-c C-b") 'js-beautify)
+  (local-set-key (kbd "s-SPC") 'company-tern)
   (local-unset-key (kbd "M-j"))
   (local-set-key (kbd "M-.") 'etags-select-find-tag-at-point)
   (local-set-key (kbd "M-?") 'etags-select-find-tag))
