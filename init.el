@@ -1,3 +1,4 @@
+(setq ring-bell-function 'ignore)
 (server-start)
 
 ;; (set-background-color "lightblue")
@@ -17,9 +18,16 @@
     zoom-window
     sublime-themes
     ido-vertical-mode
+    yaml-mode
+    company-mode
+    company-go
+    flycheck
+    multi-compile
+    go-eldoc
     auto-complete
     super-save
     multi-eshell
+    diff-hl
     unicode-fonts
     dsvn
     expand-region
@@ -30,6 +38,7 @@
     log4e
     yaxception
     tss
+    go-mode
     ace-window
     yasnippet
     js2-refactor
@@ -190,6 +199,8 @@
 (setq yas-snippet-dirs
       '("~/.emacs.d/yasnippets"))
 
+(load "~/.emacs.d/go-snippets/go-snippets.el")
+
 (require 'yasnippet)
 (yas/reload-all)
 
@@ -277,7 +288,8 @@
   (interactive)
   (setq load-path (cons "/usr/local/lib/erlang/lib/tools-2.6.11/emacs/" load-path))
   (setq erlang-root-dir "/usr/local/lib/erlang")
-  (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
+  (setq
+   exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
   (require 'erlang-start)
   (require 'erlang-flymake))
 
@@ -347,24 +359,9 @@
 
 (setq-default frame-title-format "%b (%f)")
 
-(when (string-equal system-type "darwin")
-  (setenv "PATH" 
-          (concat
-           "/opt/oracle/instantclient" ":"
-           "/usr/local/bin" ":"
-           "/home/mico/.nvm/versions/node/v5.7.0/bin" ":"
-           (getenv "PATH"))))
-
 (setenv "webdriver.chrome.driver" "/usr/lib/chromium/chromedriver")
 (getenv "webdriver.chrome.driver")
 
-(when (string-equal system-type 'gnu/linux )
-  (setenv "PATH" 
-          (concat
-           "/usr/bin" ":"
-           "/usr/lib/chromium" ":"
-           "/home/mico/.nvm/versions/node/v5.7.0/bin" ":"
-         (getenv "PATH"))))
 
 (setenv "LD_LIBRARY_PATH"
         (concat
@@ -403,7 +400,11 @@
 
 (require 'json-reformat)
 
-(when (memq window-system '(mac ns))
+(setenv "PATH"
+  (concat "/bin:"
+          (getenv "PATH")))
+        
+(when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
 (require 'transpose-frame)
@@ -434,6 +435,8 @@
 
 (require 'tscript)
 (tool-bar-mode -1)
+
+(require 'golang)
 
 (require 'macros)
 (require 'eshell-misc)
