@@ -101,6 +101,9 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 
+(global-set-key "\C-ct" 'google-translate-smooth-translate)
+(global-set-key "\C-cT" 'google-translate-query-translate)
+
 ;; todo change keybindings here
 (setq org-log-done t)
                                 

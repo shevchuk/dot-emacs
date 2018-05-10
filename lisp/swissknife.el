@@ -114,8 +114,7 @@
   (interactive)
   (my-create-tags-if-needed (car (projectile-get-project-directories)) "" t))
 
-
 (setq google-translate-translation-directions-alist
-      '(("ru" . "en") ("en" . "ru")))
+      '(("en" . "ru") ("ru" . "en")))
 
 (provide 'swissknife)
