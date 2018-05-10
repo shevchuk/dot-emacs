@@ -133,7 +133,7 @@
  ("<f4>" . ido-find-file)
  ("<f12>" . smex)
  ("M-O" . projectile-find-file)
- ("M-F" . projectile-grep)
+ ("M-F" . ag-project)
  ("C-z" . zoom-window-zoom)
  ("<f5>" . revert-buffer)
  ("<f8>" . shell-cmd-key-map)

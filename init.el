@@ -79,6 +79,7 @@
     monokai-theme
     fancy-narrow
     s
+    ag
     dash
     annoying-arrows-mode
     powerline
