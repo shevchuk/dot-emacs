@@ -1,3 +1,6 @@
+;; Allow 20MB of memory (instead of 0.76MB) before calling garbage collection. This means GC runs less often, which speeds up some operations.
+(setq gc-cons-threshold 20000000)
+
 (setq ring-bell-function 'ignore)
 (server-start)
 
@@ -35,6 +38,7 @@
     json-mode
     jsx-mode
     rjsx-mode
+    jira-markup-mode
     log4e
     yaxception
     tss
@@ -163,6 +167,8 @@
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
 
+(add-to-list 'auto-mode-alist '("\\.jira\\'" . jira-markup-mode))
+             
 ;;(add-to-list 'auto-mode-alist '("\\.erl\\'" . js2-mode))
 
 (setq projectile-switch-project-action 'projectile-dired)
@@ -311,6 +317,17 @@
 (require 'swissknife)
 (require 'etags-select)
 (require 'autocommit)
+
+;; backup tuning
+;; Store backups and auto-saved files in TEMPORARY-FILE-DIRECTORY (which defaults to /tmp on Unix), instead of in the same directory as the file.
+(setq make-backup-files nil)
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
+;; Ask y/n instead of yes/no
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;;(require 'daylight)
 ;;
