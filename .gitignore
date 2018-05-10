@@ -4,6 +4,7 @@ bookmarks
 el-get
 projectile-bookmarks.eld
 url
+/contrib/reveal.js/
 /elpa
 /.cask
 *.elc
