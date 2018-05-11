@@ -484,7 +484,11 @@
      (sgml-mode)
      (sgml-tags-invisible 0))
 
+;; Use font-lock everywhere.
+(global-font-lock-mode t)
 
+;; We have CPU to spare; highlight all syntax categories.
+(setq font-lock-maximum-decoration t)
 ;;(require 'sqlplus)
 
 ;; https://github.com/kuanyui/moe-theme.el
