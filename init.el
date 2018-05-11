@@ -431,9 +431,9 @@
 ;; use Shift+arrow_keys to move cursor around split panes
 (windmove-default-keybindings)
 
-(setq-default cursor-type 'bar) 
+(setq-default cursor-type 'hollow) ;; bar
 (blink-cursor-mode 1)
-(set-cursor-color "#000077")
+(set-cursor-color "#89ff00")
 
 ;;(add-to-list 'load-path
 ;;             "/home/mico/.emacs.d/contrib/ecb")
