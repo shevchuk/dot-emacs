@@ -28,6 +28,7 @@
     multi-compile
     go-eldoc
     auto-complete
+    emmet-mode
     super-save
     multi-eshell
     diff-hl
@@ -50,7 +51,7 @@
     magit
     auto-highlight-symbol
     highlight-parentheses
-    ;;tern
+    tern
     grizzl
     flx
     smex
