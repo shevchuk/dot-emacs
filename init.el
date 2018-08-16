@@ -48,6 +48,7 @@
     yasnippet
     js2-refactor
     coffee-mode
+    web-mode
     magit
     auto-highlight-symbol
     highlight-parentheses
@@ -165,13 +166,12 @@
 
 ;;(add-to-list 'company-backends 'company-tern)
 
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.es6\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 
 (add-to-list 'auto-mode-alist '("\\.jira\\'" . jira-markup-mode))
-             
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.erl\\'" . js2-mode))
 
 (setq projectile-switch-project-action 'projectile-dired)
@@ -208,7 +208,7 @@
 (setq yas-snippet-dirs
       '("~/.emacs.d/yasnippets"))
 
-(load "~/.emacs.d/go-snippets/go-snippets.el")
+;;(load "~/.emacs.d/go-snippets/go-snippets.el")
 
 (require 'yasnippet)
 (yas/reload-all)
@@ -304,9 +304,17 @@
 
 ;; tabs
 (setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
+(setq-default tab-width 2)
 (setq tab-always-indent 'complete)
 (setq indent-line-function 'insert-tab)
+
+(defun my-web-mode-hook ()
+  "Hooks for Web mode."
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
+
+(add-hook 'web-mode-hook  'my-web-mode-hook)
 
 (put 'upcase-region 'disabled nil)
 

@@ -8,9 +8,11 @@
  '(ansi-color-names-vector
    ["#272822" "#F92672" "#A6E22E" "#E6DB74" "#66D9EF" "#FD5FF0" "#A1EFE4" "#F8F8F2"])
  '(aw-dispatch-always t)
+ '(coffee-tab-width 2)
  '(column-number-mode 1)
  '(comment-style (quote box-multi))
  '(compilation-message-face (quote default))
+ '(css-indent-offset 2)
  '(custom-enabled-themes (quote (cyberpunk)))
  '(custom-safe-themes
    (quote
@@ -40,6 +42,8 @@
      ("#A41F99" . 85)
      ("#49483E" . 100))))
  '(jiralib-url "http://jira.ringcentral.com" t)
+ '(magit-diff-arguments (quote ("--no-ext-diff" "--stat")))
+ '(magit-diff-section-arguments (quote ("--ignore-all-space" "--no-ext-diff")))
  '(magit-diff-use-overlays nil)
  '(multi-eshell-name "*eshell*")
  '(multi-eshell-shell-function (quote (eshell)))
@@ -74,8 +78,8 @@
  '(sml/mode-width
    (if
        (eq
-	(powerline-current-separator)
-	(quote arrow))
+        (powerline-current-separator)
+        (quote arrow))
        (quote right)
      (quote full)))
  '(sml/pos-id-separator
@@ -84,14 +88,14 @@
      (:propertize " " face powerline-active1)
      (:eval
       (propertize " "
-		  (quote display)
-		  (funcall
-		   (intern
-		    (format "powerline-%s-%s"
-			    (powerline-current-separator)
-			    (car powerline-default-separator-dir)))
-		   (quote powerline-active1)
-		   (quote powerline-active2))))
+                  (quote display)
+                  (funcall
+                   (intern
+                    (format "powerline-%s-%s"
+                            (powerline-current-separator)
+                            (car powerline-default-separator-dir)))
+                   (quote powerline-active1)
+                   (quote powerline-active2))))
      (:propertize " " face powerline-active2))))
  '(sml/pos-minor-modes-separator
    (quote
@@ -99,14 +103,14 @@
      (:propertize " " face powerline-active1)
      (:eval
       (propertize " "
-		  (quote display)
-		  (funcall
-		   (intern
-		    (format "powerline-%s-%s"
-			    (powerline-current-separator)
-			    (cdr powerline-default-separator-dir)))
-		   (quote powerline-active1)
-		   (quote sml/global))))
+                  (quote display)
+                  (funcall
+                   (intern
+                    (format "powerline-%s-%s"
+                            (powerline-current-separator)
+                            (cdr powerline-default-separator-dir)))
+                   (quote powerline-active1)
+                   (quote sml/global))))
      (:propertize " " face sml/global))))
  '(sml/pre-id-separator
    (quote
@@ -114,14 +118,14 @@
      (:propertize " " face sml/global)
      (:eval
       (propertize " "
-		  (quote display)
-		  (funcall
-		   (intern
-		    (format "powerline-%s-%s"
-			    (powerline-current-separator)
-			    (car powerline-default-separator-dir)))
-		   (quote sml/global)
-		   (quote powerline-active1))))
+                  (quote display)
+                  (funcall
+                   (intern
+                    (format "powerline-%s-%s"
+                            (powerline-current-separator)
+                            (car powerline-default-separator-dir)))
+                   (quote sml/global)
+                   (quote powerline-active1))))
      (:propertize " " face powerline-active1))))
  '(sml/pre-minor-modes-separator
    (quote
@@ -129,14 +133,14 @@
      (:propertize " " face powerline-active2)
      (:eval
       (propertize " "
-		  (quote display)
-		  (funcall
-		   (intern
-		    (format "powerline-%s-%s"
-			    (powerline-current-separator)
-			    (cdr powerline-default-separator-dir)))
-		   (quote powerline-active2)
-		   (quote powerline-active1))))
+                  (quote display)
+                  (funcall
+                   (intern
+                    (format "powerline-%s-%s"
+                            (powerline-current-separator)
+                            (cdr powerline-default-separator-dir)))
+                   (quote powerline-active2)
+                   (quote powerline-active1))))
      (:propertize " " face powerline-active1))))
  '(sml/pre-modes-separator (propertize " " (quote face) (quote sml/modes)))
  '(sqlplus-command "/opt/oracle/instantclient/sqlplus")
@@ -163,5 +167,6 @@
      (340 . "#2790C3")
      (360 . "#66D9EF"))))
  '(vc-annotate-very-old-color nil)
+ '(web-mode-markup-indent-offset 2)
  '(weechat-color-list
    (unspecified "#272822" "#49483E" "#A20C41" "#F92672" "#67930F" "#A6E22E" "#968B26" "#E6DB74" "#21889B" "#66D9EF" "#A41F99" "#FD5FF0" "#349B8D" "#A1EFE4" "#F8F8F2" "#F8F8F0")))
