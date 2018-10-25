@@ -107,20 +107,11 @@
   (httpd-start)
   (skewer-repl))
 
-;; coffee-mode
-(defun coffee-custom ()
-  "coffee-mode-hook"
-  (linum-mode t))
-
 (add-hook 'coffee-mode-hook '(lambda () (coffee-custom)))
 
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
-
-(add-hook 'emacs-lisp-mode-hook
-          (lambda ()
-            (linum-mode 1)))
 
 ;; javascript
 (add-hook 'js2-mode-hook 
@@ -132,7 +123,6 @@
             ;;(face-remap-add-relative 'mode-line '((:foreground "ivory" :background "DeepPink4") mode-line))
             ;;(define-key js2-mode-map (kbd "M-.") nil)
             (wrap-region-mode t)
-            (linum-mode 1)
             (js2-refactor-mode t)
             ;;(tern-mode t)
             ;; Activate the folding mode
@@ -341,7 +331,7 @@
 (require 'ws-butler)
 (add-hook 'prog-mode-hook #'ws-butler-mode)
 (add-hook 'prog-mode-hook #'whitespace-mode)
-
+(add-hook 'prog-mode-hook #'linum-mode)
 
 ;; backup tuning
 ;; Store backups and auto-saved files in TEMPORARY-FILE-DIRECTORY (which defaults to /tmp on Unix), instead of in the same directory as the file.
