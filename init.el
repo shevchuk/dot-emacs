@@ -2,7 +2,9 @@
 (setq gc-cons-threshold 20000000)
 
 (setq ring-bell-function 'ignore)
-(server-start)
+(require 'server)
+(or (server-running-p)
+    (server-start))
 
 ;; (set-background-color "lightblue")
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
@@ -32,6 +34,7 @@
     super-save
     multi-eshell
     diff-hl
+    ws-butler
     unicode-fonts
     dsvn
     expand-region
@@ -201,7 +204,6 @@
 (require 'elget-loader)
 (install-and-load packages-to-load)
 
-(require 'fullscreen-toggle)
 (require 'tramp)
 (setq tramp-default-method "ssh")
 (setq password-cache-expiry nil)
@@ -335,6 +337,11 @@
 (require 'swissknife)
 (require 'etags-select)
 (require 'autocommit)
+
+(require 'ws-butler)
+(add-hook 'prog-mode-hook #'ws-butler-mode)
+(add-hook 'prog-mode-hook #'whitespace-mode)
+
 
 ;; backup tuning
 ;; Store backups and auto-saved files in TEMPORARY-FILE-DIRECTORY (which defaults to /tmp on Unix), instead of in the same directory as the file.
