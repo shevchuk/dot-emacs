@@ -92,6 +92,7 @@
     anti-zenburn-theme
     dracula-theme
     moe-theme
+    swap-regions
     bind-key
 ))
 
@@ -112,10 +113,11 @@
 
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
-            (linum-mode 1)
-            (diff-hl-mode 1)))
+            (linum-mode 1)))
 
 ;; javascript
 (add-hook 'js2-mode-hook 
@@ -132,7 +134,6 @@
             ;;(tern-mode t)
             ;; Activate the folding mode
             (hs-minor-mode t)
-            (diff-hl-mode 1)
             (tern-mode 1)
             ))
 
@@ -162,17 +163,19 @@
 ;;      (tern-ac-setup)))
 
 (add-hook 'after-init-hook 'global-company-mode)
-
+(add-hook 'after-init-hook 'global-diff-hl-mode)
 
 ;;(add-to-list 'company-backends 'company-tern)
 
 (add-to-list 'auto-mode-alist '("\\.es6\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
-
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jira\\'" . jira-markup-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.erl\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 
 (setq projectile-switch-project-action 'projectile-dired)
 (setq projectile-enable-caching t)
@@ -242,9 +245,9 @@
 (require 'js-beautify)
 ;;(set-default-font "Inconsolata LGC 10")
 ;;(set-default-font "Fira Code Medium 13")
-(set-default-font "Input Mono Narrow 13")
+(set-default-font "Hack 10")
 (add-to-list 'default-frame-alist
-             '(font . "Input Mono Narrow 13"))
+             '(font . "Hack 10"))
 
 ;;(set-frame-font "Hack:pixelsize=12")
 
@@ -310,11 +313,15 @@
 
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
+  (setq web-mode-toggle-current-element-highlight t)
+  (setq web-mode-content-types-alist
+  '(("jsx" . "\\.js[x]?\\'")))
+  (setq emmet-mode t)
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-code-indent-offset 2))
 
-(add-hook 'web-mode-hook  'my-web-mode-hook)
+(add-hook 'web-mode-hook 'my-web-mode-hook)
 
 (put 'upcase-region 'disabled nil)
 
@@ -440,10 +447,6 @@
 ;; use Shift+arrow_keys to move cursor around split panes
 (windmove-default-keybindings)
 
-(setq-default cursor-type 'hollow) ;; bar
-(blink-cursor-mode 1)
-(set-cursor-color "#89ff00")
-
 ;;(add-to-list 'load-path
 ;;             "/home/mico/.emacs.d/contrib/ecb")
 
@@ -525,3 +528,7 @@
 
 ;; dracula is a nice vibrant dark blue theme
 (require 'dracula-theme)
+
+(setq-default cursor-type 'bar) ;; bar
+;;(blink-cursor-mode 2)
+(set-cursor-color "#33ff00")

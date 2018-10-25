@@ -1,0 +1,51 @@
+ls -lha
+git status
+git add .
+git status
+ls -lha
+cd ../
+cd dekeo-ui/
+ls -lha
+rails 
+rails s
+cd ~/src/dekeo-ui/
+git pull
+ls -lha
+git status
+git add .
+git status
+git commit -m 'Changing quote, changing images'
+git push
+ls -lgha
+(+ 1 1)
+bundle install
+ls
+mv * ../../frontend/
+ls
+cd ../
+rm -rf ./javascript/
+ls
+cd ../../
+cd ../frontend
+mkdir init
+touch ./init/index.js
+touch ./init/index.scss
+ls
+ls -lha
+ls
+cd spree-jiffyshirts/
+ls
+c
+yarn run build
+ls
+mkdir .scss(2018-10-16 16:06) ~/s/a/a/stylesheets/jiffyshirts/components[git:(no branch, rebasing feature/tenth-anniversary-new-banner)]# mkdir ls
+ls -lha
+rm -rf ./.scss/
+rm -rf ./.scss/
+mkdir anniversary-promo-banner
+git mv ./anniversary-promo-banner ./anniversary-promo-banner.scss 
+mv ./anniversary-promo-banner.scss ./anniversary-promo-banner/
+git status
+git add .
+git status
+ls

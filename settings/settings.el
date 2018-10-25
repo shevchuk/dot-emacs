@@ -43,7 +43,7 @@
      ("#49483E" . 100))))
  '(jiralib-url "http://jira.ringcentral.com" t)
  '(magit-diff-arguments (quote ("--no-ext-diff" "--stat")))
- '(magit-diff-section-arguments (quote ("--ignore-all-space" "--no-ext-diff")))
+ '(magit-diff-section-arguments (quote ("--no-ext-diff" "-U1")))
  '(magit-diff-use-overlays nil)
  '(multi-eshell-name "*eshell*")
  '(multi-eshell-shell-function (quote (eshell)))
@@ -65,11 +65,11 @@
     (("~/Documents/personal-notes/today.org" :todo . "")
      ("~/Documents/personal-notes/this_week.org" :maxlevel . 9)
      ("~/Documents/personal-notes/later.org" :maxlevel . 9)
-     ("~/Documents/personal-notes/test_automation.org" :maxlevel . 9))))
+     ("~/Documents/personal-notes/test_automation.org" :maxlevel . 9))) t)
  '(org-yandex-weather-format "%C: %i %c, [%l,%h]%s %d%w")
  '(package-selected-packages
    (quote
-    (jira-markup-mode rjsx-mode company company-tern tern-auto-complete tern js2-refactor dracula-theme easy-kill anti-zenburn-theme airline-themes annoying-arrows-mode mode-icons rainbow-mode unbound web-server jsx-mode multi-eshell super-save)))
+    (swap-regions jira-markup-mode rjsx-mode company company-tern tern-auto-complete tern js2-refactor dracula-theme easy-kill anti-zenburn-theme airline-themes annoying-arrows-mode mode-icons rainbow-mode unbound web-server jsx-mode multi-eshell super-save)))
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "./dist/" "./node_modules/" "./src/bower_components/")))
