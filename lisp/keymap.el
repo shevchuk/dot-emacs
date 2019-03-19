@@ -61,7 +61,11 @@
   (define-key eshell-cmd-key-map (kbd "r") 'run-test)
   (define-key eshell-cmd-key-map (kbd "v") 'run-vpn)
   (define-key eshell-cmd-key-map (kbd "t") 'run-vnc)
+  (define-key eshell-cmd-key-map (kbd "c") 'jiffy-go-to-component)
   )
+
+(global-set-key (kbd "<f6>") eshell-cmd-key-map)
+
 
 (defalias 'redo 'undo-tree-redo)
 (global-set-key (kbd "M-z") 'undo)
@@ -71,7 +75,7 @@
 (defun comint-shell-modes-hook ()
    ;; rebind displaced commands that i still want a key
    (define-key comint-mode-map (kbd "<up>") 'comint-previous-input)
-   (define-key comint-mode-map (kbd "<down>"и) 'comint-next-input)
+   (define-key comint-mode-map (kbd "<down>") 'comint-next-input)
 )
 
 (add-hook 'comint-mode-hook 'comint-shell-modes-hook)
@@ -110,6 +114,7 @@
 
 (bind-keys*
  ("M-x" . kill-region)
+ ("M-d" . kill-word-at-point)
  ("M-v" . yank)
  ("<f2>" . save-buffer)
  ("M-c" . kill-ring-save)

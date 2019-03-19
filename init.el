@@ -18,6 +18,7 @@
     auto-complete
     buffer-move
     restclient
+    dired-details
     color-theme
     diminish ;; hides modes from mode-line
     zoom-window
@@ -26,6 +27,7 @@
     yaml-mode
     company-mode
     company-go
+    mmm-mode
     flycheck
     multi-compile
     go-eldoc
@@ -94,6 +96,7 @@
     airline-themes
     anti-zenburn-theme
     dracula-theme
+    lab-themes
     moe-theme
     swap-regions
     bind-key
@@ -128,6 +131,7 @@
             ;; Activate the folding mode
             (hs-minor-mode t)
             (tern-mode 1)
+	    (flycheck-mode 1)
             ))
 
 (define-minor-mode sticky-buffer-mode
@@ -160,9 +164,29 @@
 
 ;;(add-to-list 'company-backends 'company-tern)
 
+(add-hook 'prog-mode-hook #'ws-butler-mode)
+(add-hook 'prog-mode-hook #'whitespace-mode)
+
+(progn
+ ;; Make whitespace-mode with very basic background coloring for whitespaces.
+  ;; http://ergoemacs.org/emacs/whitespace-mode.html
+  (setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark )))
+
+  ;; Make whitespace-mode and whitespace-newline-mode use “¶” for end of line char and “▷” for tab.
+  (setq whitespace-display-mappings
+        ;; all numbers are unicode codepoint in decimal. e.g. (insert-char 182 1)
+        '(
+          (space-mark 32 [183] [46]) ; SPACE 32 「 」, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
+          (newline-mark 10 [8629 10]) ; LINE FEED,
+          (tab-mark 9 [9655 9] [92 9]) ; tab
+          )))
+
+(add-hook 'prog-mode-hook #'linum-mode)
+
 (add-to-list 'auto-mode-alist '("\\.es6\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jira\\'" . jira-markup-mode))
@@ -170,12 +194,18 @@
 ;;(add-to-list 'auto-mode-alist '("\\.erl\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 
+(add-hook 'vue-mode-hook #'linum-mode)
+(add-hook 'vue-mode-hook #'whitespace-mode)
+(add-hook 'vue-mode-hook #'ws-butler-mode)
+
 (setq projectile-switch-project-action 'projectile-dired)
 (setq projectile-enable-caching t)
 ;;(add-to-list 'projectile-globally-ignored-directories "node_modules")
 ;;(add-to-list 'projectile-globally-ignored-directories "dist")
 
 ;;(add-to-list 'projectile-globally-ignored-directories "node_modules")
+
+
 
 (defadvice projectile-on (around exlude-tramp activate)
     (unless  (--any? (and it (file-remote-p it))
@@ -244,7 +274,13 @@
 ;;(set-frame-font "Hack:pixelsize=12")
 
 (require 'spaceline-config)
-(spaceline-spacemacs-theme)
+
+
+(setq-default mode-line-format '("%e" (:eval (spaceline-ml-main))))
+
+
+  (spaceline-helm-mode 1)
+  (spaceline-emacs-theme)
 
 (require 'orginit)
 ;; эта часть настроек для доступа к Gmail по IMAP
@@ -303,12 +339,25 @@
 (setq tab-always-indent 'complete)
 (setq indent-line-function 'insert-tab)
 
+(defun add-pretty-symbols ()
+  "make some word or string show as pretty Unicode symbols"
+  (setq prettify-symbols-alist
+        '(
+          (">=" . ?≥)
+          ("lambda" . 955) ; λ
+          ("->" . 8594)    ; →
+          ("=>" . 8658)    ; ⇒
+          ("map" . 8614)   ; ↦
+          )))
+
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
-  (setq web-mode-toggle-current-element-highlight t)
   (setq web-mode-content-types-alist
-  '(("jsx" . "\\.js[x]?\\'")))
-  (setq emmet-mode t)
+        '(("jsx" . "\\.js[x]?\\'")))
+  (emmet-mode t)
+  (add-pretty-symbols)
+  (setq web-mode-enable-current-element-highlight t)
+  (prettify-symbols-mode)
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-code-indent-offset 2))
@@ -329,9 +378,10 @@
 (require 'autocommit)
 
 (require 'ws-butler)
-(add-hook 'prog-mode-hook #'ws-butler-mode)
-(add-hook 'prog-mode-hook #'whitespace-mode)
-(add-hook 'prog-mode-hook #'linum-mode)
+
+(setq-default dired-details-hidden-string "--- ")
+(dired-details-install)
+(setq dired-dwim-target t)
 
 ;; backup tuning
 ;; Store backups and auto-saved files in TEMPORARY-FILE-DIRECTORY (which defaults to /tmp on Unix), instead of in the same directory as the file.
@@ -344,6 +394,8 @@
 ;; Ask y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
+(setq jit-lock-defer-time 0)
+(setq fast-but-imprecise-scrolling t)
 ;;(require 'daylight)
 ;;
 ;;(setq daylight-morning-theme 'color-theme-scintilla
@@ -375,6 +427,8 @@
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 (setq scroll-step 1) ;; keyboard scroll one line at a time
+
+
 
 ;; show full path in frame title for current buffer
 (setq frame-title-format
@@ -454,6 +508,7 @@
 
 (require 'multi-eshell)
 (require 'nordigy)
+(require 'jiffy)
 
 (setq transient-mark-mode t)
 (drag-stuff-global-mode t)
@@ -524,8 +579,10 @@
 ;; <till here>
 
 ;; dracula is a nice vibrant dark blue theme
-(require 'dracula-theme)
+;;(require 'dracula-theme)
+;;(require 'lab-themes)
+(lab-themes-load-style 'dark)
 
-(setq-default cursor-type 'bar) ;; bar
+(setq-default cursor-type 'box) ;; bar
 ;;(blink-cursor-mode 2)
 (set-cursor-color "#33ff00")

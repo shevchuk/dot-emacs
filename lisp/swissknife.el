@@ -110,6 +110,18 @@
       (shell-command cmd))
     file))
 
+(defun kill-thing-at-point (thing)
+  "Kill the `thing-at-point' for the specified kind of THING."
+  (let ((bounds (bounds-of-thing-at-point thing)))
+    (if bounds
+        (kill-region (car bounds) (cdr bounds))
+      (error "No %s at point" thing))))
+
+(defun kill-word-at-point ()
+  "Kill the word at point."
+  (interactive)
+  (kill-thing-at-point 'word))
+
 (defun projectile-generate-tags-in-this-project ()
   (interactive)
   (my-create-tags-if-needed (car (projectile-get-project-directories)) "" t))

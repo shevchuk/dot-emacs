@@ -117,17 +117,3 @@
   (revert-buffer t t t))
  
 (global-set-key (kbd "<f8> w") 'run-babel-watch)
-
-(defun copy-current-filepath-to-clipboard ()
-  "Show the full path file name in the minibuffer and copy it to clipboard"
-  (interactive)
-  (kill-new (buffer-file-name))
-  (message (buffer-file-name)))
-
-
-(defun copy-current-testpath-to-clipboard ()
-  "Show the full path file name in the minibuffer and copy it to clipboard"
-  (interactive)
-  (kill-new (replace-regexp-in-string "/home/mico/src/tests/src/tests" "" (buffer-file-name)))
-  (message (replace-regexp-in-string "/home/mico/src/tests/src/tests" "" (buffer-file-name))))
-
