@@ -19,6 +19,7 @@
     buffer-move
     restclient
     dired-details
+    helm-swoop
     color-theme
     diminish ;; hides modes from mode-line
     zoom-window
@@ -35,6 +36,7 @@
     emmet-mode
     super-save
     multi-eshell
+    vue-mode
     diff-hl
     ws-butler
     unicode-fonts
@@ -56,18 +58,19 @@
     web-mode
     magit
     auto-highlight-symbol
+    add-node-modules-path ; needed for vue mode hooks
     highlight-parentheses
     tern
     grizzl
-    flx
+    flx-ido
     smex
     unbound
-    helm-swoop
+    ;;helm-swoop
     projectile
     dired+
     ;;wrap-region
-    helm
-    helm-projectile
+    ;;helm
+    ;;helm-projectile
     easy-kill
     js-beautify
     skewer-mode
@@ -81,7 +84,7 @@
     ;;    uniquify
     htmlize
     smartparens
-    drag-stuff
+    ;;drag-stuff
     ;; themes
     monokai-theme
     fancy-narrow
@@ -131,7 +134,7 @@
             ;; Activate the folding mode
             (hs-minor-mode t)
             (tern-mode 1)
-	    (flycheck-mode 1)
+            (flycheck-mode 1)
             ))
 
 (define-minor-mode sticky-buffer-mode
@@ -167,6 +170,9 @@
 (add-hook 'prog-mode-hook #'ws-butler-mode)
 (add-hook 'prog-mode-hook #'whitespace-mode)
 
+(require 'dired-x)
+(setq-default dired-omit-files-p nil) ; Buffer-local variable
+
 (progn
  ;; Make whitespace-mode with very basic background coloring for whitespaces.
   ;; http://ergoemacs.org/emacs/whitespace-mode.html
@@ -197,6 +203,20 @@
 (add-hook 'vue-mode-hook #'linum-mode)
 (add-hook 'vue-mode-hook #'whitespace-mode)
 (add-hook 'vue-mode-hook #'ws-butler-mode)
+
+
+(eval-after-load 'vue-mode
+  '(add-hook 'vue-mode-hook #'add-node-modules-path))
+
+(with-eval-after-load 'flycheck
+  (flycheck-add-mode 'javascript-eslint 'vue-mode)
+  (flycheck-add-mode 'javascript-eslint 'vue-html-mode)
+  (flycheck-add-mode 'javascript-eslint 'css-mode))
+  
+(add-hook 'vue-mode-hook 'flycheck-mode)
+
+(add-hook 'vue-html-mode-hook #'emmet-mode)
+
 
 (setq projectile-switch-project-action 'projectile-dired)
 (setq projectile-enable-caching t)
@@ -250,7 +270,7 @@
 (setq column-number-mode 1)
 ;; ido
 (ido-mode t)
-(ido-everywhere 1)
+;(ido-everywhere 1)
 (ido-vertical-mode t)
 (diredp-toggle-find-file-reuse-dir 1)
 (flx-ido-mode 1)
@@ -279,7 +299,7 @@
 (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main))))
 
 
-  (spaceline-helm-mode 1)
+  ;;(spaceline-helm-mode 1)
   (spaceline-emacs-theme)
 
 (require 'orginit)
@@ -369,6 +389,8 @@
 (require 'wrap-region)
 (wrap-region-add-wrapper "/* " " */" "#" '(javascript-mode css-mode js2-mode))
 (global-set-key (kbd "M-a") 'smex)
+
+(setq tide-tsserver-executable "/home/mico/.nvm/versions/node/v9.11.2/bin/tsserver")
 
 (setq-default cycle-bg-colors '("#111122" "#112211" "#221122" "#112222" "#00587b" "#004b15"))
 (require 'cycle-bg-colors)
@@ -488,6 +510,7 @@
 
 (setenv "PATH"
   (concat "/bin:"
+          "/home/mico/.nvm/versions/node/v9.11.2/bin:"
           (getenv "PATH")))
         
 (when (memq window-system '(mac ns x))
@@ -511,8 +534,8 @@
 (require 'jiffy)
 
 (setq transient-mark-mode t)
-(drag-stuff-global-mode t)
-(drag-stuff-define-keys)
+;;(drag-stuff-global-mode t)
+;;(drag-stuff-define-keys)
 ;; (require 'hiwin)
 ;; (hiwin-mode t)
 
