@@ -1,6 +1,6 @@
 (require 'company)
 (require 'flycheck)
-(require 'yasnippet)
+;;(require 'yasnippet)
 (require 'multi-compile)
 (require 'go-eldoc)
 (require 'company-go)

@@ -11,7 +11,6 @@
 ;;; first run will install these
 
 ;; these packages will be automatically installed if there is an internet connection
-
 (defvar packages-to-load
   '(
     elfeed ;; rss feed
@@ -33,6 +32,7 @@
     multi-compile
     go-eldoc
     auto-complete
+    gherkin-mode
     emmet-mode
     super-save
     multi-eshell
@@ -45,8 +45,12 @@
     js2-mode
     json-mode
     jsx-mode
+    tss
+    tide
+    typescript-mode
     rjsx-mode
     jira-markup-mode
+    nvm
     log4e
     yaxception
     tss
@@ -101,6 +105,7 @@
     dracula-theme
     lab-themes
     moe-theme
+    dracula-theme
     swap-regions
     bind-key
 ))
@@ -114,7 +119,6 @@
   (skewer-repl))
 
 (add-hook 'coffee-mode-hook '(lambda () (coffee-custom)))
-
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
@@ -123,13 +127,31 @@
 (add-hook 'js2-mode-hook 
           (lambda ()
             (auto-complete-mode 0)
-            (yas-minor-mode)
             (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
             (define-key js2-mode-map (kbd "C-r") 'run-skewer-repl)
             ;;(face-remap-add-relative 'mode-line '((:foreground "ivory" :background "DeepPink4") mode-line))
             ;;(define-key js2-mode-map (kbd "M-.") nil)
             (wrap-region-mode t)
             (js2-refactor-mode t)
+            (flow-minor-enable-automatically t)
+            ;;(tern-mode t)
+            ;; Activate the folding mode
+            (hs-minor-mode t)
+            (tern-mode 1)
+            (flycheck-mode 1)
+            ))
+
+;; vaana related
+(add-hook 'js-mode-hook
+          (lambda ()
+            (js2-minor-mode 1)
+            (auto-complete-mode 0)
+            (define-key js-mode-map (kbd "RET") 'newline-and-indent)
+            (define-key js-mode-map (kbd "C-r") 'run-skewer-repl)
+            ;;(face-remap-add-relative 'mode-line '((:foreground "ivory" :background "DeepPink4") mode-line))
+            ;;(define-key js2-mode-map (kbd "M-.") nil)
+            (wrap-region-mode t)
+            (flow-minor-mode t)
             ;;(tern-mode t)
             ;; Activate the folding mode
             (hs-minor-mode t)
@@ -170,6 +192,9 @@
 (add-hook 'prog-mode-hook #'ws-butler-mode)
 (add-hook 'prog-mode-hook #'whitespace-mode)
 
+(with-eval-after-load 'yasnippet
+  (require 'yas))
+
 (require 'dired-x)
 (setq-default dired-omit-files-p nil) ; Buffer-local variable
 
@@ -192,18 +217,21 @@
 (add-to-list 'auto-mode-alist '("\\.es6\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.flow\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jira\\'" . jira-markup-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.erl\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+(add-to-list 'auto-mode-alist '("\\.feature\\'" . gherkin-mode))
 
 (add-hook 'vue-mode-hook #'linum-mode)
 (add-hook 'vue-mode-hook #'whitespace-mode)
 (add-hook 'vue-mode-hook #'ws-butler-mode)
-
+(add-hook 'vue-mode-hook #'yas-minor-mode)
 
 (eval-after-load 'vue-mode
   '(add-hook 'vue-mode-hook #'add-node-modules-path))
@@ -211,12 +239,17 @@
 (with-eval-after-load 'flycheck
   (flycheck-add-mode 'javascript-eslint 'vue-mode)
   (flycheck-add-mode 'javascript-eslint 'vue-html-mode)
+;;  (flycheck-add-mode 'typescript-tslint 'vue-mode)
   (flycheck-add-mode 'javascript-eslint 'css-mode))
   
 (add-hook 'vue-mode-hook 'flycheck-mode)
+(add-hook 'vue-mode-hook 'emmet-mode)
+
 
 (add-hook 'vue-html-mode-hook #'emmet-mode)
 
+
+;;(add-hook 'vue-mode-hook #'setup-just-tide-mode)
 
 (setq projectile-switch-project-action 'projectile-dired)
 (setq projectile-enable-caching t)
@@ -249,14 +282,6 @@
 (setq password-cache-expiry nil)
 (setq tramp-verbose 6)
 
-;;yasnippets
-(setq yas-snippet-dirs
-      '("~/.emacs.d/yasnippets"))
-
-;;(load "~/.emacs.d/go-snippets/go-snippets.el")
-
-(require 'yasnippet)
-(yas/reload-all)
 
 ;;(setq projectile-indexing-method 'native)
 (projectile-global-mode)
@@ -378,9 +403,9 @@
   (add-pretty-symbols)
   (setq web-mode-enable-current-element-highlight t)
   (prettify-symbols-mode)
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2))
+  (setq web-mode-markup-indent-offset 4)
+  (setq web-mode-css-indent-offset 4)
+  (setq web-mode-code-indent-offset 4))
 
 (add-hook 'web-mode-hook 'my-web-mode-hook)
 
@@ -389,8 +414,6 @@
 (require 'wrap-region)
 (wrap-region-add-wrapper "/* " " */" "#" '(javascript-mode css-mode js2-mode))
 (global-set-key (kbd "M-a") 'smex)
-
-(setq tide-tsserver-executable "/home/mico/.nvm/versions/node/v9.11.2/bin/tsserver")
 
 (setq-default cycle-bg-colors '("#111122" "#112211" "#221122" "#112222" "#00587b" "#004b15"))
 (require 'cycle-bg-colors)
@@ -430,7 +453,6 @@
 
 ;; (require 'persp-projectile)
 ;;(require 'tern)
-;; yasnippet
 
 ;; theme setup
 ;;(load-theme 'hickey t) ;; looks nice, dark one
@@ -438,13 +460,8 @@
 ;;(require 'moe-theme)
 
 ;;(fringe-mode '(17 . 0))
+;; scroll one line at a time (less "jumpy" than defaults)
 
-;;(setq default-frame-alist
-;;      '(
-;;        (scroll-bar-width . 8)
-;;        ))
-
- ;; scroll one line at a time (less "jumpy" than defaults)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
@@ -470,6 +487,13 @@
 (setenv "webdriver.chrome.driver" "/usr/lib/chromium/chromedriver")
 (getenv "webdriver.chrome.driver")
 
+(getenv "HOME")
+
+(setenv "PATH"
+        (concat "/bin:"
+                (concat (getenv "HOME") "/.nvm:")
+                "/home/mico/.nvm/versions/node/v9.11.2/bin:"
+                (getenv "PATH")))
 
 (setenv "LD_LIBRARY_PATH"
         (concat
@@ -508,11 +532,7 @@
 
 (require 'json-reformat)
 
-(setenv "PATH"
-  (concat "/bin:"
-          "/home/mico/.nvm/versions/node/v9.11.2/bin:"
-          (getenv "PATH")))
-        
+
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
@@ -539,8 +559,12 @@
 ;; (require 'hiwin)
 ;; (hiwin-mode t)
 
+
+
 (require 'tscript)
+
 (tool-bar-mode -1)
+
 
 (require 'golang)
 
@@ -602,9 +626,10 @@
 ;; <till here>
 
 ;; dracula is a nice vibrant dark blue theme
-;;(require 'dracula-theme)
+(require 'dracula-theme)
 ;;(require 'lab-themes)
-(lab-themes-load-style 'dark)
+;;(lab-themes-load-style 'light)
+
 
 (setq-default cursor-type 'box) ;; bar
 ;;(blink-cursor-mode 2)
