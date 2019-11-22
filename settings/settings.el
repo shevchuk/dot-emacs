@@ -67,11 +67,11 @@
     (("~/Documents/personal-notes/today.org" :todo . "")
      ("~/Documents/personal-notes/this_week.org" :maxlevel . 9)
      ("~/Documents/personal-notes/later.org" :maxlevel . 9)
-     ("~/Documents/personal-notes/test_automation.org" :maxlevel . 9))))
+     ("~/Documents/personal-notes/test_automation.org" :maxlevel . 9))) t)
  '(org-yandex-weather-format "%C: %i %c, [%l,%h]%s %d%w")
  '(package-selected-packages
    (quote
-    (gherkin-mode flow-minor-mode mood-line add-node-modules-path espresso-theme kaolin-themes panda-theme edit-indirect ssass-mode vue-html-mode pretty-symbols lab-themes eruby-mode swap-regions jira-markup-mode rjsx-mode company company-tern tern-auto-complete tern js2-refactor dracula-theme easy-kill anti-zenburn-theme airline-themes annoying-arrows-mode mode-icons rainbow-mode unbound web-server jsx-mode multi-eshell super-save)))
+    (lsp-mode counsel-etags gherkin-mode flow-minor-mode mood-line add-node-modules-path espresso-theme kaolin-themes panda-theme edit-indirect ssass-mode vue-html-mode pretty-symbols lab-themes eruby-mode swap-regions jira-markup-mode rjsx-mode company company-tern tern-auto-complete tern js2-refactor dracula-theme easy-kill anti-zenburn-theme airline-themes annoying-arrows-mode mode-icons rainbow-mode unbound web-server jsx-mode multi-eshell super-save)))
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "./dist/" "./node_modules/" "./src/bower_components/")))

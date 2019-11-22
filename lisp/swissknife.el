@@ -129,4 +129,16 @@
 (setq google-translate-translation-directions-alist
       '(("en" . "ru") ("ru" . "en")))
 
+(defun replace-region-with-random-chars ()
+  "Replace selected region with random character, used to replace production data manually"
+  (interactive)
+
+  )
+
+(defun projectile-find-occurences ()
+  (interactive "P")
+  (copy-thing 'backward-word 'forward-word arg)
+  )
+
+
 (provide 'swissknife)

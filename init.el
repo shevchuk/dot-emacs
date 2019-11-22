@@ -13,8 +13,13 @@
 ;; these packages will be automatically installed if there is an internet connection
 (defvar packages-to-load
   '(
+    paredit
     elfeed ;; rss feed
     auto-complete
+    counsel-etags
+    markdown-mode
+    ht
+    spinner
     buffer-move
     restclient
     dired-details
@@ -43,6 +48,7 @@
     dsvn
     expand-region
     js2-mode
+    flow-js2-mode
     json-mode
     jsx-mode
     tss
@@ -53,18 +59,17 @@
     nvm
     log4e
     yaxception
-    tss
     go-mode
     ace-window
     yasnippet
     js2-refactor
     coffee-mode
     web-mode
+    php-mode
     magit
     auto-highlight-symbol
     add-node-modules-path ; needed for vue mode hooks
     highlight-parentheses
-    tern
     grizzl
     flx-ido
     smex
@@ -90,6 +95,7 @@
     smartparens
     ;;drag-stuff
     ;; themes
+    terraform-mode
     monokai-theme
     fancy-narrow
     s
@@ -110,6 +116,13 @@
     bind-key
 ))
 
+(add-hook 'terraform-mode-hook
+    (lambda ()
+        (lsp t)
+        (lsp-register-client
+            (make-lsp-client :new-connection (lsp-stdio-connection '("/home/mico/bin/tf-lsp/terraform-lsp" "-enable-log-file"))
+                  :major-modes '(terraform-mode)
+                  :server-id 'terraform-ls))))
 
 
 (defun run-skewer-repl ()
@@ -126,36 +139,16 @@
 ;; javascript
 (add-hook 'js2-mode-hook 
           (lambda ()
-            (auto-complete-mode 0)
             (define-key js2-mode-map (kbd "RET") 'newline-and-indent)
-            (define-key js2-mode-map (kbd "C-r") 'run-skewer-repl)
-            ;;(face-remap-add-relative 'mode-line '((:foreground "ivory" :background "DeepPink4") mode-line))
-            ;;(define-key js2-mode-map (kbd "M-.") nil)
             (wrap-region-mode t)
             (js2-refactor-mode t)
-            (flow-minor-enable-automatically t)
-            ;;(tern-mode t)
+            (flow-js2-mode t)
+            (smartparens-mode t)
             ;; Activate the folding mode
             (hs-minor-mode t)
-            (tern-mode 1)
-            (flycheck-mode 1)
-            ))
-
-;; vaana related
-(add-hook 'js-mode-hook
-          (lambda ()
-            (js2-minor-mode 1)
-            (auto-complete-mode 0)
-            (define-key js-mode-map (kbd "RET") 'newline-and-indent)
-            (define-key js-mode-map (kbd "C-r") 'run-skewer-repl)
-            ;;(face-remap-add-relative 'mode-line '((:foreground "ivory" :background "DeepPink4") mode-line))
-            ;;(define-key js2-mode-map (kbd "M-.") nil)
-            (wrap-region-mode t)
-            (flow-minor-mode t)
-            ;;(tern-mode t)
-            ;; Activate the folding mode
-            (hs-minor-mode t)
-            (tern-mode 1)
+            (rjsx-minor-mode t)
+            (lsp t)
+            (smartparens-mode t)
             (flycheck-mode 1)
             ))
 
@@ -179,18 +172,12 @@
                    (string-match "^\\([0-9]+\\)\t\\([0-9]+\\)\t" plus-minus)
                    (format " +%s-%s" (match-string 1 plus-minus) (match-string 2 plus-minus)))))))
 
-;;(eval-after-load 'tern
-;;   '(progn
-;;      (require 'tern-auto-complete)
-;;      (tern-ac-setup)))
-
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'after-init-hook 'global-diff-hl-mode)
 
-;;(add-to-list 'company-backends 'company-tern)
-
 (add-hook 'prog-mode-hook #'ws-butler-mode)
 (add-hook 'prog-mode-hook #'whitespace-mode)
+(add-hook 'prog-mode-hook #'linum-mode)
 
 (with-eval-after-load 'yasnippet
   (require 'yas))
@@ -212,15 +199,14 @@
           (tab-mark 9 [9655 9] [92 9]) ; tab
           )))
 
-(add-hook 'prog-mode-hook #'linum-mode)
 
 (add-to-list 'auto-mode-alist '("\\.es6\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
-(add-to-list 'auto-mode-alist '("\\.flow\\'" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.flow\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jira\\'" . jira-markup-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
@@ -245,7 +231,6 @@
 (add-hook 'vue-mode-hook 'flycheck-mode)
 (add-hook 'vue-mode-hook 'emmet-mode)
 
-
 (add-hook 'vue-html-mode-hook #'emmet-mode)
 
 
@@ -267,6 +252,8 @@
             list-buffers-directory
             default-directory))
     ad-do-it))
+
+(scroll-bar-mode 0)
 
 (scroll-lock-mode t)
 ;;(require 'undo-tree)
@@ -419,6 +406,7 @@
 (require 'cycle-bg-colors)
 
 (require 'swissknife)
+(require 'prodigy/vaana)
 (require 'etags-select)
 (require 'autocommit)
 
@@ -441,33 +429,11 @@
 
 (setq jit-lock-defer-time 0)
 (setq fast-but-imprecise-scrolling t)
-;;(require 'daylight)
-;;
-;;(setq daylight-morning-theme 'color-theme-scintilla
-;;      daylight-af
-;;oon-theme 'color-theme-aalto-light
-;;      daylight-evening-theme 'color-theme-parus
-;;      daylight-late-theme 'color-theme-comidia)
-;;
-;;(daylight-mode 1)
-
-;; (require 'persp-projectile)
-;;(require 'tern)
-
-;; theme setup
-;;(load-theme 'hickey t) ;; looks nice, dark one
-;;(load-theme 'flatui t) ;; not bad, lighter (grey) with no major bugs
-;;(require 'moe-theme)
-
-;;(fringe-mode '(17 . 0))
-;; scroll one line at a time (less "jumpy" than defaults)
 
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 (setq scroll-step 1) ;; keyboard scroll one line at a time
-
-
 
 ;; show full path in frame title for current buffer
 (setq frame-title-format
@@ -494,17 +460,6 @@
                 (concat (getenv "HOME") "/.nvm:")
                 "/home/mico/.nvm/versions/node/v9.11.2/bin:"
                 (getenv "PATH")))
-
-(setenv "LD_LIBRARY_PATH"
-        (concat
-         "/opt/oracle/instantclient" ":"
-         (getenv "LD_LIBRARY_PATH")))
-
-(setenv "OCI_LIB_DIR"
-        "/opt/oracle/instantclient")
-
-(setenv "OCI_INC_DIR"
-        "/opt/oracle/instantclient/sdk/include")
 
 ;; export NVM_DIR="$HOME/.nvm"
 (setenv "NVM_DIR" (concat (getenv "HOME") "/.nvm"))
@@ -600,36 +555,9 @@
 
 ;; We have CPU to spare; highlight all syntax categories.
 (setq font-lock-maximum-decoration t)
-;;(require 'sqlplus)
-
-;; https://github.com/kuanyui/moe-theme.el
-;;(require 'moe-theme)
-;;(moe-light)
-;;(moe-dark)
-;;(load-theme 'moe-light)
-;;(moe-theme-set-color 'yellow)
-;;(powerline-moe-theme)
-;;(moe-theme-set-color 'blue)
-
-;;(smart-mode-line-powerline-theme)
-;;(require 'material-light-theme)
-;;(load-theme 'material-light)
-;;(powerline-vim-theme)
-
-
-
-;; use these together for anti-zenburn (grey colors)
-;; <from here>
-;;(require 'airline-themes)
-;;(load-theme 'airline-sol)
-;;(load-theme 'anti-zenburn)
-;; <till here>
 
 ;; dracula is a nice vibrant dark blue theme
 (require 'dracula-theme)
-;;(require 'lab-themes)
-;;(lab-themes-load-style 'light)
-
 
 (setq-default cursor-type 'box) ;; bar
 ;;(blink-cursor-mode 2)

@@ -38,9 +38,7 @@
   (local-set-key (kbd "s-SPC") 'company-tern)
   (local-unset-key (kbd "M-j"))
   (local-set-key (kbd "<F9>") 'nodejs-repl-send-region)
-  (local-set-key (kbd "C-q") 'nodejs-repl-send-region)
-  (local-set-key (kbd "M-.") 'etags-select-find-tag-at-point)
-  (local-set-key (kbd "M-?") 'etags-select-find-tag))
+  (local-set-key (kbd "C-q") 'nodejs-repl-send-region))
 
 ;; projectile
 ;; key sequence
@@ -130,6 +128,7 @@
  ("M-8" . split-window-below)
  ("M-9" . split-window-right)
  ("M-s" . other-window)
+ ("<C-tab>" . other-frame)
  ("C-x C-j" . dired-jump)
  ("C-b" . bookmark-set)
  ("M-b" . bookmark-jump)
@@ -174,5 +173,6 @@
  ("C-k" . kill-whole-line)
  ("M-a" . mark-whole-buffer)
  ("<f10>" . icicle-select-frame)
+ ("M-." . lsp-find-definition)
  ("M-p" . ace-window))
 

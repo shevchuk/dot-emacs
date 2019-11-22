@@ -24,7 +24,7 @@
   (interactive)
   (let ((buffer-name-formatted (format "*eshell:%s*" default-directory)))
     (shell-with-name buffer-name-formatted)
-    (nvm-use-for)
+    (nvm-use-for default-directory)
     ))
 
 (defun eshell-execute-command (esh-buffer-name text)
