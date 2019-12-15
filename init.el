@@ -18,6 +18,7 @@
     auto-complete
     counsel-etags
     markdown-mode
+    prodigy
     ht
     spinner
     buffer-move
