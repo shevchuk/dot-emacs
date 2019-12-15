@@ -300,24 +300,13 @@
 
 (super-save-mode 1)
 
-;;(setq mode-icons-desaturate-active t)
-;;(mode-icons-mode t)
-
 (require 'bind-key)
 (require 'js-beautify)
-;;(set-default-font "Inconsolata LGC 10")
-;;(set-default-font "Fira Code Medium 13")
-(set-default-font "Hack 10")
-(add-to-list 'default-frame-alist
-             '(font . "Hack 10"))
-
-;;(set-frame-font "Hack:pixelsize=12")
 
 (require 'spaceline-config)
 
 (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main))))
 
-  ;;(spaceline-helm-mode 1)
 (spaceline-emacs-theme)
 
 (require 'orginit)
@@ -344,11 +333,6 @@
   (require 'erlang-flymake))
 
 ;; tabs
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 2)
-(setq tab-always-indent 'complete)
-(setq indent-line-function 'insert-tab)
-
 (defun add-pretty-symbols ()
   "make some word or string show as pretty Unicode symbols"
   (setq prettify-symbols-alist
@@ -373,8 +357,6 @@
   (setq web-mode-code-indent-offset 4))
 
 (add-hook 'web-mode-hook 'my-web-mode-hook)
-
-(put 'upcase-region 'disabled nil)
 
 (require 'wrap-region)
 (wrap-region-add-wrapper "/* " " */" "#" '(javascript-mode css-mode js2-mode))
@@ -406,14 +388,6 @@
 
 ;; Ask y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
-
-(setq jit-lock-defer-time 0)
-(setq fast-but-imprecise-scrolling t)
-
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
-(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-(setq scroll-step 1) ;; keyboard scroll one line at a time
 
 ;; show full path in frame title for current buffer
 (setq frame-title-format
@@ -456,7 +430,6 @@
 (require 'keymap)
 (setq vc-svn-diff-switches "-x --ignore-eol-style")
 ;;exec-path
-(put 'downcase-region 'disabled nil)
 
 (require 'buffer-move)
 (require 'keyfreq)
@@ -489,15 +462,5 @@
 (setq transient-mark-mode t)
 (tool-bar-mode -1)
 
-;; Use font-lock everywhere.
-(global-font-lock-mode t)
-
-;; We have CPU to spare; highlight all syntax categories.
-(setq font-lock-maximum-decoration t)
-
 ;; dracula is a nice vibrant dark blue theme
 (require 'dracula-theme)
-
-(setq-default cursor-type 'box) ;; bar
-;;(blink-cursor-mode 2)
-(set-cursor-color "#33ff00")
