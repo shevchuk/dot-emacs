@@ -515,27 +515,18 @@
 ;;(setq tumblesocks-blog "micoblog.tumblr.com")
 
 (require 'multi-eshell)
-(load "elisp-private/main")
 
-(setq transient-mark-mode t)
-;;(drag-stuff-global-mode t)
-;;(drag-stuff-define-keys)
-;; (require 'hiwin)
-;; (hiwin-mode t)
-
-
+(if (file-exists-p "~/.emacs.d/lisp/elisp-private/main.el")
+    (load "elisp-private/main")
+  (error "Run git clone https://github.com/shevchuk/elisp-private in ./lisp folder"))
 
 (require 'tscript)
-
-(tool-bar-mode -1)
-
-
 (require 'golang)
-
 (require 'macros)
 (require 'eshell-misc)
 
-
+(setq transient-mark-mode t)
+(tool-bar-mode -1)
 (auto-highlight-symbol-mode t)
 (highlight-parentheses-mode t)
 
