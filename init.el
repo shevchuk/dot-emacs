@@ -190,6 +190,11 @@
 (add-hook 'prog-mode-hook #'ws-butler-mode)
 (add-hook 'prog-mode-hook #'whitespace-mode)
 (add-hook 'prog-mode-hook #'linum-mode)
+(add-hook 'prog-mode-hook #'auto-highlight-symbol-mode)
+(add-hook 'prog-mode-hook #'highlight-parentheses-mode)
+;; Emacs gets annoyed when you navigate around your document one char at a time.
+(add-hook 'prog-mode-hook #'annoying-arrows-mode)
+(add-hook 'prog-mode-hook #'column-number-mode)
 
 (with-eval-after-load 'yasnippet
   (require 'yas))
@@ -251,9 +256,7 @@
 (setq projectile-enable-caching t)
 ;;(add-to-list 'projectile-globally-ignored-directories "node_modules")
 ;;(add-to-list 'projectile-globally-ignored-directories "dist")
-
 ;;(add-to-list 'projectile-globally-ignored-directories "node_modules")
-
 
 (defadvice projectile-on (around exlude-tramp activate)
     (unless  (--any? (and it (file-remote-p it))
@@ -263,9 +266,6 @@
             default-directory))
     ad-do-it))
 
-(scroll-bar-mode 0)
-
-(scroll-lock-mode t)
 ;;(require 'undo-tree)
 ;;(global-undo-tree-mode 1)
 ;;(diminish 'undo-tree-mode)
@@ -288,7 +288,6 @@
 ;; disable top menu 
 (menu-bar-mode -99)
 
-(setq column-number-mode 1)
 ;; ido
 (ido-mode t)
 ;(ido-everywhere 1)
@@ -484,14 +483,10 @@
 (require 'golang)
 (require 'macros)
 (require 'eshell-misc)
+(require 'editor)
 
 (setq transient-mark-mode t)
 (tool-bar-mode -1)
-(auto-highlight-symbol-mode t)
-(highlight-parentheses-mode t)
-
-;; Emacs gets annoyed when you navigate around your document one char at a time. 
-(annoying-arrows-mode t)
 
 ;; Use font-lock everywhere.
 (global-font-lock-mode t)
