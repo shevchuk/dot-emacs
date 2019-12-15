@@ -154,6 +154,8 @@
  ("<M-S-left>" . buf-move-left)
  ("<M-S-up>" . buf-move-up)
  ("<M-S-down>" . buf-move-down)
+ ("<M-up>" . move-text-up)
+ ("<M-down>" . move-text-down)
  ("M-u" . backward-word)
  ("M-o" . forward-word)
  ("M-j" . backward-char)

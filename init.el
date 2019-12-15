@@ -484,6 +484,7 @@
 (require 'macros)
 (require 'eshell-misc)
 (require 'editor)
+(require 'move-text)
 
 (setq transient-mark-mode t)
 (tool-bar-mode -1)
