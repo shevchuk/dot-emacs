@@ -279,7 +279,6 @@
 (setq password-cache-expiry nil)
 (setq tramp-verbose 6)
 
-
 ;;(setq projectile-indexing-method 'native)
 (projectile-global-mode)
 
@@ -323,35 +322,7 @@
 (spaceline-emacs-theme)
 
 (require 'orginit)
-;; эта часть настроек для доступа к Gmail по IMAP
-(setq elmo-imap4-default-server "imap.gmail.com"
-      elmo-imap4-default-user "mikhail.shevchuk@gmail.com"
-      elmo-imap4-default-authenticate-type 'clear
-      elmo-imap4-default-port '993
-      elmo-imap4-default-stream-type 'ssl
-      elmo-imap4-use-modified-utf7 t)
-
-;; тут настройки отвечающие за SMTP
-(setq wl-smtp-connection-type 'starttls
-      wl-smtp-posting-port 587
-      wl-smtp-authenticate-type "plain"
-      wl-smtp-posting-user "mikhail.shevchuk"
-      wl-smtp-posting-server "smtp.gmail.com"
-      wl-local-domain "gmail.com"
-      wl-message-id-domain "smtp.gmail.com")
-
-(setq wl-from "Mike Shevchuk"
-
-    ;; настройки папок IMAP
-    ;; если у вас в настройках gmail стоит русский язык то копируйте все как есть
-    ;; gmail создает имена папок в зависимости от локали
-    wl-default-folder "%inbox"
-    wl-draft-folder   "%[Gmail]/Черновики"
-    wl-trash-folder   "%[Gmail]/Корзина"
-    wl-fcc            "%[Gmail]/Отправленные"
-
-    wl-fcc-force-as-read    t
-    wl-default-spec "%")
+(require 'fb2-reader)
 
 (delete-selection-mode)
 
@@ -476,14 +447,12 @@
  
 ;; elfeed
 (setq elfeed-feeds
-      '(("http://alkatrion.com/?feed=rss2" velo)
-        ("http://nullprogram.com/feed/" emacs)
+        '(("http://nullprogram.com/feed/" emacs)
         ("http://habrahabr.ru/rss/company/kolibrios/blog/" kolibri)
         ("http://planet.emacsen.org/atom.xml" emacs)
         ("http://emacsredux.com/atom.xml" emacs)
         ("karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-only.xml" emacs)
         ("http://sachachua.com/blog/category/geek/emacs/feed/" emacs)))
-
 
 (require 'keymap)
 (setq vc-svn-diff-switches "-x --ignore-eol-style")
@@ -497,7 +466,6 @@
 
 (require 'json-reformat)
 
-
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
@@ -505,14 +473,6 @@
 
 ;; use Shift+arrow_keys to move cursor around split panes
 (windmove-default-keybindings)
-
-;;(add-to-list 'load-path
-;;             "/home/mico/.emacs.d/contrib/ecb")
-
-;;(require 'ecb)
-
-;;(require 'tumblesocks)
-;;(setq tumblesocks-blog "micoblog.tumblr.com")
 
 (require 'multi-eshell)
 
@@ -532,23 +492,6 @@
 
 ;; Emacs gets annoyed when you navigate around your document one char at a time. 
 (annoying-arrows-mode t)
-
-;Авто определение формата по расширению файла
-(add-to-list 'auto-mode-alist '(".fb2$" . fb2-mode-view))
- 
-;Функция для файлов .fb2 в режиме просмотра
- (defun fb2-mode-view()
-     (vc-toggle-read-only)
-     (interactive)
-     (sgml-mode)
-     (sgml-tags-invisible 0))
- 
-;Функция для файлов .fb2 в режиме редактирования
-(defun fb2-mode-edit()
-     (vc-toggle-read-only nil)
-     (interactive)
-     (sgml-mode)
-     (sgml-tags-invisible 0))
 
 ;; Use font-lock everywhere.
 (global-font-lock-mode t)
