@@ -71,7 +71,7 @@
  '(org-yandex-weather-format "%C: %i %c, [%l,%h]%s %d%w")
  '(package-selected-packages
    (quote
-    (lsp-mode counsel-etags gherkin-mode flow-minor-mode mood-line add-node-modules-path espresso-theme kaolin-themes panda-theme edit-indirect ssass-mode vue-html-mode pretty-symbols lab-themes eruby-mode swap-regions jira-markup-mode rjsx-mode company company-tern tern-auto-complete tern js2-refactor dracula-theme easy-kill anti-zenburn-theme airline-themes annoying-arrows-mode mode-icons rainbow-mode unbound web-server jsx-mode multi-eshell super-save)))
+    (vterm lsp-mode counsel-etags gherkin-mode flow-minor-mode mood-line add-node-modules-path espresso-theme kaolin-themes panda-theme edit-indirect ssass-mode vue-html-mode pretty-symbols lab-themes eruby-mode swap-regions jira-markup-mode rjsx-mode company company-tern tern-auto-complete tern js2-refactor dracula-theme easy-kill anti-zenburn-theme airline-themes annoying-arrows-mode mode-icons rainbow-mode unbound web-server jsx-mode multi-eshell super-save)))
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "./dist/" "./node_modules/" "./src/bower_components/")))
@@ -179,4 +179,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(mode-line ((((min-colors 16777216)) (:foreground nil :background "#44475a" :box "#44475a")) (t (:foreground nil :background "#44475a" :box "#44475a"))))
  '(whitespace-space ((t (:foreground "DarkOliveGreen")))))

@@ -49,6 +49,7 @@
     expand-region
     js2-mode
     flow-js2-mode
+    button-lock
     json-mode
     jsx-mode
     tss
@@ -135,6 +136,7 @@
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+(add-hook 'sh-mode-hook 'flycheck-mode)
 
 ;; javascript
 (add-hook 'js2-mode-hook 
@@ -151,6 +153,15 @@
             (smartparens-mode t)
             (flycheck-mode 1)
             ))
+
+(add-hook 'php-mode-hook
+          (lambda ()
+            (lsp t)))
+
+;; LSP :: You can configure this warning with the `lsp-enable-file-watchers' and `lsp-file-watch-threshold' variables
+(setq lsp-enable-file-watchers t)
+(setq lsp-file-watch-threshold 1000)
+
 
 (define-minor-mode sticky-buffer-mode
   "Make the current window always display this buffer."
@@ -233,7 +244,6 @@
 
 (add-hook 'vue-html-mode-hook #'emmet-mode)
 
-
 ;;(add-hook 'vue-mode-hook #'setup-just-tide-mode)
 
 (setq projectile-switch-project-action 'projectile-dired)
@@ -242,7 +252,6 @@
 ;;(add-to-list 'projectile-globally-ignored-directories "dist")
 
 ;;(add-to-list 'projectile-globally-ignored-directories "node_modules")
-
 
 
 (defadvice projectile-on (around exlude-tramp activate)
@@ -307,12 +316,10 @@
 
 (require 'spaceline-config)
 
-
 (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main))))
 
-
   ;;(spaceline-helm-mode 1)
-  (spaceline-emacs-theme)
+(spaceline-emacs-theme)
 
 (require 'orginit)
 ;; эта часть настроек для доступа к Gmail по IMAP
@@ -406,11 +413,13 @@
 (require 'cycle-bg-colors)
 
 (require 'swissknife)
-(require 'prodigy/vaana)
 (require 'etags-select)
 (require 'autocommit)
-
+(require 'issue-link)
 (require 'ws-butler)
+(require 'copy-as-format)
+
+(add-hook 'prog-mode-hook 'issue-link-mode) ;; converts issue lables into buttons
 
 (setq-default dired-details-hidden-string "--- ")
 (dired-details-install)
@@ -505,8 +514,7 @@
 ;;(setq tumblesocks-blog "micoblog.tumblr.com")
 
 (require 'multi-eshell)
-(require 'nordigy)
-(require 'jiffy)
+(load "elisp-private/main")
 
 (setq transient-mark-mode t)
 ;;(drag-stuff-global-mode t)

@@ -1,8 +1,0 @@
-(defun jiffy-get-current-path ()
-  (interactive)
-  (re-search-backward "[\"']" nil t)
-  (let ((beg (point)))
-    (re-search-forward "[\"']" nil t 2)
-    (message (buffer-substring beg (point))))
-  )
-;; (jiffy-go-to-component)
