@@ -106,11 +106,10 @@
     google-translate
     annoying-arrows-mode
     powerline
-    spaceline
+    ;spaceline
     yandex-weather
     airline-themes
     anti-zenburn-theme
-    dracula-theme
     lab-themes
     moe-theme
     dracula-theme
@@ -303,11 +302,9 @@
 (require 'bind-key)
 (require 'js-beautify)
 
-(require 'spaceline-config)
-
-(setq-default mode-line-format '("%e" (:eval (spaceline-ml-main))))
-
-(spaceline-emacs-theme)
+;(require 'spaceline-config)
+;(setq-default mode-line-format '("%e" (:eval (spaceline-ml-main))))
+;(spaceline-emacs-theme)
 
 (require 'orginit)
 (require 'fb2-reader)
@@ -424,6 +421,7 @@
         ("http://habrahabr.ru/rss/company/kolibrios/blog/" kolibri)
         ("http://planet.emacsen.org/atom.xml" emacs)
         ("http://emacsredux.com/atom.xml" emacs)
+        ("http://www.aaronsw.com/2002/feeds/pgessays.rss" misc)
         ("karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-only.xml" emacs)
         ("http://sachachua.com/blog/category/geek/emacs/feed/" emacs)))
 
@@ -462,5 +460,17 @@
 (setq transient-mark-mode t)
 (tool-bar-mode -1)
 
+;; DARK themes
 ;; dracula is a nice vibrant dark blue theme
-(require 'dracula-theme)
+;;(require 'dracula-theme)
+;;(load-theme 'night-owl)
+;;(load-theme 'modus-vivendi)
+
+;; LIGHT themes
+;;(load-theme 'modus-operandi)
+;(load-theme 'overcast)
+;(load-theme 'airline-luna)
+
+(load-theme 'night-owl)
+(load-theme 'airline-kolor)
+(require 'modeline)
