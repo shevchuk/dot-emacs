@@ -26,6 +26,7 @@
     dired-details
     helm-swoop
     color-theme
+    night-owl-theme
     diminish ;; hides modes from mode-line
     zoom-window
     sublime-themes
@@ -471,6 +472,6 @@
 ;(load-theme 'overcast)
 ;(load-theme 'airline-luna)
 
-(load-theme 'night-owl)
+(require 'night-owl-theme)
 (load-theme 'airline-kolor)
 (require 'modeline)
