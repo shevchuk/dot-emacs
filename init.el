@@ -138,6 +138,7 @@
 
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 (add-hook 'sh-mode-hook 'flycheck-mode)
+(require 'smartparens-config)
 
 ;; javascript
 (add-hook 'js2-mode-hook 
@@ -151,7 +152,6 @@
             (hs-minor-mode t)
             (rjsx-minor-mode t)
             (lsp t)
-            (smartparens-mode t)
             (flycheck-mode 1)
             ))
 
