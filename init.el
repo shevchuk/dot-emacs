@@ -138,7 +138,9 @@
 
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 (add-hook 'sh-mode-hook 'flycheck-mode)
-(require 'smartparens-config)
+
+(with-eval-after-load 'smartparens
+  (require 'smartparens-config))
 
 ;; javascript
 (add-hook 'js2-mode-hook 
