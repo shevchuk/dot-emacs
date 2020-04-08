@@ -424,13 +424,7 @@
  
 ;; elfeed
 (setq elfeed-feeds
-        '(("http://nullprogram.com/feed/" emacs)
-        ("http://habrahabr.ru/rss/company/kolibrios/blog/" kolibri)
-        ("http://planet.emacsen.org/atom.xml" emacs)
-        ("http://emacsredux.com/atom.xml" emacs)
-        ("http://www.aaronsw.com/2002/feeds/pgessays.rss" misc)
-        ("karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-only.xml" emacs)
-        ("http://sachachua.com/blog/category/geek/emacs/feed/" emacs)))
+        '(("http://planet.emacsen.org/atom.xml" emacs)))
 
 (require 'keymap)
 (setq vc-svn-diff-switches "-x --ignore-eol-style")
