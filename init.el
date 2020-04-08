@@ -106,7 +106,6 @@
     ag
     dash
     google-translate
-    annoying-arrows-mode
     powerline
     ;spaceline
     yandex-weather
