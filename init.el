@@ -424,7 +424,7 @@
  
 ;; elfeed
 (setq elfeed-feeds
-        '(("http://planet.emacsen.org/atom.xml" emacs)))
+        '(("https://planet.emacslife.com/atom.xml" emacs)))
 
 (require 'keymap)
 (setq vc-svn-diff-switches "-x --ignore-eol-style")
