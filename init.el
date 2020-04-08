@@ -112,6 +112,7 @@
     airline-themes
     anti-zenburn-theme
     lab-themes
+    doom-themes
     moe-theme
     dracula-theme
     swap-regions
@@ -477,6 +478,6 @@
 ;(load-theme 'overcast)
 ;(load-theme 'airline-luna)
 
-(require 'night-owl-theme)
-(load-theme 'airline-kolor)
+(load-theme 'doom-snazzy t)
+(load-theme 'airline-murmur)
 (require 'modeline)
