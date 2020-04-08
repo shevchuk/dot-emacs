@@ -190,13 +190,14 @@
 (add-hook 'after-init-hook 'global-diff-hl-mode)
 
 (add-hook 'prog-mode-hook #'ws-butler-mode)
+(add-hook 'prog-mode-hook #'smartparens-mode)
 (add-hook 'prog-mode-hook #'whitespace-mode)
 (add-hook 'prog-mode-hook #'linum-mode)
 (add-hook 'prog-mode-hook #'auto-highlight-symbol-mode)
 (add-hook 'prog-mode-hook #'highlight-parentheses-mode)
-;; Emacs gets annoyed when you navigate around your document one char at a time.
-(add-hook 'prog-mode-hook #'annoying-arrows-mode)
 (add-hook 'prog-mode-hook #'column-number-mode)
+(add-hook 'prog-mode-hook #'emmet-mode)
+(add-hook 'prog-mode-hook #'hl-line-mode)
 
 (with-eval-after-load 'yasnippet
   (require 'yas))
