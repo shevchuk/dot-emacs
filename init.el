@@ -90,6 +90,7 @@
     exec-path-from-shell
     nodejs-repl
     ;;org-reveal
+    org-plus-contrib
     wanderlust
     ztree
     ;;undo-tree
@@ -309,6 +310,8 @@
 ;(setq-default mode-line-format '("%e" (:eval (spaceline-ml-main))))
 ;(spaceline-emacs-theme)
 
+;; enable org-confluence-*
+(require 'ox-confluence)
 (require 'orginit)
 (require 'fb2-reader)
 
