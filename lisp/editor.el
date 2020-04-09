@@ -20,16 +20,21 @@
 (scroll-bar-mode 0)
 (scroll-lock-mode t)
 
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
+
 (set-default-font "Hack 11")
 (add-to-list 'default-frame-alist
              '(font . "Hack 11"))
 
 ;; Use font-lock everywhere.
-(global-font-lock-mode t)
+;(global-font-lock-mode t)
 
 ;; We have CPU to spare; highlight all syntax categories.
-(setq font-lock-maximum-decoration t)
+;;(setq font-lock-maximum-decoration t)
 
 (setq-default cursor-type 'box) ;; bar
 ;;(blink-cursor-mode 2)
 (set-cursor-color "#33ff00")
+
+(provide 'editor)

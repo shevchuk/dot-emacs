@@ -28,3 +28,4 @@
 
 
 ;;(add-hook 'tide-mode-hook #'tide-restart-server)
+(provide 'tscript)

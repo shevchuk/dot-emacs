@@ -20,3 +20,5 @@
 ("go-build-and-run" "go build -v && echo 'build finish' && eval ./${PWD##*/}"
    (multi-compile-locate-file-dir ".git"))))
     ))
+
+(provide 'golang)

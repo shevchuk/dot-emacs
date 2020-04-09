@@ -124,3 +124,4 @@ PWD is not in a hg repo (or the hg command is not found)."
 
 (setq eshell-highlight-prompt nil)
 
+(provide 'eshell-misc)
