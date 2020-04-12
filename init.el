@@ -13,6 +13,8 @@
 ;; these packages will be automatically installed if there is an internet connection
 (defvar packages-to-load
   '(
+    all-the-icons
+    dashboard
     paredit
     elfeed ;; rss feed
     auto-complete
@@ -31,8 +33,8 @@
     zoom-window
     sublime-themes
     ido-vertical-mode
+    flx-ido
     yaml-mode
-    company-mode
     company-go
     mmm-mode
     flycheck
@@ -46,14 +48,12 @@
     vue-mode
     diff-hl
     ws-butler
-    unicode-fonts
     dsvn
     expand-region
     js2-mode
     flow-js2-mode
     button-lock
     json-mode
-    jsx-mode
     tss
     tide
     typescript-mode
@@ -74,7 +74,6 @@
     add-node-modules-path ; needed for vue mode hooks
     highlight-parentheses
     grizzl
-    flx-ido
     smex
     unbound
     ;;helm-swoop
@@ -117,6 +116,9 @@
     dracula-theme
     swap-regions
     bind-key
+    cider
+    lastfm
+    vuiet
 ))
 
 (add-hook 'terraform-mode-hook
@@ -150,7 +152,6 @@
             (wrap-region-mode t)
             (js2-refactor-mode t)
             (flow-js2-mode t)
-            (smartparens-mode t)
             ;; Activate the folding mode
             (hs-minor-mode t)
             (rjsx-minor-mode t)
@@ -222,7 +223,7 @@
 
 
 (add-to-list 'auto-mode-alist '("\\.es6\\'" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.flow\\'" . js2-mode))
@@ -292,12 +293,15 @@
 ;; disable top menu 
 (menu-bar-mode -99)
 
+
 ;; ido
 (ido-mode t)
 ;(ido-everywhere 1)
 (ido-vertical-mode t)
+
 (diredp-toggle-find-file-reuse-dir 1)
-(flx-ido-mode 1)
+;;(flx-ido-mode 1)
+(setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
 
 (package-initialize)
@@ -314,7 +318,7 @@
 ;; enable org-confluence-*
 (require 'ox-confluence)
 (require 'orginit)
-(require 'fb2-reader)
+;;(require 'fb2-reader)
 
 (delete-selection-mode)
 
@@ -475,3 +479,20 @@
 (load-theme 'doom-snazzy t)
 (load-theme 'airline-murmur)
 (require 'modeline)
+
+(require 'all-the-icons)
+
+(setq dashboard-items '((recents  . 5)
+                        (bookmarks . 5)
+                        (projects . 5)
+                        (agenda . 5)
+                        (registers . 5)))
+
+;; Content is not centered by default. To center, set
+(setq dashboard-center-content t)
+(dashboard-setup-startup-hook)
+(setq dashboard-set-heading-icons t)
+(setq dashboard-set-file-icons t)
+
+(require 'lastfm)
+(require 'vuiet)
