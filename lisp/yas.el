@@ -6,3 +6,5 @@
 (setq yas-snippet-dirs
   '("~/.emacs.d/yasnippets"))
 (yas/reload-all)
+
+(provide 'yas)

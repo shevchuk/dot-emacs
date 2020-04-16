@@ -236,7 +236,6 @@
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 (add-to-list 'auto-mode-alist '("\\.feature\\'" . gherkin-mode))
 
-(add-hook 'vue-mode-hook #'linum-mode)
 (add-hook 'vue-mode-hook #'whitespace-mode)
 (add-hook 'vue-mode-hook #'ws-butler-mode)
 (add-hook 'vue-mode-hook #'yas-minor-mode)
