@@ -485,6 +485,8 @@
 
 (require 'all-the-icons)
 
+;; to make recent files section work in the dashboard, enabled recentf
+(recentf-mode 1)
 (setq dashboard-items '((recents  . 5)
                         (bookmarks . 5)
                         (projects . 5)
