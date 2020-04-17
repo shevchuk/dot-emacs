@@ -237,6 +237,7 @@
 ;;(add-to-list 'auto-mode-alist '("\\.erl\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 (add-to-list 'auto-mode-alist '("\\.feature\\'" . gherkin-mode))
+(add-to-list 'auto-mode-alist '("\\.puml\\'" . plantuml-mode))
 
 (add-hook 'vue-mode-hook #'whitespace-mode)
 (add-hook 'vue-mode-hook #'ws-butler-mode)
@@ -380,7 +381,7 @@
 (require 'issue-link)
 (require 'ws-butler)
 (require 'copy-as-format)
-
+(recentf-mode 1)
 (add-hook 'prog-mode-hook 'issue-link-mode) ;; converts issue lables into buttons
 
 (setq-default dired-details-hidden-string "--- ")
