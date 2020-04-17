@@ -105,6 +105,8 @@
     ag
     dash
     google-translate
+    plantuml-mode
+    flycheck-plantuml
     powerline
     ;spaceline
     yandex-weather
@@ -460,6 +462,7 @@
 (require 'eshell-misc)
 (require 'editor)
 (require 'move-text)
+(require 'puml)
 
 (setq transient-mark-mode t)
 (tool-bar-mode -1)
