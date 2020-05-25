@@ -104,7 +104,7 @@
     s
     ag
     dash
-    google-translate
+    google-translate-f279801
     plantuml-mode
     flycheck-plantuml
     powerline

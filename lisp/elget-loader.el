@@ -6,24 +6,28 @@
       '((:name grizzl
                :type github
                :pkgname "d11wtq/grizzl")
-	(:name flx
-	       :type github
-	       :pkgname "lewang/flx")
-    (:name org-jira
-           :type github
-           :pkgname "baohaojun/org-jira")
-    (:name ztree
-	   :type github
-	   :pkgname "fourier/ztree")
-    (:name js-beautify
-       :type github
-       :pkgname "einars/js-beautify")
-	(:name flx-ido 
-	       :description "flx-ido"
-	       :type http
-	       :url "https://github.com/lewang/flx/blob/master/flx-ido.el"
-	       :depends flx)
-      ))
+        (:name flx
+               :type github
+               :pkgname "lewang/flx")
+        (:name org-jira
+               :type github
+               :pkgname "baohaojun/org-jira")
+        (:name ztree
+               :type github
+               :pkgname "fourier/ztree")
+        (:name js-beautify
+               :type github
+               :pkgname "einars/js-beautify")
+        (:name flx-ido
+               :description "flx-ido"
+               :type http
+               :url "https://github.com/lewang/flx/blob/master/flx-ido.el"
+               :depends flx)
+        (:name google-translate-f279801
+               :description "Emacs interface to Google Translate"
+               :type github
+               :pkgname "f279801/google-translate")
+        ))
 
 (defun install-elget () 
   (progn 
