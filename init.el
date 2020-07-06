@@ -121,6 +121,7 @@
     cider
     lastfm
     vuiet
+    lsp-mode
 ))
 
 (add-hook 'terraform-mode-hook
