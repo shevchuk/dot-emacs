@@ -141,4 +141,16 @@
   )
 
 
+(defun json-pretty-print-from-string ()
+  "This command take a string and converts it into a prettified JSON"
+  (interactive)
+  (setq selected-string (buffer-substring-no-properties (mark) (point)))
+  (setq selected-json (json-read-from-string selected-string))
+  (kill-region (mark) (point))
+  (insert
+   (with-temp-buffer
+     (insert selected-json)
+     (json-pretty-print-buffer)
+     (buffer-string))))
+
 (provide 'swissknife)
