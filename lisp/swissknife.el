@@ -127,7 +127,7 @@
   (my-create-tags-if-needed (car (projectile-get-project-directories)) "" t))
 
 (setq google-translate-translation-directions-alist
-      '(("en" . "ru") ("ru" . "en")))
+      '(("fi" . "ru") ("ru" . "fi") ("en" . "ru") ("ru" . "en")))
 
 (defun replace-region-with-random-chars ()
   "Replace selected region with random character, used to replace production data manually"

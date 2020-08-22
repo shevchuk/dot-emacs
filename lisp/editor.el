@@ -9,6 +9,8 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
+(ctrlf-mode +1)
+
 ;; improve scrolling
 (setq jit-lock-defer-time 0)
 (setq fast-but-imprecise-scrolling t)
@@ -23,15 +25,16 @@
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 
-(set-default-font "Hack 11")
+(set-frame-font "Hack 11")
+
 (add-to-list 'default-frame-alist
              '(font . "Hack 11"))
 
 ;; Use font-lock everywhere.
-;(global-font-lock-mode t)
+(global-font-lock-mode t)
 
 ;; We have CPU to spare; highlight all syntax categories.
-;;(setq font-lock-maximum-decoration t)
+(setq font-lock-maximum-decoration t)
 
 (setq-default cursor-type 'box) ;; bar
 ;;(blink-cursor-mode 2)

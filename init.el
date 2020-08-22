@@ -13,11 +13,11 @@
 ;; these packages will be automatically installed if there is an internet connection
 (defvar packages-to-load
   '(
-    all-the-icons
     dashboard
     paredit
     elfeed ;; rss feed
     auto-complete
+    ctrlf
     counsel-etags
     markdown-mode
     prodigy
@@ -54,8 +54,6 @@
     flow-js2-mode
     button-lock
     json-mode
-    tss
-    tide
     typescript-mode
     rjsx-mode
     jira-markup-mode
@@ -76,12 +74,9 @@
     grizzl
     smex
     unbound
-    ;;helm-swoop
     projectile
     dired+
     ;;wrap-region
-    ;;helm
-    ;;helm-projectile
     easy-kill
     js-beautify
     skewer-mode
@@ -113,14 +108,16 @@
     airline-themes
     anti-zenburn-theme
     lab-themes
-    doom-themes
+    ;doom-themes
     moe-theme
     dracula-theme
     swap-regions
     bind-key
     cider
+    feature-mode
     lastfm
     vuiet
+    all-the-icons
     lsp-mode
 ))
 
@@ -161,6 +158,7 @@
             (lsp t)
             (flycheck-mode 1)
             ))
+
 
 (add-hook 'php-mode-hook
           (lambda ()
@@ -229,6 +227,7 @@
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.flow\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
@@ -255,10 +254,7 @@
   
 (add-hook 'vue-mode-hook 'flycheck-mode)
 (add-hook 'vue-mode-hook 'emmet-mode)
-
 (add-hook 'vue-html-mode-hook #'emmet-mode)
-
-;;(add-hook 'vue-mode-hook #'setup-just-tide-mode)
 
 (setq projectile-switch-project-action 'projectile-dired)
 (setq projectile-enable-caching t)
@@ -465,6 +461,7 @@
 (require 'editor)
 (require 'move-text)
 (require 'puml)
+(require 'all-the-icons)
 
 (setq transient-mark-mode t)
 (tool-bar-mode -1)
@@ -476,15 +473,14 @@
 ;;(load-theme 'modus-vivendi)
 
 ;; LIGHT themes
-;;(load-theme 'modus-operandi)
+(load-theme 'modus-operandi)
 ;(load-theme 'overcast)
 ;(load-theme 'airline-luna)
 
-(load-theme 'doom-snazzy t)
-(load-theme 'airline-murmur)
+;(load-theme 'doom-snazzy t)
+(load-theme 'airline-silver)
 (require 'modeline)
 
-(require 'all-the-icons)
 
 ;; to make recent files section work in the dashboard, enabled recentf
 (recentf-mode 1)
@@ -496,9 +492,10 @@
 
 ;; Content is not centered by default. To center, set
 (setq dashboard-center-content t)
+;(setq dashboard-set-heading-icons t)
+;(setq dashboard-set-file-icons t)
+
 (dashboard-setup-startup-hook)
-(setq dashboard-set-heading-icons t)
-(setq dashboard-set-file-icons t)
 
 (require 'lastfm)
 (require 'vuiet)
