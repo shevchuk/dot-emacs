@@ -119,6 +119,9 @@
     vuiet
     all-the-icons
     lsp-mode
+    posframe ;; required by dap-mode
+    dap-mode
+    jest-test-mode
 ))
 
 (add-hook 'terraform-mode-hook
@@ -156,9 +159,14 @@
             (hs-minor-mode t)
             (rjsx-minor-mode t)
             (lsp t)
+            (dap-mode t)
             (flycheck-mode 1)
             ))
 
+(add-hook 'dap-mode-hook
+          (lambda ()
+            (require 'dap-chrome)))
+;;(require 'dap-chrome)
 
 (add-hook 'php-mode-hook
           (lambda ()

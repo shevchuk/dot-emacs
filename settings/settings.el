@@ -61,7 +61,7 @@
  '(org-yandex-weather-format "%C: %i %c, [%l,%h]%s %d%w")
  '(package-selected-packages
    (quote
-    (pfuture org-plus-contrib org ivy ctrlf bind-key selectrum all-the-icons request overcast-theme modus-operandi-theme night-owl-theme modus-vivendi-theme vterm lsp-mode counsel-etags gherkin-mode flow-minor-mode mood-line add-node-modules-path espresso-theme kaolin-themes panda-theme edit-indirect ssass-mode vue-html-mode pretty-symbols lab-themes eruby-mode swap-regions jira-markup-mode rjsx-mode company company-tern tern-auto-complete tern js2-refactor dracula-theme easy-kill anti-zenburn-theme airline-themes annoying-arrows-mode mode-icons rainbow-mode unbound web-server jsx-mode multi-eshell super-save)))
+    (jest-test-mode pfuture org-plus-contrib org ivy ctrlf bind-key selectrum all-the-icons request overcast-theme modus-operandi-theme night-owl-theme modus-vivendi-theme vterm lsp-mode counsel-etags gherkin-mode flow-minor-mode mood-line add-node-modules-path espresso-theme kaolin-themes panda-theme edit-indirect ssass-mode vue-html-mode pretty-symbols lab-themes eruby-mode swap-regions jira-markup-mode rjsx-mode company company-tern tern-auto-complete tern js2-refactor dracula-theme easy-kill anti-zenburn-theme airline-themes annoying-arrows-mode mode-icons rainbow-mode unbound web-server jsx-mode multi-eshell super-save)))
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "./dist/" "./node_modules/" "./src/bower_components/")))
