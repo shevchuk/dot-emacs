@@ -36,6 +36,7 @@
   "my keybindings for js2-mode"
   (local-set-key (kbd "C-c C-b") 'js-beautify)
   (local-set-key (kbd "s-SPC") 'company-tern)
+  (local-set-key (kbd "C-c C-j") 'lsp-execute-code-action)
   (local-unset-key (kbd "M-j"))
   (local-set-key (kbd "<F9>") 'nodejs-repl-send-region)
   (local-set-key (kbd "C-q") 'nodejs-repl-send-region))

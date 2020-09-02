@@ -1,6 +1,6 @@
 ;; org
 
-(setq org-agenda-files (list "~/Documents/personal-notes/"))
+(setq org-agenda-files (list "~/Documents/personal-notes/" "~/Documents/finland/"))
 ;;(setq org-agenda-files (list "~/Documents/personal-notes/work.org"
 ;;                             "~/Documents/personal-notes/nodify.org"
 ;;                             "~/Documents/personal-notes/notes.org"

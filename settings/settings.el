@@ -8,6 +8,7 @@
  '(ansi-color-names-vector
    ["#000000" "#a60000" "#005e00" "#813e00" "#0030a6" "#721045" "#00538b" "#ffffff"])
  '(aw-dispatch-always t)
+ '(case-fold-search nil)
  '(coffee-tab-width 2)
  '(column-number-mode 1)
  '(comment-style (quote box-multi))

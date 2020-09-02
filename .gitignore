@@ -1,6 +1,8 @@
 ac-comphist.dat
 el-getel-get
 bookmarks
+eshell/history
+eshell/lastdir
 el-get
 projectile-bookmarks.eld
 url
