@@ -20,3 +20,5 @@ Remap caps lock to alt key using this:
                     
 In order to run tern correctly:
     - go into el-get/tern and run npm install there
+    
+In order to render some PUML files 'graphviz' is required to be installed
