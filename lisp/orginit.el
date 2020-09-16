@@ -81,7 +81,8 @@
             (when (eq system-type 'darwin) 
               (require 'unicode-fonts)
               (unicode-fonts-setup))
-            (auto-revert-mode t)))
+            (auto-revert-mode t)
+            (visual-line-mode t)))
             ;;(add-hook 'after-save-hook 'autocommit-after-save-hook nil 'make-it-local)))
 
 ;; mobileorg
