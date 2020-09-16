@@ -325,6 +325,8 @@
 ;; enable org-confluence-*
 (require 'ox-confluence)
 (require 'orginit)
+(require 'magit-tools)
+
 ;;(require 'fb2-reader)
 
 (delete-selection-mode)
