@@ -7,6 +7,6 @@
             (eldoc-mode +1)
             (emmet-mode t)
             (jest-test-mode t)
-            (lsp t)))
+            ))
 
 (provide 'tscript)

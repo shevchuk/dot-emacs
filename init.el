@@ -118,19 +118,16 @@
     lastfm
     vuiet
     all-the-icons
-    lsp-mode
-    posframe ;; required by dap-mode
-    dap-mode
     jest-test-mode
 ))
 
-(add-hook 'terraform-mode-hook
-    (lambda ()
-        (lsp t)
-        (lsp-register-client
-            (make-lsp-client :new-connection (lsp-stdio-connection '("/home/mico/bin/tf-lsp/terraform-lsp" "-enable-log-file"))
-                  :major-modes '(terraform-mode)
-                  :server-id 'terraform-ls))))
+;(add-hook 'terraform-mode-hook
+;    (lambda ()
+;        (lsp)
+;        (lsp-register-client
+;            (make-lsp-client :new-connection (lsp-stdio-connection '("/home/mico/bin/tf-lsp/terraform-lsp" "-enable-log-file"))
+;                  :major-modes '(terraform-mode)
+;                  :server-id 'terraform-ls))))
 
 
 (defun run-skewer-repl ()
@@ -158,23 +155,12 @@
             ;; Activate the folding mode
             (hs-minor-mode t)
             (rjsx-minor-mode t)
-            (lsp t)
-            (dap-mode t)
             (flycheck-mode 1)
             ))
 
-(add-hook 'dap-mode-hook
-          (lambda ()
-            (require 'dap-chrome)))
-;;(require 'dap-chrome)
-
-(add-hook 'php-mode-hook
-          (lambda ()
-            (lsp t)))
-
 ;; LSP :: You can configure this warning with the `lsp-enable-file-watchers' and `lsp-file-watch-threshold' variables
-(setq lsp-enable-file-watchers t)
-(setq lsp-file-watch-threshold 1000)
+;(setq lsp-enable-file-watchers t)
+;(setq lsp-file-watch-threshold 1000)
 
 
 (define-minor-mode sticky-buffer-mode
@@ -209,6 +195,7 @@
 (add-hook 'prog-mode-hook #'column-number-mode)
 (add-hook 'prog-mode-hook #'emmet-mode)
 (add-hook 'prog-mode-hook #'hl-line-mode)
+(add-hook 'prog-mode-hook 'lsp)
 
 (with-eval-after-load 'yasnippet
   (require 'yas))
@@ -429,7 +416,7 @@
 (setenv "PATH"
         (concat "/bin:"
                 (concat (getenv "HOME") "/.nvm:")
-                "/home/mico/.nvm/versions/node/v9.11.2/bin:"
+                "/home/mico/.nvm/versions/node/v12.18.0/bin/:"
                 (getenv "PATH")))
 
 ;; export NVM_DIR="$HOME/.nvm"

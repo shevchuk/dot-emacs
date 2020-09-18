@@ -36,7 +36,7 @@
   "my keybindings for js2-mode"
   (local-set-key (kbd "C-c C-b") 'js-beautify)
   (local-set-key (kbd "s-SPC") 'company-tern)
-  (local-set-key (kbd "C-c C-j") 'lsp-execute-code-action)
+  ;(local-set-key (kbd "C-c C-j") 'lsp-execute-code-action)
   (local-unset-key (kbd "M-j"))
   (local-set-key (kbd "<F9>") 'nodejs-repl-send-region)
   (local-set-key (kbd "C-q") 'nodejs-repl-send-region))
@@ -107,11 +107,12 @@
 ;; todo change keybindings here
 (setq org-log-done t)
 
-(add-hook 'lsp-mode-hook 'lsp-mode-keys)
+;(add-hook 'lsp-mode-hook 'lsp-mode-keys)
 
-(defun lsp-mode-keys ()
-  "keybindings for the lsp-mode"
-  (local-set-key (kbd "C-c e") 'lsp-execute-code-action))
+
+;(defun lsp-mode-keys ()
+;  "keybindings for the lsp-mode"
+;  (local-set-key (kbd "C-c e") 'lsp-execute-code-action))
 
 ;; mapping to caps/control as C and cmd as alt(meta)
 (when (eq system-type 'darwin) ;; mac specific settings
@@ -182,7 +183,7 @@
  ("C-k" . kill-whole-line)
  ("M-a" . mark-whole-buffer)
  ("<f10>" . icicle-select-frame)
- ("M-." . lsp-find-definition)
+ ;("M-." . lsp-find-definition)
  ("M-p" . ace-window))
 
 (provide 'keymap)
