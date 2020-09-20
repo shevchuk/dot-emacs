@@ -119,6 +119,8 @@
   (setq mac-option-modifier 'control)
   (setq mac-command-modifier 'meta))
 
+(define-key lsp-mode-map (kbd "<f8>") lsp-command-map)
+
 (bind-keys*
  ("M-x" . kill-region)
  ("M-d" . kill-word-at-point)
@@ -146,10 +148,10 @@
  ("<f4>" . ido-find-file)
  ("<f12>" . smex)
  ("M-O" . projectile-find-file)
- ("M-F" . ag-project)
+ ("M-F" . projectile-grep)
  ("C-z" . zoom-window-zoom)
  ("<f5>" . revert-buffer)
- ("<f8>" . shell-cmd-key-map)
+ ;("<f8>" . shell-cmd-key-map)
  ("C-," . toggle-kbd-macro-recording-on)
  ("C-." . call-last-kbd-macro)
  ("C-k" . kill-whole-line)

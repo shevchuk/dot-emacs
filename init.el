@@ -25,9 +25,11 @@
 (use-package lsp-mode
   :ensure t
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-	 (typescript-mode . lsp)
-	 ;; if you want which-key integration
-	 (lsp-mode . lsp-enable-which-key-integration))
+         (typescript-mode . lsp)
+         ;; if you want which-key integration
+         (lsp-mode . (lambda ()
+                      (let ((lsp-keymap-prefix "<F8>"))
+                        (lsp-enable-which-key-integration)))))
   :commands lsp)
 
 ;; optionally
@@ -44,8 +46,16 @@
 
 ;; these packages will be automatically installed if there is an internet connection
 ;(defvar packages-to-load
-					;  '(
-(use-package which-key :ensure t)
+(use-package which-key
+  :ensure t
+  :custom
+  (which-key-popup-type 'side-window)
+  (which-key-side-window-location 'bottom)
+  (which-key-side-window-max-height 0.25)
+  :bind
+  ("C-h C-k" . which-key-show-top-level)
+  :config
+  (which-key-mode))
 (use-package smex :ensure t)
 (use-package dashboard :ensure t)
 (use-package ctrlf :ensure t)
