@@ -2,6 +2,10 @@
 ;; tabs
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
+
+(setq-default js-indent-level 2)
+(setq-default typescript-indent-level 2)
+
 (setq tab-always-indent 'complete)
 (setq indent-line-function 'insert-tab)
 

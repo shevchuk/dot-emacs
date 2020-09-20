@@ -147,7 +147,6 @@
 ;(require 'autocommit)
 ;(require 'buffer-move)
 ;(require 'copy-as-format)
-(require 'editor)
 (require 'env-setup)
 ;(require 'eshell-misc)
 ;(require 'etags-select)
@@ -168,6 +167,8 @@
 (require 'swissknife)
 (require 'transpose-frame)
 (require 'ui-setup)
+(require 'editor)
+
 ;(require 'vuiet)
 ;(require 'web-dev)
 ;(require 'wrap-region)

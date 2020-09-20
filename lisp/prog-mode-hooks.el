@@ -1,7 +1,7 @@
 ;(add-hook 'after-init-hook 'global-company-mode)
 ;(add-hook 'after-init-hook 'global-diff-hl-mode)
 
-(add-hook 'prog-mode-hook 'lsp-deferred)
+;(add-hook 'prog-mode-hook 'lsp-deferred)
 (add-hook 'prog-mode-hook #'ws-butler-mode)
 (add-hook 'prog-mode-hook #'smartparens-mode)
 (add-hook 'prog-mode-hook #'whitespace-mode)
