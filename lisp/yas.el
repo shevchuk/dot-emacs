@@ -1,3 +1,7 @@
+; snippets
+(with-eval-after-load 'yasnippet
+  (require 'yas))
+
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 (add-hook 'vue-mode-hook #'yas-minor-mode)
   

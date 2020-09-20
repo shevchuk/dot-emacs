@@ -22,6 +22,9 @@
 (scroll-bar-mode 0)
 (scroll-lock-mode t)
 
+(with-eval-after-load 'smartparens
+  (require 'smartparens-config))
+
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 
@@ -38,6 +41,25 @@
 
 (setq-default cursor-type 'box) ;; bar
 ;;(blink-cursor-mode 2)
-(set-cursor-color "#33ff00")
+(set-cursor-color "#FF00D4") ; pink
+
+(progn
+ ;; Make whitespace-mode with very basic background coloring for whitespaces.
+  ;; http://ergoemacs.org/emacs/whitespace-mode.html
+  (setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark )))
+
+  ;; Make whitespace-mode and whitespace-newline-mode use “¶” for end of line char and “▷” for tab.
+  (setq whitespace-display-mappings
+        ;; all numbers are unicode codepoint in decimal. e.g. (insert-char 182 1)
+        '(
+          (space-mark 32 [183] [46]) ; SPACE 32 「 」, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
+          (newline-mark 10 [8629 10]) ; LINE FEED,
+          (tab-mark 9 [9655 9] [92 9]) ; tab
+          )))
+
+(with-eval-after-load 'flycheck
+  (flycheck-add-mode 'javascript-eslint 'vue-mode)
+  (flycheck-add-mode 'javascript-eslint 'vue-html-mode)
+  (flycheck-add-mode 'javascript-eslint 'css-mode))
 
 (provide 'editor)
