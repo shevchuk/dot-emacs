@@ -188,7 +188,10 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company company-mode company-capf modus-operandi-theme dap-firefox use-package))))
+    (company company-mode company-capf modus-operandi-theme dap-firefox use-package)))
+ '(projectile-globally-ignored-directories
+   (quote
+    (".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
