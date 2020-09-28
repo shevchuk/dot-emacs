@@ -41,6 +41,13 @@
 (use-package dap-mode :ensure t)
 (use-package dap-firefox) ;to load the dap adapter for your language
 (use-package company :ensure t)
+(use-package lsp-python-ms
+  :ensure t
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-python-ms)
+                         (lsp)))
+  :init
+  (setq lsp-python-ms-executable (executable-find "python-language-server")))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 ;;; first run will install these
 
@@ -188,10 +195,10 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company company-mode company-capf modus-operandi-theme dap-firefox use-package)))
+    (lsp-python-ms company company-mode company-capf modus-operandi-theme dap-firefox use-package)))
  '(projectile-globally-ignored-directories
    (quote
-    (".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build"))))
+    (".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build" "node_modules"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
