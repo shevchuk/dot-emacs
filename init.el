@@ -70,7 +70,12 @@
 (use-package buffer-move :ensure t)
 ;(use-package dired-details :ensure t)
 (use-package helm-swoop :ensure t)
-	
+(use-package elm-mode :ensure t)
+(use-package purescript-mode :ensure t)
+(use-package haskell-mode
+  :ensure t
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (haskell-mode . interactive-haskell-mode)))
     ;color-theme
     ;zoom-window
     ;ido-vertical-mode
@@ -102,7 +107,7 @@
     ;yasnippet
     ;js2-refactor
     ;web-mode
-    ;php-mode
+ (use-package php-mode :ensure t)
  (use-package magit :ensure t)
  (use-package auto-highlight-symbol :ensure t)
     ;add-node-modules-path ; needed for vue mode hooks
@@ -123,7 +128,8 @@
     ;wanderlust
     ;htmlize
  (use-package smartparens :ensure t)
- (use-package terraform-mode :ensure t)
+(use-package terraform-mode :ensure t)
+(use-package vuiet :ensure t)
     ;fancy-narrow
     ;s
     ;ag
@@ -134,7 +140,7 @@
     ;powerline
     ;swap-regions
     ;bind-key
-    ;cider
+ (use-package cider :ensure t)
     ;feature-mode
     ;lastfm
     ;vuiet
@@ -195,7 +201,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (lsp-python-ms company company-mode company-capf modus-operandi-theme dap-firefox use-package)))
+    (purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme dap-firefox use-package)))
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build" "node_modules"))))
