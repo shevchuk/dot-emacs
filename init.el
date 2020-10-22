@@ -28,8 +28,8 @@
          (typescript-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . (lambda ()
-                      (let ((lsp-keymap-prefix "<F8>"))
-                        (lsp-enable-which-key-integration)))))
+                       (let ((lsp-keymap-prefix "<F8>"))
+                         (lsp-enable-which-key-integration)))))
   :commands lsp)
 
 ;; optionally
@@ -52,7 +52,7 @@
 ;;; first run will install these
 
 ;; these packages will be automatically installed if there is an internet connection
-;(defvar packages-to-load
+                                        ;(defvar packages-to-load
 (use-package which-key
   :ensure t
   :custom
@@ -64,88 +64,108 @@
   :config
   (which-key-mode))
 (use-package smex :ensure t)
+(use-package ytdl
+  :ensure t
+  :init
+  (setq ytdl-music-folder (expand-file-name "~/Music")))
 (use-package dashboard :ensure t)
 (use-package ctrlf :ensure t)
 (use-package prodigy :ensure t)
 (use-package buffer-move :ensure t)
-;(use-package dired-details :ensure t)
+                                        ;(use-package dired-details :ensure t)
 (use-package helm-swoop :ensure t)
+(use-package flx-ido
+  :ensure t
+  :init
+  (flx-ido-mode 1))
+
 (use-package elm-mode :ensure t)
 (use-package purescript-mode :ensure t)
 (use-package haskell-mode
   :ensure t
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (haskell-mode . interactive-haskell-mode)))
-    ;color-theme
-    ;zoom-window
-    ;ido-vertical-mode
-    ;flx-ido
-    ;yaml-mode
-    ;company-go
-    ;mmm-mode
-    ;multi-compile
-    ;go-eldoc
-    ;gherkin-mode
- (use-package emmet-mode :ensure t)
- (use-package super-save :ensure t)
-    ;multi-eshell
-    ;vue-mode
- (use-package diff-hl :ensure t)
- (use-package ws-butler :ensure t)
- (use-package expand-region :ensure t)
-    ;js2-mode
-    ;flow-js2-mode
-    ;button-lock
-    ;json-mode
-    ;typescript-mode
-    ;rjsx-mode
-    ;jira-markup-mode
-    ;nvm
-    ;log4e
-    ;go-mode
-    ;ace-window
-    ;yasnippet
-    ;js2-refactor
-    ;web-mode
- (use-package php-mode :ensure t)
- (use-package magit :ensure t)
- (use-package auto-highlight-symbol :ensure t)
-    ;add-node-modules-path ; needed for vue mode hooks
- (use-package highlight-parentheses :ensure t)
-    ;grizzl
-    ;smex
-    ;unbound
- (use-package projectile :ensure t)
- ;(use-package dired+ :ensure t)
-    ;;wrap-region
-    ;easy-kill
-    ;js-beautify
-    ;perspective
-    ;exec-path-from-shell
-    ;nodejs-repl
-    ;;org-reveal
-    ;org-plus-contrib
-    ;wanderlust
-    ;htmlize
- (use-package smartparens :ensure t)
+                                        ;color-theme
+                                        ;zoom-window
+                                        ;ido-vertical-mode
+                                        ;flx-ido
+                                        ;yaml-mode
+                                        ;company-go
+                                        ;mmm-mode
+                                        ;multi-compile
+                                        ;go-eldoc
+                                        ;gherkin-mode
+(use-package emmet-mode :ensure t)
+(use-package super-save :ensure t)
+                                        ;multi-eshell
+                                        ;vue-mode
+(use-package diff-hl :ensure t)
+(use-package ws-butler :ensure t)
+(use-package expand-region :ensure t)
+                                        ;js2-mode
+                                        ;flow-js2-mode
+                                        ;button-lock
+                                        ;json-mode
+                                        ;typescript-mode
+                                        ;rjsx-mode
+                                        ;jira-markup-mode
+                                        ;nvm
+                                        ;log4e
+                                        ;go-mode
+                                        ;ace-window
+                                        ;yasnippet
+                                        ;js2-refactor
+                                        ;web-mode
+(use-package yasnippet
+  :ensure t
+  :hook ((prog-mode . yas-minor-mode))
+  :config
+  (add-to-list 'yas-snippet-dirs "~/.emacs.d/yasnippets")
+  (yas-reload-all))
+
+(use-package yasnippet-snippets
+  :ensure t
+  :after (yasnippet))
+
+(use-package php-mode :ensure t)
+(use-package magit :ensure t)
+(use-package auto-highlight-symbol :ensure t)
+                                        ;add-node-modules-path ; needed for vue mode hooks
+(use-package highlight-parentheses :ensure t)
+                                        ;grizzl
+                                        ;smex
+                                        ;unbound
+(use-package projectile :ensure t)
+                                        ;(use-package dired+ :ensure t)
+;;wrap-region
+                                        ;easy-kill
+                                        ;js-beautify
+                                        ;perspective
+                                        ;exec-path-from-shell
+                                        ;nodejs-repl
+;;org-reveal
+                                        ;org-plus-contrib
+                                        ;wanderlust
+                                        ;htmlize
+(use-package smartparens :ensure t)
 (use-package terraform-mode :ensure t)
 (use-package vuiet :ensure t)
-    ;fancy-narrow
-    ;s
-    ;ag
-    ;dash
-    ;google-translate-f279801
-    ;plantuml-mode
- (use-package flycheck-plantuml :ensure t)
-    ;powerline
-    ;swap-regions
-    ;bind-key
- (use-package cider :ensure t)
-    ;feature-mode
-    ;lastfm
-    ;vuiet
-    ;jest-test-mode
-;))
+                                        ;fancy-narrow
+                                        ;s
+                                        ;ag
+                                        ;dash
+                                        ;google-translate-f279801
+                                        ;plantuml-mode
+(use-package flycheck-plantuml :ensure t)
+                                        ;powerline
+                                        ;swap-regions
+                                        ;bind-key
+(use-package cider :ensure t)
+                                        ;feature-mode
+                                        ;lastfm
+                                        ;vuiet
+                                        ;jest-test-mode
+                                        ;))
 
 (use-package all-the-icons :ensure t)
 
@@ -153,43 +173,43 @@
 (use-package powerline :ensure t)
 (use-package airline-themes :ensure t)
 ;; install packages if they are not installed yet
-;(require 'elget-loader)
-;(install-and-load packages-to-load)
-;(package-initialize)
+                                        ;(require 'elget-loader)
+                                        ;(install-and-load packages-to-load)
+                                        ;(package-initialize)
 
-;(require 'autocommit)
-;(require 'buffer-move)
-;(require 'copy-as-format)
+                                        ;(require 'autocommit)
+                                        ;(require 'buffer-move)
+                                        ;(require 'copy-as-format)
 (require 'env-setup)
-;(require 'eshell-misc)
-;(require 'etags-select)
-;(require 'ido-setup)
-;(require 'issue-link)
-;(require 'js-beautify)
-;(require 'json-reformat)
-;(require 'lastfm)
-;(require 'macros)
+                                        ;(require 'eshell-misc)
+                                        ;(require 'etags-select)
+                                        ;(require 'ido-setup)
+                                        ;(require 'issue-link)
+                                        ;(require 'js-beautify)
+                                        ;(require 'json-reformat)
+                                        ;(require 'lastfm)
+                                        ;(require 'macros)
 (require 'magit-tools)
-;(require 'move-text)
-;(require 'multi-eshell)
-;(require 'orginit)
-;(require 'ox-confluence)
+                                        ;(require 'move-text)
+                                        ;(require 'multi-eshell)
+                                        ;(require 'orginit)
+                                        ;(require 'ox-confluence)
 (require 'prog-mode-hooks)
-;(require 'projectile-setup)
-;(require 'puml)
+                                        ;(require 'projectile-setup)
+                                        ;(require 'puml)
 (require 'swissknife)
 (require 'transpose-frame)
 (require 'ui-setup)
 (require 'editor)
 
-;(require 'vuiet)
-;(require 'web-dev)
-;(require 'wrap-region)
+                                        ;(require 'vuiet)
+                                        ;(require 'web-dev)
+                                        ;(require 'wrap-region)
 (require 'ws-butler)
-;(require 'erlang-dev)
-;(require 'golang)
-;(require 'tscript)
-;(require 'bind-key)
+                                        ;(require 'erlang-dev)
+                                        ;(require 'golang)
+                                        ;(require 'tscript)
+                                        ;(require 'bind-key)
 (require 'keymap)
 
 (setq lsp-log-io t)
@@ -201,7 +221,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme dap-firefox use-package)))
+    (yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme dap-firefox use-package)))
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build" "node_modules"))))

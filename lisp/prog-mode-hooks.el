@@ -6,6 +6,7 @@
 (add-hook 'prog-mode-hook #'smartparens-mode)
 (add-hook 'prog-mode-hook #'whitespace-mode)
 (add-hook 'prog-mode-hook #'linum-mode)
+
 ;(add-hook 'prog-mode-hook #'auto-highlight-symbol-mode)
 ;(add-hook 'prog-mode-hook #'highlight-parentheses-mode)
 ;(add-hook 'prog-mode-hook #'column-number-mode)
