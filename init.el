@@ -19,9 +19,8 @@
 
 (use-package use-package)
 
-(use-package helm
-  :init
-  (helm-mode 1))
+(use-package
+  ido-completing-read+ :ensure t)
 
 (use-package
   typescript-mode :ensure t)
@@ -133,7 +132,10 @@
 
 (use-package php-mode :ensure t)
 (use-package magit
-  :ensure t)
+  :ensure t
+  :init
+  (setq magit-completing-read-function 'magit-ido-completing-read))
+
   ;;:hook ((magit-status-mode . helm-mode)))
 (use-package auto-highlight-symbol :ensure t)
                                         ;add-node-modules-path ; needed for vue mode hooks
@@ -227,7 +229,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme dap-firefox use-package)))
+    (ido-completing-read+ helm-flx yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme dap-firefox use-package)))
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build" "node_modules"))))
