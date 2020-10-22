@@ -19,6 +19,10 @@
 
 (use-package use-package)
 
+(use-package helm
+  :init
+  (helm-mode 1))
+
 (use-package
   typescript-mode :ensure t)
 
@@ -128,7 +132,9 @@
   :after (yasnippet))
 
 (use-package php-mode :ensure t)
-(use-package magit :ensure t)
+(use-package magit
+  :ensure t)
+  ;;:hook ((magit-status-mode . helm-mode)))
 (use-package auto-highlight-symbol :ensure t)
                                         ;add-node-modules-path ; needed for vue mode hooks
 (use-package highlight-parentheses :ensure t)
