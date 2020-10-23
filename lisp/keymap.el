@@ -149,6 +149,7 @@
  ("<f12>" . smex)
  ("M-O" . projectile-find-file)
  ("M-F" . projectile-grep)
+ ("C-x b" . projectile-switch-to-buffer)
  ("C-z" . zoom-window-zoom)
  ("<f5>" . revert-buffer)
  ;("<f8>" . shell-cmd-key-map)

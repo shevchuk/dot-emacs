@@ -193,7 +193,7 @@
                                         ;(require 'etags-select)
                                         ;(require 'ido-setup)
                                         ;(require 'issue-link)
-                                        ;(require 'js-beautify)
+
                                         ;(require 'json-reformat)
                                         ;(require 'lastfm)
                                         ;(require 'macros)
@@ -210,16 +210,11 @@
 (require 'ui-setup)
 (require 'editor)
 
-                                        ;(require 'vuiet)
                                         ;(require 'web-dev)
                                         ;(require 'wrap-region)
-(require 'ws-butler)
-                                        ;(require 'erlang-dev)
-                                        ;(require 'golang)
-                                        ;(require 'tscript)
                                         ;(require 'bind-key)
 (require 'keymap)
-
+(require 'js-beautify)
 (setq lsp-log-io t)
 
 (custom-set-variables
