@@ -11,6 +11,7 @@
 (package-initialize)
 
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")
+                         ("org" . "http://orgmode.org/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")))
 
 (when (not (package-installed-p 'use-package))
@@ -29,6 +30,8 @@
   :ensure t
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (typescript-mode . lsp)
+         (php-mode . lsp)
+         ;(python-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . (lambda ()
                        (let ((lsp-keymap-prefix "<F8>"))
@@ -44,13 +47,35 @@
 (use-package dap-mode :ensure t)
 (use-package dap-firefox) ;to load the dap adapter for your language
 (use-package company :ensure t)
-(use-package lsp-python-ms
+
+;(use-package lsp-python-ms
+;  :ensure t
+;  :hook (python-mode . (lambda ()
+;                         (require 'lsp-python-ms)
+;                         (lsp t)))
+;  :init
+;  (setq python-shell-exec-path "/usr/bin/python3.8")
+;  (setq lsp-python-ms-executable (executable-find "python-language-server")))
+
+(use-package exec-path-from-shell
+  :ensure t)
+
+;(use-package pipenv
+;  :ensure t
+;  :hook (python-mode . pipenv-mode)
+;  :init
+;  (setq
+;   pipenv-projectile-after-switch-function
+;   #'pipenv-projectile-after-switch-extended))
+
+(use-package lsp-pyright
   :ensure t
   :hook (python-mode . (lambda ()
-                         (require 'lsp-python-ms)
-                         (lsp)))
+                          (require 'lsp-pyright)
+                          (lsp)))
   :init
-  (setq lsp-python-ms-executable (executable-find "python-language-server")))
+  (setq python-shell-exec-path "/usr/bin/python3.8"))  ; or lsp-deferred
+
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 ;;; first run will install these
 
@@ -133,8 +158,13 @@
 (use-package php-mode :ensure t)
 (use-package magit
   :ensure t
+  :hook ((magit-mode . magit-todos-mode))
   :init
   (setq magit-completing-read-function 'magit-ido-completing-read))
+
+(use-package magit-todos
+  :ensure t
+  :after (magit))
 
   ;;:hook ((magit-status-mode . helm-mode)))
 (use-package auto-highlight-symbol :ensure t)
@@ -152,12 +182,13 @@
                                         ;exec-path-from-shell
                                         ;nodejs-repl
 ;;org-reveal
-                                        ;org-plus-contrib
+                                        ;
                                         ;wanderlust
                                         ;htmlize
 (use-package smartparens :ensure t)
 (use-package terraform-mode :ensure t)
 (use-package vuiet :ensure t)
+(use-package plantuml-mode :ensure t)
                                         ;fancy-narrow
                                         ;s
                                         ;ag
@@ -201,7 +232,7 @@
                                         ;(require 'move-text)
                                         ;(require 'multi-eshell)
                                         ;(require 'orginit)
-                                        ;(require 'ox-confluence)
+(require 'ox-confluence)
 (require 'prog-mode-hooks)
                                         ;(require 'projectile-setup)
                                         ;(require 'puml)
@@ -224,7 +255,9 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ido-completing-read+ helm-flx yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme dap-firefox use-package)))
+    (puml magit-todos ido-completing-read+ helm-flx yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme dap-firefox use-package)))
+ '(plantuml-default-exec-mode (quote jar))
+ '(plantuml-jar-path "/home/mico/scripts/puml/plantuml.jar")
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build" "node_modules"))))
