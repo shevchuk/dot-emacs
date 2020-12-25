@@ -12,8 +12,8 @@
 (setq transient-mark-mode t)
 (tool-bar-mode -1)
 
-;;(load-theme 'modus-operandi)
-;(load-theme 'airline-silver)
+(load-theme 'modus-operandi)
+(load-theme 'airline-silver)
 (require 'modeline)
 
 ;; to make recent files section work in the dashboard, enabled recentf

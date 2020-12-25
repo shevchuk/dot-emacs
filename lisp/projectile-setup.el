@@ -8,7 +8,7 @@
             list-buffers-directory
             default-directory))
     ad-do-it))
-
+(setq projectile-completion-system 'helm)
 (projectile-global-mode)
 
 (provide 'projectile-setup)

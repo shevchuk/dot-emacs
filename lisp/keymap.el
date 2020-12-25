@@ -1,9 +1,9 @@
 ;; Move to beginning/ending of line
 
-(defconst ergoemacs-move-beginning-of-line-key	(kbd "M-H"))
-(defconst ergoemacs-move-end-of-line-key	(kbd "M-L"))
+(defconst ergoemacs-move-beginning-of-line-key (kbd "M-H"))
+(defconst ergoemacs-move-end-of-line-key (kbd "M-L"))
 
-(defconst ergoemacs-isearch-forward-key	(kbd "M-;"))
+(defconst ergoemacs-isearch-forward-key (kbd "M-;"))
 (defconst ergoemacs-isearch-backward-key (kbd "M-:"))
 
 (defun copy-line (arg)
@@ -35,8 +35,6 @@
 (defun js-mode-keys ()
   "my keybindings for js2-mode"
   (local-set-key (kbd "C-c C-b") 'js-beautify)
-  (local-set-key (kbd "s-SPC") 'company-tern)
-  ;(local-set-key (kbd "C-c C-j") 'lsp-execute-code-action)
   (local-unset-key (kbd "M-j"))
   (local-set-key (kbd "<F9>") 'nodejs-repl-send-region)
   (local-set-key (kbd "C-q") 'nodejs-repl-send-region))
@@ -61,7 +59,6 @@
   (define-key eshell-cmd-key-map (kbd "r") 'run-test)
   (define-key eshell-cmd-key-map (kbd "v") 'run-vpn)
   (define-key eshell-cmd-key-map (kbd "t") 'run-vnc)
-  (define-key eshell-cmd-key-map (kbd "c") 'jiffy-go-to-component)
   )
 
 (global-set-key (kbd "<f6>") eshell-cmd-key-map)
@@ -83,7 +80,6 @@
 ;; macro
 (setq org-capture-templates
       '(("i" "Inbox" entry (file+headline "~/Documents/personal-notes/inbox.org" "Tasks"))))
-
 
 (add-hook 'org-mode-hook 'org-mode-keys)
 
@@ -186,7 +182,7 @@
  ("C-k" . kill-whole-line)
  ("M-a" . mark-whole-buffer)
  ("<f10>" . icicle-select-frame)
- ;("M-." . lsp-find-definition)
+ ("M-." . xref-find-definitions)
  ("M-p" . ace-window))
 
 (provide 'keymap)

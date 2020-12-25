@@ -30,6 +30,7 @@
   :ensure t
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (typescript-mode . lsp)
+         (js-mode . lsp)
          (php-mode . lsp)
          ;(python-mode . lsp)
          ;; if you want which-key integration
@@ -125,11 +126,20 @@
                                         ;gherkin-mode
 (use-package emmet-mode :ensure t)
 (use-package super-save :ensure t)
+(use-package gherkin-mode :ensure t)
                                         ;multi-eshell
                                         ;vue-mode
 (use-package diff-hl :ensure t)
 (use-package ws-butler :ensure t)
 (use-package expand-region :ensure t)
+(use-package flow-js2-mode :ensure t)
+
+(use-package js2-mode
+  :ensure t
+  :hook (
+         (js2-mode . flow-js2-mode)
+         ))
+
                                         ;js2-mode
                                         ;flow-js2-mode
                                         ;button-lock
@@ -232,13 +242,12 @@
                                         ;(require 'move-text)
                                         ;(require 'multi-eshell)
                                         ;(require 'orginit)
-(require 'ox-confluence)
+;;(require 'ox-confluence)
 (require 'prog-mode-hooks)
-                                        ;(require 'projectile-setup)
+(require 'projectile-setup)
                                         ;(require 'puml)
 (require 'swissknife)
 (require 'transpose-frame)
-(require 'ui-setup)
 (require 'editor)
 
                                         ;(require 'web-dev)
@@ -253,17 +262,20 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("4ed20d30a768c1a9032cf63aa8980723c21589c68838cd972f79e7ca2a414b9d" "7ea491e912d419e6d4be9a339876293fff5c8d13f6e84e9f75388063b5f794d6" default))
  '(package-selected-packages
-   (quote
-    (puml magit-todos ido-completing-read+ helm-flx yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme dap-firefox use-package)))
- '(plantuml-default-exec-mode (quote jar))
+   '(flow-js2-mode js2-mode gherkin-mode puml magit-todos ido-completing-read+ helm-flx yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme dap-firefox use-package))
+ '(plantuml-default-exec-mode 'jar)
  '(plantuml-jar-path "/home/mico/scripts/puml/plantuml.jar")
  '(projectile-globally-ignored-directories
-   (quote
-    (".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build" "node_modules"))))
+   '(".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build" "node_modules")))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(require 'ui-setup)
