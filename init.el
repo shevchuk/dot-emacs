@@ -36,7 +36,6 @@
          (js-mode . lsp)
          (javascript-mode . lsp)
          (php-mode . lsp)
-         ;(python-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . (lambda ()
                        (let ((lsp-keymap-prefix "<F8>"))
@@ -52,15 +51,6 @@
 (use-package dap-mode :ensure t)
 (use-package dap-firefox) ;to load the dap adapter for your language
 (use-package company :ensure t)
-
-;(use-package lsp-python-ms
-;  :ensure t
-;  :hook (python-mode . (lambda ()
-;                         (require 'lsp-python-ms)
-;                         (lsp t)))
-;  :init
-;  (setq python-shell-exec-path "/usr/bin/python3.8")
-;  (setq lsp-python-ms-executable (executable-find "python-language-server")))
 
 (use-package exec-path-from-shell
   :ensure t)
@@ -235,10 +225,6 @@
 (use-package modus-operandi-theme :ensure t)
 (use-package powerline :ensure t)
 (use-package airline-themes :ensure t)
-;; install packages if they are not installed yet
-                                        ;(require 'elget-loader)
-                                        ;(install-and-load packages-to-load)
-                                        ;(package-initialize)
 
                                         ;(require 'autocommit)
                                         ;(require 'buffer-move)
@@ -253,7 +239,7 @@
                                         ;(require 'lastfm)
                                         ;(require 'macros)
 (require 'magit-tools)
-                                        ;(require 'move-text)
+(require 'move-text)
                                         ;(require 'multi-eshell)
                                         ;(require 'orginit)
 ;;(require 'ox-confluence)
