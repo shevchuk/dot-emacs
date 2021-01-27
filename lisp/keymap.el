@@ -103,12 +103,12 @@
 ;; todo change keybindings here
 (setq org-log-done t)
 
-;(add-hook 'lsp-mode-hook 'lsp-mode-keys)
+(defun org-present-mode-keys ()
+  (local-set-key (kbd "<right>") 'org-present-next)
+  (local-set-key (kbd "<left>") 'org-present-prev))
 
+(add-hook 'org-present-mode-hook 'org-present-mode-keys)
 
-;(defun lsp-mode-keys ()
-;  "keybindings for the lsp-mode"
-;  (local-set-key (kbd "C-c e") 'lsp-execute-code-action))
 
 ;; mapping to caps/control as C and cmd as alt(meta)
 (when (eq system-type 'darwin) ;; mac specific settings
