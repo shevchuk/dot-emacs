@@ -222,6 +222,14 @@
                                         ;bind-key
 (use-package org-present :ensure t)
 
+;; fixes
+(setq org-babel-js-function-wrapper
+      "process.stdout.write(require('util').inspect(function(){\n%s\n}(), { maxArrayLength: null, maxStringLength: null, breakLength: Infinity, compact: true }))")
+
+(org-babel-do-load-languages
+      'org-babel-load-languages
+      '((js . t)))
+
 (use-package cider :ensure t)
                                         ;feature-mode
                                         ;lastfm
