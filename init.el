@@ -140,7 +140,10 @@
 
 (use-package ws-butler :ensure t)
 (use-package expand-region :ensure t)
-(use-package flow-js2-mode :ensure t)
+(use-package flow-js2-mode
+  :ensure t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.flow$" . js2-mode)))
 
 (use-package js2-mode
   :ensure t
