@@ -38,6 +38,7 @@
          (php-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . (lambda ()
+                       (setq read-process-output-max (* 1024 1024))
                        (let ((lsp-keymap-prefix "<F8>"))
                          (lsp-enable-which-key-integration)))))
   :commands lsp)
