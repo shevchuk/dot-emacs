@@ -57,14 +57,6 @@
 (use-package exec-path-from-shell
   :ensure t)
 
-;(use-package pipenv
-;  :ensure t
-;  :hook (python-mode . pipenv-mode)
-;  :init
-;  (setq
-;   pipenv-projectile-after-switch-function
-;   #'pipenv-projectile-after-switch-extended))
-
 (use-package lsp-pyright
   :ensure t
   :hook (python-mode . (lambda ()
@@ -106,6 +98,10 @@
 (use-package diredfl
   :ensure t
   :hook ((dired-mode . diredfl-mode)))
+
+(use-package undo-tree :ensure t
+  :init
+  (global-undo-tree-mode))
 
 (use-package helm-swoop :ensure t)
 (use-package flx-ido
@@ -286,12 +282,12 @@
  '(custom-safe-themes
    '("4ed20d30a768c1a9032cf63aa8980723c21589c68838cd972f79e7ca2a414b9d" "7ea491e912d419e6d4be9a339876293fff5c8d13f6e84e9f75388063b5f794d6" default))
  '(package-selected-packages
-   '(diredfl org-present diff-hl-mode twig-mode rainbow-delimeters diredp dired+ dired-plus restclient flow-js2-mode js2-mode gherkin-mode puml magit-todos ido-completing-read+ helm-flx yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme dap-firefox use-package))
+   '(undo-tree diredfl org-present diff-hl-mode twig-mode rainbow-delimeters diredp dired+ dired-plus restclient flow-js2-mode js2-mode gherkin-mode puml magit-todos ido-completing-read+ helm-flx yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme dap-firefox use-package))
  '(plantuml-default-exec-mode 'jar)
  '(plantuml-jar-path "/home/mico/scripts/puml/plantuml.jar")
  '(projectile-globally-ignored-directories
-   '(".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build" "node_modules" "vendor"))
- '(projectile-globally-ignored-file-suffixes '(".map")))
+   '(".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build" "*node_modules" "vendor" "storybook-static" "./var/cache"))
+ '(projectile-globally-ignored-file-suffixes '(".map" ".log")))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
