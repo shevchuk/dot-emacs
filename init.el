@@ -287,7 +287,8 @@
  '(plantuml-jar-path "/home/mico/scripts/puml/plantuml.jar")
  '(projectile-globally-ignored-directories
    '(".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build" "*node_modules" "vendor" "storybook-static" "./var/cache"))
- '(projectile-globally-ignored-file-suffixes '(".map" ".log")))
+ '(projectile-globally-ignored-file-suffixes '(".map" ".log"))
+ '(undo-tree-auto-save-history t))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
