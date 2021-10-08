@@ -10,6 +10,7 @@
 (require 'package)
 (package-initialize)
 
+(setq create-lockfiles nil)
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")))
@@ -30,6 +31,8 @@
   twig-mode :ensure t)
 
 (use-package lsp-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
   :ensure t
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (typescript-mode . lsp)
@@ -99,7 +102,8 @@
   :ensure t
   :hook ((dired-mode . diredfl-mode)))
 
-(use-package undo-tree :ensure t
+(use-package undo-tree
+  :ensure t
   :init
   (global-undo-tree-mode))
 
@@ -126,6 +130,7 @@
                                         ;go-eldoc
                                         ;gherkin-mode
 (use-package emmet-mode :ensure t)
+(use-package yaml-mode :ensure t)
 (use-package super-save :ensure t)
 (use-package gherkin-mode :ensure t)
                                         ;multi-eshell
@@ -144,8 +149,7 @@
 (use-package js2-mode
   :ensure t
   :hook (
-         (js2-mode . flow-js2-mode)
-         ))
+         (js2-mode . flow-js2-mode)))
 
                                         ;js2-mode
                                         ;flow-js2-mode
@@ -179,7 +183,8 @@
 (use-package php-mode :ensure t)
 (use-package magit
   :ensure t
-  :hook ((magit-mode . magit-todos-mode))
+  ; todos make magit slow
+  ;:hook ((magit-mode . magit-todos-mode))
   :init
   (setq magit-completing-read-function 'magit-ido-completing-read))
 
@@ -280,13 +285,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("4ed20d30a768c1a9032cf63aa8980723c21589c68838cd972f79e7ca2a414b9d" "7ea491e912d419e6d4be9a339876293fff5c8d13f6e84e9f75388063b5f794d6" default))
+   '("d6da24347c813d1635a217d396cf1e3be26484fd4d05be153f3bd2b293d2a0b5" "4ed20d30a768c1a9032cf63aa8980723c21589c68838cd972f79e7ca2a414b9d" "7ea491e912d419e6d4be9a339876293fff5c8d13f6e84e9f75388063b5f794d6" default))
  '(package-selected-packages
    '(undo-tree diredfl org-present diff-hl-mode twig-mode rainbow-delimeters diredp dired+ dired-plus restclient flow-js2-mode js2-mode gherkin-mode puml magit-todos ido-completing-read+ helm-flx yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme dap-firefox use-package))
  '(plantuml-default-exec-mode 'jar)
  '(plantuml-jar-path "/home/mico/scripts/puml/plantuml.jar")
  '(projectile-globally-ignored-directories
-   '(".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build" "*node_modules" "vendor" "storybook-static" "./var/cache"))
+   '(".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build" "*node_modules" "vendor" "storybook-static" "./var/cache" "*build/static/js" "./backend/vendor" "./service/build" "./service/coverage"))
  '(projectile-globally-ignored-file-suffixes '(".map" ".log"))
  '(undo-tree-auto-save-history t))
 
