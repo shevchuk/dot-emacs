@@ -4,12 +4,12 @@
   "Use jsbeautify to beautify some js"
   :group 'editing)
 
-(defcustom js-beautify-args "--jslint-happy --brace-style=end-expand --keep-array-indentation"
+(defcustom js-beautify-args "--jslint-happy --brace-style=end-expand --keep-array-indentation --indent-size=2"
   "Arguments to pass to jsbeautify script"
   :type '(string)
   :group 'js-beautify)
 
-(defcustom js-beautify-path "~/.emacs.d/el-get/js-beautify/python/js-beautify"
+(defcustom js-beautify-path "~/.nvm/versions/node/v12.18.0/bin/js-beautify"
   "Path to jsbeautifier python file"
   :type '(string)
   :group 'js-beautify)
@@ -23,7 +23,7 @@
     (shell-command-on-region (point)
                              (mark)
                              (concat js-beautify-path
-                                     " --stdin "
+                                     " --file=- "
                                      js-beautify-args)
                              nil t)
     (goto-char orig-point)))

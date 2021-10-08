@@ -1,5 +1,3 @@
-(setq jiralib-url "https://jira.ringcentral.com")
-
 (defun duplicate-line (arg)
   "Duplicate current line, leaving point in lower line."
   (interactive "*p")
@@ -135,6 +133,9 @@
 
   )
 
+;; use Shift+arrow_keys to move cursor around split panes
+(windmove-default-keybindings)
+
 (defun projectile-find-occurences ()
   (interactive "P")
   (copy-thing 'backward-word 'forward-word arg)
@@ -152,5 +153,43 @@
      (insert selected-json)
      (json-pretty-print-buffer)
      (buffer-string))))
+
+;; Ask y/n instead of yes/no
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; show full path in frame title for current buffer
+(setq frame-title-format
+  '(:eval
+    (if buffer-file-name
+        (replace-regexp-in-string
+         "\\\\" "/"
+         (replace-regexp-in-string
+          (regexp-quote (getenv "HOME")) "~"
+          (convert-standard-filename buffer-file-name)))
+      (buffer-name))))
+
+;; (color-theme-parus)
+
+(setq-default frame-title-format "%b (%f)")
+(super-save-mode 1)
+(delete-selection-mode)
+(recentf-mode 1)
+
+(require 'keyfreq)
+(keyfreq-mode 1)
+(keyfreq-autosave-mode 1)
+;(wrap-region-add-wrapper "/* " " */" "#" '(javascript-mode css-mode js2-mode))
+
+(defun copy-current-projectpath-to-clipboard ()
+  "Show the full path file name in the minibuffer and copy it to clipboard"
+  (interactive)
+  (kill-new (replace-regexp-in-string (projectile-project-root) "" (buffer-file-name)))
+  (message (replace-regexp-in-string (projectile-project-root) "" (buffer-file-name))))
+
+(defun copy-current-fullpath-to-clipboard ()
+  "Show the full path file name in the minibuffer and copy it to clipboard"
+  (interactive)
+  (kill-new (buffer-file-name))
+  (message (buffer-file-name)))
 
 (provide 'swissknife)

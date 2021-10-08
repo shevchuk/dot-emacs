@@ -1,9 +1,9 @@
 ;; Move to beginning/ending of line
 
-(defconst ergoemacs-move-beginning-of-line-key	(kbd "M-H"))
-(defconst ergoemacs-move-end-of-line-key	(kbd "M-L"))
+(defconst ergoemacs-move-beginning-of-line-key (kbd "M-H"))
+(defconst ergoemacs-move-end-of-line-key (kbd "M-L"))
 
-(defconst ergoemacs-isearch-forward-key	(kbd "M-;"))
+(defconst ergoemacs-isearch-forward-key (kbd "M-;"))
 (defconst ergoemacs-isearch-backward-key (kbd "M-:"))
 
 (defun copy-line (arg)
@@ -35,8 +35,6 @@
 (defun js-mode-keys ()
   "my keybindings for js2-mode"
   (local-set-key (kbd "C-c C-b") 'js-beautify)
-  (local-set-key (kbd "s-SPC") 'company-tern)
-  (local-set-key (kbd "C-c C-j") 'lsp-execute-code-action)
   (local-unset-key (kbd "M-j"))
   (local-set-key (kbd "<F9>") 'nodejs-repl-send-region)
   (local-set-key (kbd "C-q") 'nodejs-repl-send-region))
@@ -61,7 +59,6 @@
   (define-key eshell-cmd-key-map (kbd "r") 'run-test)
   (define-key eshell-cmd-key-map (kbd "v") 'run-vpn)
   (define-key eshell-cmd-key-map (kbd "t") 'run-vnc)
-  (define-key eshell-cmd-key-map (kbd "c") 'jiffy-go-to-component)
   )
 
 (global-set-key (kbd "<f6>") eshell-cmd-key-map)
@@ -83,7 +80,6 @@
 ;; macro
 (setq org-capture-templates
       '(("i" "Inbox" entry (file+headline "~/Documents/personal-notes/inbox.org" "Tasks"))))
-
 
 (add-hook 'org-mode-hook 'org-mode-keys)
 
@@ -107,16 +103,19 @@
 ;; todo change keybindings here
 (setq org-log-done t)
 
-(add-hook 'lsp-mode-hook 'lsp-mode-keys)
+(defun org-present-mode-keys ()
+  (local-set-key (kbd "<right>") 'org-present-next)
+  (local-set-key (kbd "<left>") 'org-present-prev))
 
-(defun lsp-mode-keys ()
-  "keybindings for the lsp-mode"
-  (local-set-key (kbd "C-c e") 'lsp-execute-code-action))
+(add-hook 'org-present-mode-hook 'org-present-mode-keys)
+
 
 ;; mapping to caps/control as C and cmd as alt(meta)
 (when (eq system-type 'darwin) ;; mac specific settings
   (setq mac-option-modifier 'control)
   (setq mac-command-modifier 'meta))
+
+(define-key lsp-mode-map (kbd "<f8>") lsp-command-map)
 
 (bind-keys*
  ("M-x" . kill-region)
@@ -145,10 +144,11 @@
  ("<f4>" . ido-find-file)
  ("<f12>" . smex)
  ("M-O" . projectile-find-file)
- ("M-F" . ag-project)
+ ("M-F" . projectile-grep)
+ ("C-x b" . projectile-switch-to-buffer)
  ("C-z" . zoom-window-zoom)
  ("<f5>" . revert-buffer)
- ("<f8>" . shell-cmd-key-map)
+ ;("<f8>" . shell-cmd-key-map)
  ("C-," . toggle-kbd-macro-recording-on)
  ("C-." . call-last-kbd-macro)
  ("C-k" . kill-whole-line)
@@ -182,7 +182,7 @@
  ("C-k" . kill-whole-line)
  ("M-a" . mark-whole-buffer)
  ("<f10>" . icicle-select-frame)
- ("M-." . lsp-find-definition)
+ ("M-." . xref-find-definitions)
  ("M-p" . ace-window))
 
 (provide 'keymap)
