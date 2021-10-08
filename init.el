@@ -192,6 +192,12 @@
   :ensure t
   :after (magit))
 
+(use-package forge
+  :ensure t
+  :after magit
+  :init
+  (setq auth-sources '("~/.authinfo")))
+
   ;;:hook ((magit-status-mode . helm-mode)))
 (use-package auto-highlight-symbol :ensure t)
                                         ;add-node-modules-path ; needed for vue mode hooks
