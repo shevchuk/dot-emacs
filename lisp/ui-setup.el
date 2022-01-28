@@ -12,7 +12,7 @@
 (setq transient-mark-mode t)
 (tool-bar-mode -1)
 
-(load-theme 'modus-operandi)
+(load-theme 'solo-jazz)
 (load-theme 'airline-silver)
 (require 'modeline)
 

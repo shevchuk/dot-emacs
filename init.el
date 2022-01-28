@@ -30,6 +30,10 @@
 (use-package
   twig-mode :ensure t)
 
+;; clojure
+;; yay -S clojure-lsp-bin
+
+
 (use-package lsp-mode
   :init
   (add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
@@ -38,6 +42,7 @@
          (typescript-mode . lsp)
          (js-mode . lsp)
          (javascript-mode . lsp)
+         (clojure-mode . lsp)
          (php-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . (lambda ()
@@ -242,6 +247,8 @@
       '((js . t)))
 
 (use-package cider :ensure t)
+
+;(use-package emidje :ensure t :after (cider) :init (emidje-setup))
                                         ;feature-mode
                                         ;lastfm
                                         ;vuiet
@@ -250,7 +257,10 @@
 
 (use-package all-the-icons :ensure t)
 
-(use-package modus-operandi-theme :ensure t)
+;(use-package modus-operandi-theme :ensure t)
+; see ui-setup.el that turns the theme on
+(use-package solo-jazz-theme :ensure t)
+
 (use-package powerline :ensure t)
 (use-package airline-themes :ensure t)
 
@@ -275,6 +285,7 @@
 (require 'projectile-setup)
                                         ;(require 'puml)
 (require 'swissknife)
+
 (require 'transpose-frame)
 (require 'editor)
 
@@ -282,6 +293,7 @@
                                         ;(require 'wrap-region)
                                         ;(require 'bind-key)
 (require 'keymap)
+(require 'jet)
 (require 'js-beautify)
 (setq lsp-log-io t)
 
@@ -290,14 +302,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(cider-boot-parameters "dev")
  '(custom-safe-themes
-   '("d6da24347c813d1635a217d396cf1e3be26484fd4d05be153f3bd2b293d2a0b5" "4ed20d30a768c1a9032cf63aa8980723c21589c68838cd972f79e7ca2a414b9d" "7ea491e912d419e6d4be9a339876293fff5c8d13f6e84e9f75388063b5f794d6" default))
+   '("ba9c91bc43996f2fa710e4b5145d9de231150103e142acdcf24adcaaf0db7a17" "0edb121fdd0d3b18d527f64d3e2b57725acb152187eea9826d921736bd6e409e" "feb8e98a8a99d78c837ce35e976ebcc97abbd8806507e8970d934bb7694aa6b3" "d6da24347c813d1635a217d396cf1e3be26484fd4d05be153f3bd2b293d2a0b5" "4ed20d30a768c1a9032cf63aa8980723c21589c68838cd972f79e7ca2a414b9d" "7ea491e912d419e6d4be9a339876293fff5c8d13f6e84e9f75388063b5f794d6" default))
+ '(nrepl-sync-request-timeout 100)
  '(package-selected-packages
-   '(undo-tree diredfl org-present diff-hl-mode twig-mode rainbow-delimeters diredp dired+ dired-plus restclient flow-js2-mode js2-mode gherkin-mode puml magit-todos ido-completing-read+ helm-flx yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme dap-firefox use-package))
+   '(cyberpunk-theme clojure-lsp lsp-clojure undo-tree diredfl org-present diff-hl-mode twig-mode rainbow-delimeters diredp dired+ dired-plus restclient flow-js2-mode js2-mode gherkin-mode puml magit-todos ido-completing-read+ helm-flx yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme solo-jazz-theme dap-firefox use-package))
  '(plantuml-default-exec-mode 'jar)
  '(plantuml-jar-path "/home/mico/scripts/puml/plantuml.jar")
  '(projectile-globally-ignored-directories
-   '(".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build" "*node_modules" "vendor" "storybook-static" "./var/cache" "*build/static/js" "./backend/vendor" "./service/build" "./service/coverage"))
+   '(".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build" "*node_modules" "vendor" "storybook-static" "./var/cache" "*build/static/js" "./backend/vendor" "./service/build" "./service/coverage" ".clj-kondo"))
  '(projectile-globally-ignored-file-suffixes '(".map" ".log"))
  '(undo-tree-auto-save-history t))
 
@@ -309,3 +323,4 @@
  )
 
 (require 'ui-setup)
+(put 'dired-find-alternate-file 'disabled nil)
