@@ -32,6 +32,11 @@
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 
+;(set-frame-font "Hack 11")
+
+;(add-to-list 'default-frame-alist
+;             '(font . "Hack 11"))
+
 (set-frame-font "Hack 11")
 
 (add-to-list 'default-frame-alist

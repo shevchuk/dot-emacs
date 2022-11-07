@@ -37,6 +37,7 @@
 (load-theme 'airline-silver t)
 
 (add-hook 'org-mode-hook (lambda ()
-                            (setq buffer-face-mode-face '(:family "Cantarell"))
-                            (buffer-face-mode)))
+                           (setq buffer-face-mode-face '(:family "Carlito"))
+                           (visual-line-mode)
+                           (buffer-face-mode)))
 (provide 'ui-setup)

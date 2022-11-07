@@ -74,6 +74,8 @@
   (setq python-shell-exec-path "/usr/bin/python3.8"))  ; or lsp-deferred
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/number-convert"))
+
 ;;; first run will install these
 
 ;; these packages will be automatically installed if there is an internet connection
@@ -285,6 +287,8 @@
 (require 'projectile-setup)
                                         ;(require 'puml)
 (require 'swissknife)
+(require 'number-convert)
+
 
 (require 'transpose-frame)
 (require 'editor)
@@ -307,7 +311,7 @@
    '("ba9c91bc43996f2fa710e4b5145d9de231150103e142acdcf24adcaaf0db7a17" "0edb121fdd0d3b18d527f64d3e2b57725acb152187eea9826d921736bd6e409e" "feb8e98a8a99d78c837ce35e976ebcc97abbd8806507e8970d934bb7694aa6b3" "d6da24347c813d1635a217d396cf1e3be26484fd4d05be153f3bd2b293d2a0b5" "4ed20d30a768c1a9032cf63aa8980723c21589c68838cd972f79e7ca2a414b9d" "7ea491e912d419e6d4be9a339876293fff5c8d13f6e84e9f75388063b5f794d6" default))
  '(nrepl-sync-request-timeout 100)
  '(package-selected-packages
-   '(cyberpunk-theme clojure-lsp lsp-clojure undo-tree diredfl org-present diff-hl-mode twig-mode rainbow-delimeters diredp dired+ dired-plus restclient flow-js2-mode js2-mode gherkin-mode puml magit-todos ido-completing-read+ helm-flx yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme solo-jazz-theme dap-firefox use-package))
+   '(excorporate telega cyberpunk-theme clojure-lsp lsp-clojure undo-tree diredfl org-present diff-hl-mode twig-mode rainbow-delimeters diredp dired+ dired-plus restclient flow-js2-mode js2-mode gherkin-mode puml magit-todos ido-completing-read+ helm-flx yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme solo-jazz-theme dap-firefox use-package))
  '(plantuml-default-exec-mode 'jar)
  '(plantuml-jar-path "/home/mico/scripts/puml/plantuml.jar")
  '(projectile-globally-ignored-directories

@@ -100,6 +100,9 @@
 (global-set-key "\C-ct" 'google-translate-smooth-translate)
 (global-set-key "\C-cT" 'google-translate-query-translate)
 
+(global-set-key (kbd "C-c C-n d") 'number-convert/hex-to-dec-at-point)
+(global-set-key (kbd "C-c C-n h") 'number-convert/dec-to-hex-at-point)
+
 ;; todo change keybindings here
 (setq org-log-done t)
 
