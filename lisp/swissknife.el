@@ -192,18 +192,4 @@
   (kill-new (buffer-file-name))
   (message (buffer-file-name)))
 
-(defun base64url-decode-region (beg end)
-  (interactive "r")
-  (save-excursion
-    (let ((new-text (base64url-decode-string (buffer-substring-no-properties beg end))))
-      (kill-region beg end)
-      (insert new-text))))
-
-(defun base64url-encode-region (beg end)
-  (interactive "r")
-  (save-excursion
-    (let ((new-text (base64url-encode-string (buffer-substring-no-properties beg end))))
-      (kill-region beg end)
-      (insert new-text))))
-
 (provide 'swissknife)
