@@ -12,8 +12,9 @@
 (setq transient-mark-mode t)
 (tool-bar-mode -1)
 
-(load-theme 'solo-jazz)
-(load-theme 'airline-silver)
+;(load-theme 'solo-jazz)
+(load-theme 'ef-bio)
+(load-theme 'airline-luna)
 (require 'modeline)
 
 ;; to make recent files section work in the dashboard, enabled recentf
@@ -34,10 +35,10 @@
 (require 'cycle-bg-colors)
 
                                         ;(powerline-nano-theme)
-(load-theme 'airline-silver t)
+;(load-theme 'airline-silver t)
 
 (add-hook 'org-mode-hook (lambda ()
-                           (setq buffer-face-mode-face '(:family "Carlito"))
+                           (setq buffer-face-mode-face '(:family "Carlito" :height 140))
                            (visual-line-mode)
                            (buffer-face-mode)))
 (provide 'ui-setup)

@@ -308,10 +308,12 @@
  ;; If there is more than one, they won't work right.
  '(cider-boot-parameters "dev")
  '(custom-safe-themes
-   '("ba9c91bc43996f2fa710e4b5145d9de231150103e142acdcf24adcaaf0db7a17" "0edb121fdd0d3b18d527f64d3e2b57725acb152187eea9826d921736bd6e409e" "feb8e98a8a99d78c837ce35e976ebcc97abbd8806507e8970d934bb7694aa6b3" "d6da24347c813d1635a217d396cf1e3be26484fd4d05be153f3bd2b293d2a0b5" "4ed20d30a768c1a9032cf63aa8980723c21589c68838cd972f79e7ca2a414b9d" "7ea491e912d419e6d4be9a339876293fff5c8d13f6e84e9f75388063b5f794d6" default))
+   '("2b474647799a29add7e3cf34cd9f8178e872f6a4f354f58f4e717d93a53a4eed" "47f3e55e4e3d570d5513d4cc58047dc059bd6ab3d135c796c4ccbfb77d4eb88b" "ba9c91bc43996f2fa710e4b5145d9de231150103e142acdcf24adcaaf0db7a17" "0edb121fdd0d3b18d527f64d3e2b57725acb152187eea9826d921736bd6e409e" "feb8e98a8a99d78c837ce35e976ebcc97abbd8806507e8970d934bb7694aa6b3" "d6da24347c813d1635a217d396cf1e3be26484fd4d05be153f3bd2b293d2a0b5" "4ed20d30a768c1a9032cf63aa8980723c21589c68838cd972f79e7ca2a414b9d" "7ea491e912d419e6d4be9a339876293fff5c8d13f6e84e9f75388063b5f794d6" default))
+ '(mastodon-active-user "mico")
+ '(mastodon-instance-url "https://emacs.ch")
  '(nrepl-sync-request-timeout 100)
  '(package-selected-packages
-   '(excorporate telega cyberpunk-theme clojure-lsp lsp-clojure undo-tree diredfl org-present diff-hl-mode twig-mode rainbow-delimeters diredp dired+ dired-plus restclient flow-js2-mode js2-mode gherkin-mode puml magit-todos ido-completing-read+ helm-flx yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme solo-jazz-theme dap-firefox use-package))
+   '(emojify mastodon ef-themes excorporate telega cyberpunk-theme clojure-lsp lsp-clojure undo-tree diredfl org-present diff-hl-mode twig-mode rainbow-delimeters diredp dired+ dired-plus restclient flow-js2-mode js2-mode gherkin-mode puml magit-todos ido-completing-read+ helm-flx yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme solo-jazz-theme dap-firefox use-package))
  '(plantuml-default-exec-mode 'jar)
  '(plantuml-jar-path "/home/mico/scripts/puml/plantuml.jar")
  '(projectile-globally-ignored-directories
