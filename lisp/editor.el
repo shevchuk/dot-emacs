@@ -71,4 +71,6 @@
   (flycheck-add-mode 'javascript-eslint 'vue-html-mode)
   (flycheck-add-mode 'javascript-eslint 'css-mode))
 
+(add-to-list 'auto-mode-alist '("\\.ksy$" . yaml-mode))
+
 (provide 'editor)
