@@ -12,10 +12,8 @@
 (setq transient-mark-mode t)
 (tool-bar-mode -1)
 
-;(load-theme 'solo-jazz)
-(load-theme 'ef-bio)
-(load-theme 'airline-luna)
-(require 'modeline)
+(standard-themes-load-light)
+(load-theme 'airline-soda)
 
 ;; to make recent files section work in the dashboard, enabled recentf
 (setq dashboard-items '((recents  . 5)
@@ -38,6 +36,8 @@
 ;(load-theme 'airline-silver t)
 
 (add-hook 'org-mode-hook (lambda ()
+                           (org-modern-mode)
+                           (org-indent-mode)
                            (setq buffer-face-mode-face '(:family "Carlito" :height 140))
                            (visual-line-mode)
                            (buffer-face-mode)))
