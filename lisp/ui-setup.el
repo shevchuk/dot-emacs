@@ -14,6 +14,8 @@
 
 (standard-themes-load-light)
 (load-theme 'airline-soda)
+;(require 'aoc-theme)
+;(load-theme 'aoc-theme t)
 
 ;; to make recent files section work in the dashboard, enabled recentf
 (setq dashboard-items '((recents  . 5)
@@ -29,8 +31,8 @@
 
 (dashboard-setup-startup-hook)
 
-(setq-default cycle-bg-colors '("#111122" "#112211" "#221122" "#112222" "#00587b" "#004b15"))
-(require 'cycle-bg-colors)
+;(setq-default cycle-bg-colors '("#111122" "#112211" "#221122" "#112222" "#00587b" "#004b15"))
+;(require 'cycle-bg-colors)
 
                                         ;(powerline-nano-theme)
 ;(load-theme 'airline-silver t)

@@ -9,4 +9,7 @@
 
 (setenv "NVM_DIR" (concat (getenv "HOME") "/.nvm"))
 
+; NODE_OPTIONS=--openssl-legacy-provider
+(setenv "NODE_OPTIONS" "--openssl-legacy-provider")
+
 (provide 'env-setup)
