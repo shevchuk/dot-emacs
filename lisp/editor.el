@@ -29,6 +29,8 @@
 (with-eval-after-load 'smartparens
   (require 'smartparens-config))
 
+(paredit-mode 1)
+
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 

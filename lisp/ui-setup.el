@@ -12,10 +12,10 @@
 (setq transient-mark-mode t)
 (tool-bar-mode -1)
 
-(standard-themes-load-light)
-(load-theme 'airline-soda)
-;(require 'aoc-theme)
-;(load-theme 'aoc-theme t)
+;; this is current color theme
+;(standard-themes-load-dark)
+(modus-themes-select 'modus-vivendi-deuteranopia)
+(load-theme 'airline-violet)
 
 ;; to make recent files section work in the dashboard, enabled recentf
 (setq dashboard-items '((recents  . 5)
@@ -35,7 +35,6 @@
 ;(require 'cycle-bg-colors)
 
                                         ;(powerline-nano-theme)
-;(load-theme 'airline-silver t)
 
 (add-hook 'org-mode-hook (lambda ()
                            (org-modern-mode)
