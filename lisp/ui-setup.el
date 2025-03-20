@@ -14,7 +14,8 @@
 
 ;; this is current color theme
 ;(standard-themes-load-dark)
-(modus-themes-select 'modus-vivendi-deuteranopia)
+;(modus-themes-select 'modus-vivendi-deuteranopia)
+(modus-themes-select 'modus-vivendi-tinted)
 (load-theme 'airline-violet)
 
 ;; to make recent files section work in the dashboard, enabled recentf
@@ -37,9 +38,10 @@
                                         ;(powerline-nano-theme)
 
 (add-hook 'org-mode-hook (lambda ()
-                           (org-modern-mode)
+                                        ;(org-modern-mode)
                            (org-indent-mode)
                            (setq buffer-face-mode-face '(:family "Carlito" :height 140))
+                           (lambda () (face-remap-add-relative 'default :family "Monospace"))
                            (visual-line-mode)
                            (buffer-face-mode)))
 (provide 'ui-setup)

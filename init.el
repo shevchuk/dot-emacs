@@ -30,6 +30,23 @@
 (use-package
   twig-mode :ensure t)
 
+;; straight bootstrap
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
 ;; clojure
 ;; yay -S clojure-lsp-bin
 
@@ -252,12 +269,34 @@
 
 (use-package cider :ensure t)
 
+
+(use-package paredit
+  :ensure t
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (clojure-mode . paredit-mode)))
+
+(require 'quelpa)
+
+(quelpa
+ '(quelpa-use-package
+   :fetcher git
+   :url "https://github.com/quelpa/quelpa-use-package.git"))
+
+(require 'quelpa-use-package)
+
+(use-package pgmacs
+  :ensure nil
+  :defer t
+  :quelpa (pgmacs :fetcher github :repo "emarsden/pgmacs"))
+
 ;(use-package emidje :ensure t :after (cider) :init (emidje-setup))
                                         ;feature-mode
                                         ;lastfm
                                         ;vuiet
                                         ;jest-test-mode
                                         ;))
+
+;(use-package pg :vc (:url "https://github.com/emarsden/pg-el"))
 
 (use-package all-the-icons :ensure t)
 
@@ -296,6 +335,10 @@
 (require 'transpose-frame)
 (require 'editor)
 
+(require 'paredit-keys)
+
+(require 'ai)
+
 (require 'my-keymap)
 (require 'jet)
 (require 'js-beautify)
@@ -319,14 +362,16 @@
  '(mastodon-instance-url "https://emacs.ch")
  '(nrepl-sync-request-timeout 100)
  '(package-selected-packages
-   '(dashboard-hackernews paredit sqlite3 clj-refactor linum-relative embark org-modern standard-themes emojify mastodon ef-themes excorporate telega cyberpunk-theme clojure-lsp lsp-clojure undo-tree diredfl org-present diff-hl-mode twig-mode rainbow-delimeters diredp dired+ dired-plus restclient flow-js2-mode js2-mode gherkin-mode puml magit-todos ido-completing-read+ helm-flx yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme solo-jazz-theme dap-firefox use-package))
+   '(ellama quelpa pg dashboard-hackernews paredit sqlite3 clj-refactor linum-relative embark org-modern standard-themes emojify mastodon ef-themes excorporate telega cyberpunk-theme clojure-lsp lsp-clojure undo-tree diredfl org-present diff-hl-mode twig-mode rainbow-delimeters diredp dired+ dired-plus restclient flow-js2-mode js2-mode gherkin-mode puml magit-todos ido-completing-read+ helm-flx yasnippet-snippets yasnippet flx-ido ytdl purescript-mode php-mode lsp-python-ms company company-mode company-capf modus-operandi-theme solo-jazz-theme dap-firefox use-package))
  '(plantuml-default-exec-mode 'jar)
  '(plantuml-jar-path "/home/mico/scripts/puml/plantuml.jar")
  '(projectile-globally-ignored-directories
    '(".idea" ".vscode" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".ccls-cache" ".clangd" "ts_build" "*node_modules" "vendor" "storybook-static" "./var/cache" "*build/static/js" "./backend/vendor" "./service/build" "./service/coverage" ".clj-kondo" "./webapp/out" "./webapp/target"))
  '(projectile-globally-ignored-file-suffixes '(".map" ".log"))
  '(safe-local-variable-values
-   '((eval progn
+   '((cider-ns-refresh-after-fn . "integrant.repl/resume")
+     (cider-ns-refresh-before-fn . "integrant.repl/suspend")
+     (eval progn
            (make-variable-buffer-local 'cider-jack-in-nrepl-middlewares)
            (add-to-list 'cider-jack-in-nrepl-middlewares "shadow.cljs.devtools.server.nrepl/middleware"))))
  '(undo-tree-auto-save-history t))

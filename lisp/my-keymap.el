@@ -112,6 +112,21 @@
 
 (add-hook 'org-present-mode-hook 'org-present-mode-keys)
 
+;; paredit keys
+(eval-after-load 'paredit
+'(progn
+         (define-key paredit-mode-map (kbd "C-i") 'paredit-kill)
+         (define-key paredit-mode-map (kbd "C-s") 'paredit-splice-sexp)
+
+         (define-key paredit-mode-map (kbd "C->") 'paredit-splice-sexp-killing-backward)
+         (define-key paredit-mode-map (kbd "C-<") 'paredit-splice-sexp-killing-forward)
+
+         (define-key paredit-mode-map (kbd "C-c r") 'paredit-raise-sexp)
+         (define-key paredit-mode-map (kbd "C-c s") 'paredit-split-sexp)
+         (define-key paredit-mode-map (kbd "C-c j") 'paredit-join-sexps)
+
+         ;(define-key paredit-mode-map (kbd "C-j") nil)
+         ))
 
 ;; mapping to caps/control as C and cmd as alt(meta)
 (when (eq system-type 'darwin) ;; mac specific settings
