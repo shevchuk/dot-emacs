@@ -76,6 +76,7 @@
 (setq org-icalendar-use-scheduled '(todo-start event-if-todo))
 
 (setq org-startup-with-inline-images t)
+(setq org-return-follows-link  t)
 (add-hook 'org-mode-hook 
           (lambda () 
             (when (eq system-type 'darwin) 
