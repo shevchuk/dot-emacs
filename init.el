@@ -140,6 +140,8 @@
 
 (use-package elm-mode :ensure t)
 (use-package purescript-mode :ensure t)
+(use-package go-mode :ensure t)
+
 (use-package haskell-mode
   :ensure t
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
