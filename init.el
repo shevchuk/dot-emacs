@@ -132,7 +132,8 @@
   :init
   (global-undo-tree-mode))
 
-(use-package helm-swoop :ensure t)
+(use-package helm :ensure t)
+;(use-package helm-occur :ensure t)
 (use-package flx-ido
   :ensure t
   :init
@@ -212,8 +213,9 @@
   :ensure t
   ; todos make magit slow
   ;:hook ((magit-mode . magit-todos-mode))
-  :init
-  (setq magit-completing-read-function 'magit-ido-completing-read))
+  ;:init
+  ;(setq magit-completing-read-function #'helm-comp-read)
+  )
 
 (use-package magit-todos
   :ensure t
@@ -270,6 +272,7 @@
       '((js . t)))
 
 (use-package cider :ensure t)
+
 
 
 (use-package paredit
