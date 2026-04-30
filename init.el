@@ -15,11 +15,11 @@
                          ("org" . "http://orgmode.org/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")))
 
-(when (not (package-installed-p 'use-package))
-  (package-refresh-contents)
-  (package-install 'use-package))
+;(when (not (package-installed-p 'use-package))
+;  (package-refresh-contents)
+;  (package-install 'use-package))
 
-(use-package use-package)
+;(use-package use-package)
 
 (use-package
   ido-completing-read+ :ensure t)
