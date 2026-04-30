@@ -327,7 +327,7 @@
 (require 'magit-tools)
 (require 'move-text)
                                         ;(require 'multi-eshell)
-                                        ;(require 'orginit)
+(require 'orginitnew)
 ;;(require 'ox-confluence)
 (require 'prog-mode-hooks)
 (require 'projectile-setup)
