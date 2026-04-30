@@ -157,7 +157,7 @@
  ("C-b" . bookmark-set)
  ("M-b" . bookmark-jump)
  ("\C-r" . isearch-backward)
- ("<f7>" . helm-swoop)
+ ("<f7>" . helm-occur)
  ("M-0" . er/expand-region)
  ("<f4>" . ido-find-file)
  ("<f12>" . smex)
