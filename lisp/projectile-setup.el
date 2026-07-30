@@ -8,7 +8,10 @@
             list-buffers-directory
             default-directory))
     ad-do-it))
-(setq projectile-completion-system 'helm)
-(projectile-global-mode)
+;; Projectile 3.0+ removed the dedicated 'helm completion system value.
+;; Helm is now used through `completing-read' by enabling `helm-mode'.
+(setq projectile-completion-system 'default)
+(helm-mode 1)
+(projectile-mode)
 
 (provide 'projectile-setup)

@@ -18,8 +18,11 @@
 ;;;; Header-line toolbar per-model background colors
 
 (defconst ai-eca-model-bg-colors
-  '(("z-ai-pro/GLM-5.1"  . (:bg "#ffff00"  :key-fg "violet"       :value-fg nil))
-    ("z-ai-lite/GLM-5.1" . (:bg "#ff69b4"  :key-fg "blue" :value-fg "white")))
+  '(("z-ai-lite/GLM-5.1" . (:bg "#ff69b4"  :key-fg "blue" :value-fg "white"))
+    ("z-ai-lite/GLM-5.2" . (:bg "#ff69b4"  :key-fg "blue" :value-fg "white"))
+    ("z-ai-pro/GLM-5.1"  . (:bg "#ffff00"  :key-fg "violet"       :value-fg nil))
+    ("z-ai-pro/GLM-5.2"  . (:bg "#ffff00"  :key-fg "violet"       :value-fg nil))
+    )
   "Alist of (MODEL-REGEX . COLOR-PLIST) for ECA chat header-line styling.
 Each MODEL-REGEX is matched case-insensitively against the current model name.
 COLOR-PLIST keys:
@@ -109,6 +112,7 @@ Remaps `header-line', `eca-chat-option-key-face', and
   :bind (("C-c e r" . eca-rewrite))
   :config
   (advice-add 'eca-chat--header-line-string :around
-              #'ai-eca-header-line-with-model-color))
+              #'ai-eca-header-line-with-model-color)
+  (define-key eca-chat-mode-map (kbd "C-t") #'eca-chat-talk))
 
 (provide 'ai)

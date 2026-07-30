@@ -66,17 +66,15 @@ Pick a string unlikely to appear in your buffers."
 
 (defun placeholder-forward (count)
   "Move forward over COUNT occurrences of `placeholder-string'.
-This deletes the COUNTth placeholder.  If this command is called
-again immediately after, restore that occurence of the
-placeholder and move to the next."
+Delete the COUNTth placeholder.  If called again immediately,
+restore that occurrence and move to the next."
   (interactive "p")
-  (let ((n (length placeholder-string )))
-    (when (eq last-command 'placeholder)
-      (insert placeholder-string)
-      (when (< count 0) (backward-char n)))
-    (search-forward placeholder-string nil nil count)
-    (delete-char (if (> count 0) (- n) n))
-    (setq this-command 'placeholder)))
+  (when (eq last-command 'placeholder)
+    (insert placeholder-string)
+    (when (< count 0) (backward-char (length placeholder-string))))
+  (search-forward placeholder-string nil nil count)
+  (delete-char (- (* count (length placeholder-string))))
+  (setq this-command 'placeholder))
 
 (defun placeholder-backward (count)
   "Move backward over COUNT occurrences of `placeholder-string'.
