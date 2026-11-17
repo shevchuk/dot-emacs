@@ -17,13 +17,19 @@
 ;(modus-themes-select 'modus-vivendi-deuteranopia)
 ;(modus-themes-select 'modus-vivendi-tinted)
 
-(use-package solo-jazz-theme
+;(use-package solo-jazz-theme
+;  :ensure t
+;  :config
+;  (load-theme 'solo-jazz t))
+
+(use-package kusanagi-theme
   :ensure t
   :config
-  (load-theme 'solo-jazz t))
+  (load-theme 'kusanagi t))
 
 ;(load-theme 'ef-spring)
-(load-theme 'airline-catppuccin_latte) ;; this one matches with solo-jazz quite nicely
+;(load-theme 'airline-catppuccin_latte) ;; this one matches with solo-jazz quite nicely
+(load-theme 'airline-base16)
 
 ;; to make recent files section work in the dashboard, enabled recentf
 (setq dashboard-items '((recents  . 5)

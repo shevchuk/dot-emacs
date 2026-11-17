@@ -22,4 +22,15 @@
 
 (setq vc-svn-diff-switches "-x --ignore-eol-style")
 
+(defun mt/eca-refresh-magit (_session content)
+  (let ((details (plist-get content :details)))
+    (when (and (equal (plist-get content :type) "toolCalled")
+               (equal (plist-get details :type) "fileChange")
+               (not (with-current-buffer (window-buffer)
+                      (derived-mode-p 'magit-mode))))
+      (let ((default-directory (file-name-directory (plist-get details :path))))
+        (magit-refresh-all)))))
+
+
+
 (provide 'magit-tools)

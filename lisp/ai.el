@@ -8,6 +8,98 @@
 (require 'json)
 (require 'face-remap)
 
+;;;; Pleasant ding when ECA finishes a reply
+
+(defcustom ai-eca-ding-sound "/usr/share/sounds/freedesktop/stereo/complete.oga"
+  "Sound file played when ECA chat finishes and is ready for a new prompt.
+Other nice candidates: bell.oga, message-new-instant.oga from the
+same freedesktop sound directory."
+  :type 'file)
+
+(defun ai-eca-ding ()
+  "Play a short, pleasant ding.  Async and non-blocking."
+  (let ((file ai-eca-ding-sound))
+    (when (and file (file-exists-p file))
+      (if (executable-find "paplay")
+          (start-process "eca-ding" nil "paplay" file)
+        (when (fboundp 'play-sound-file)
+          (run-at-time 0 nil #'play-sound-file file))))))
+
+;;;; ashell panel indicator (grey/red/green circle)
+;; Driven by ~/.config/ashell/scripts/eca-indicator.sh
+
+(defcustom ai-eca-indicator-script
+  (expand-file-name "~/.config/ashell/scripts/eca-indicator.sh")
+  "Script controlling the ECA status circle in the ashell panel."
+  :type 'file)
+
+(defun ai-eca-indicator--call (subcommand &optional id)
+  "Call the indicator script's SUBCOMMAND with worker ID.
+ID defaults to this Emacs's PID.  Returns the first stdout line, or
+nil if the script is unavailable/failed."
+  (when (and ai-eca-indicator-script
+             (file-executable-p ai-eca-indicator-script))
+    (condition-case err
+        (car (process-lines ai-eca-indicator-script
+                            subcommand (or id (number-to-string (emacs-pid)))))
+      (error (message "eca-indicator: %S" err) nil))))
+
+(defvar ai-eca--chat-counter 0
+  "Monotonic counter making per-chat worker ids unique within this Emacs.")
+
+(defvar-local ai-eca--chat-id nil
+  "Worker id (\"PID-COUNTER\") naming this chat buffer's marker file.")
+
+(defun ai-eca--chat-id ()
+  "Return this chat buffer's worker id, allocating one on first use.
+The indicator script keeps one marker file per id, so parallel chats
+in the same Emacs no longer share (and prematurely drop) a single
+per-PID marker."
+  (or ai-eca--chat-id
+      (setq-local ai-eca--chat-id
+                  (format "%d-%d" (emacs-pid)
+                          (setq ai-eca--chat-counter
+                                (1+ ai-eca--chat-counter))))))
+
+(defun ai-eca-indicator--script-available-p ()
+  "Non-nil when the indicator script exists and is executable."
+  (and ai-eca-indicator-script
+       (file-executable-p ai-eca-indicator-script)))
+
+(defun ai-eca-indicator-idle ()
+  "ECA initialized: drop our marker; grey unless another instance works."
+  (ai-eca-indicator--call "idle"))
+
+(defun ai-eca-indicator-working ()
+  "This Emacs started processing a prompt: red circle.
+Safe with multiple instances: each chat buffer owns one PID-COUNTER
+marker file in the indicator script's work dir."
+  (ai-eca-indicator--call "start" (ai-eca--chat-id)))
+
+(defun ai-eca-indicator-finished ()
+  "A chat finished.  Green circle + ding only if it was the last one.
+Always drops this chat's marker (the script ignores markers of dead
+processes), so a lingering sibling or crashed Emacs can no longer
+mute the ding forever."
+  (let ((answer (ai-eca-indicator--call "finish" (ai-eca--chat-id))))
+    ;; Ding when this was the last worker everywhere, or if the script
+    ;; is missing entirely (keep the old always-ding behavior then).
+    (when (or (string= answer "green")
+              (and (null answer) (not (ai-eca-indicator--script-available-p))))
+      (ai-eca-ding))))
+
+(defun ai-eca-indicator-buffer-killed ()
+  "Drop this chat's marker when its buffer is killed mid-prompt."
+  (when ai-eca--chat-id
+    (ai-eca-indicator--call "finish" ai-eca--chat-id)))
+
+(defun ai-eca-indicator-chat-loading (orig-fn session loading)
+  "Advice around `eca-chat--set-chat-loading': red when loading starts.
+SESSION and LOADING are passed through to ORIG-FN untouched."
+  (when (eq loading t)
+    (ai-eca-indicator-working))
+  (funcall orig-fn session loading))
+
 (defun ai-eca-restart ()
   "Restart the current ECA session."
   (interactive)
@@ -113,6 +205,13 @@ Remaps `header-line', `eca-chat-option-key-face', and
   :config
   (advice-add 'eca-chat--header-line-string :around
               #'ai-eca-header-line-with-model-color)
-  (define-key eca-chat-mode-map (kbd "C-t") #'eca-chat-talk))
+  (advice-add 'eca-chat--set-chat-loading :around
+              #'ai-eca-indicator-chat-loading)
+  (define-key eca-chat-mode-map (kbd "C-t") #'eca-chat-talk)
+  (add-hook 'eca-chat-finished-hook #'ai-eca-indicator-finished)
+  (add-hook 'eca-after-initialize-hook #'ai-eca-indicator-idle)
+  (add-hook 'kill-buffer-hook #'ai-eca-indicator-buffer-killed))
+
+(add-hook 'eca-chat-tool-call-functions #'mt/eca-refresh-magit)
 
 (provide 'ai)

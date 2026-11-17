@@ -236,6 +236,10 @@
   :ensure t
   :after (magit))
 
+(use-package magit-gh
+  :ensure t
+  :after magit)
+
 (use-package forge
   :ensure t
   :after magit
@@ -373,11 +377,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("a7472fb4143839f5bcd9dfdf722933d77b006a2b278f8863a7da2b88ad60b093"
+   '("1c0993e217ff79128d2a5c2b8b9e9bd88b46459035f8343ad698d32e688c40c9"
+     "a7472fb4143839f5bcd9dfdf722933d77b006a2b278f8863a7da2b88ad60b093"
      default))
  '(package-vc-selected-packages
    '((whisper :url "https://github.com/natrys/whisper.el" :branch
-              "master"))))
+              "master")))
+ '(safe-local-variable-values
+   '((cider-jack-in-params "dev") (cider-preferred-build-tool . "boot"))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
