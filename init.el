@@ -7,6 +7,14 @@
 ;; Keep files opened via `emacsclient FILE' when that client exits, so a
 ;; long-running daemon (e.g. systemd emacs.service) retains them.
 (setq server-kill-new-buffers nil)
+;; Daemon only: a new `emacsclient -t/-c' frame resumes the most recently used
+;; regular buffer instead of *scratch*.  (Normal startup keeps the dashboard.)
+(when (daemonp)
+  (setq initial-buffer-choice
+        (lambda ()
+          (or (seq-find (lambda (b) (not (string-match-p "\\`[ *]" (buffer-name b))))
+                        (buffer-list))
+              (get-buffer-create "*scratch*")))))
 
 ;; Require and initialize `package`.
 (require 'package)
