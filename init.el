@@ -4,6 +4,9 @@
 (require 'server)
 (or (server-running-p)
     (server-start))
+;; Keep files opened via `emacsclient FILE' when that client exits, so a
+;; long-running daemon (e.g. systemd emacs.service) retains them.
+(setq server-kill-new-buffers nil)
 
 ;; Require and initialize `package`.
 (require 'package)
