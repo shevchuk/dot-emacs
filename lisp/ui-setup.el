@@ -10,7 +10,7 @@
   uniquify-separator ":")
 
 (setq transient-mark-mode t)
-(tool-bar-mode -1)
+(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
 ;; this is current color theme
 ;(standard-themes-load-dark)

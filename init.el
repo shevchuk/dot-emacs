@@ -302,7 +302,7 @@
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (clojure-mode . paredit-mode)))
 
-(require 'quelpa)
+(use-package quelpa :ensure t)
 
 (quelpa
  '(quelpa-use-package

@@ -5,8 +5,8 @@
 (add-hook 'prog-mode-hook #'ws-butler-mode)
 (add-hook 'prog-mode-hook #'smartparens-mode)
 (add-hook 'prog-mode-hook #'whitespace-mode)
-(add-hook 'prog-mode-hook #'linum-mode)
-(add-hook 'prog-mode-hook #'linum-relative-mode)
+(setq display-line-numbers-type 'relative)
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
 ;(add-hook 'prog-mode-hook #'auto-highlight-symbol-mode)
 ;(add-hook 'prog-mode-hook #'highlight-parentheses-mode)

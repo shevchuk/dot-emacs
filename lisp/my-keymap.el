@@ -30,7 +30,7 @@
   (local-set-key (kbd "M-+") 'hs-show-all)
   (local-set-key (kbd "M--") 'hs-hide-block)
   (local-set-key (kbd "M-_") 'hs-hide-all)
-  (local-set-key (kbd "M-[") 'hs-hide-level))
+  (local-set-key (kbd "M-[") 'my-hs-hide-level)) ; tty-safe wrapper, see bottom of file
 
 (defun js-mode-keys ()
   "my keybindings for js2-mode"
@@ -161,7 +161,7 @@
  ("M-0" . er/expand-region)
  ("<f4>" . ido-find-file)
  ("<f12>" . smex)
- ("M-O" . projectile-find-file)
+ ("M-O" . my-projectile-find-file) ; tty-safe wrapper, see bottom of file
  ("M-F" . projectile-grep)
  ("C-x b" . projectile-switch-to-buffer)
  ("C-z" . zoom-window-zoom)
@@ -202,5 +202,67 @@
  ("<f10>" . icicle-select-frame)
  ("M-." . xref-find-definitions)
  ("M-p" . ace-window))
+
+;; Terminal escape-sequence guard for M-O and M-[.
+;;
+;; In a terminal, M-O is the byte pair "ESC O" and M-[ is "ESC [".  These are
+;; also the prefixes of cursor keys ("ESC O A" = <up>), PgUp/Del/C-<arrow>
+;; ("ESC [ 5 ~", "ESC [ 1 ; 5 A") and bracketed paste ("ESC [ 200 ~").
+;; Emacs stops reading a key sequence as soon as it is bound to a command,
+;; even if `input-decode-map' has a longer match, so binding M-O / M-[ makes
+;; the arrows run that command instead.
+;;
+;; A terminal sends an escape sequence in one burst, while a human typing M-O
+;; never follows it with another key within milliseconds.  So, on a tty,
+;; these wrappers peek for immediately pending input: if it completes a known
+;; key sequence the decoded key is replayed, otherwise the command runs.
+
+(defvar my-tty-escape-timeout 0.02
+  "Seconds to wait for the rest of a terminal escape sequence.")
+
+(defun my-tty--read-escape-tail (intro)
+  "Read the bytes after ESC INTRO that are already pending, as a list."
+  (let (tail ev)
+    (if (eq intro ?O)
+        ;; SS3: exactly one final byte, e.g. ESC O A
+        (when (setq ev (read-event nil nil my-tty-escape-timeout))
+          (push ev tail))
+      ;; CSI: parameter/intermediate bytes, then one final byte (0x40-0x7E)
+      (while (and (< (length tail) 16)
+                  (setq ev (read-event nil nil my-tty-escape-timeout))
+                  (progn (push ev tail)
+                         (and (integerp ev) (<= #x20 ev #x3f))))))
+    (nreverse tail)))
+
+(defun my-tty--translate (seq)
+  "Return the key that terminal sequence SEQ decodes to, or nil."
+  (let ((b (or (lookup-key input-decode-map seq)
+               (lookup-key local-function-key-map seq))))
+    (cond ((and (arrayp b) (not (keymapp b))) b)
+          ((and (functionp b) (not (keymapp b))) (funcall b nil)))))
+
+(defun my-tty-escape-guard (intro command)
+  "Run COMMAND, unless on a tty ESC INTRO starts a terminal key sequence."
+  (let ((tail (and (not (display-graphic-p))
+                   (my-tty--read-escape-tail intro))))
+    (if (null tail)
+        (call-interactively command)
+      (let ((key (and (seq-every-p #'integerp tail)
+                      (my-tty--translate (vconcat (list ?\e intro) tail)))))
+        (if key
+            (setq unread-command-events
+                  (append (listify-key-sequence key) unread-command-events))
+          (setq unread-command-events (append tail unread-command-events))
+          (call-interactively command))))))
+
+(defun my-projectile-find-file ()
+  "`projectile-find-file' that does not swallow tty cursor keys (ESC O ...)."
+  (interactive)
+  (my-tty-escape-guard ?O #'projectile-find-file))
+
+(defun my-hs-hide-level ()
+  "`hs-hide-level' that does not swallow tty key sequences (ESC [ ...)."
+  (interactive)
+  (my-tty-escape-guard ?\[ #'hs-hide-level))
 
 (provide 'my-keymap)

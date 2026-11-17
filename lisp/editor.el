@@ -23,7 +23,7 @@
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 (setq scroll-step 1) ;; keyboard scroll one line at a time
-(scroll-bar-mode 0)
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode 0))
 (scroll-lock-mode t)
 
 (with-eval-after-load 'smartparens
@@ -39,7 +39,7 @@
 ;(add-to-list 'default-frame-alist
 ;             '(font . "Hack 11"))
 
-(set-frame-font "Hack 11")
+(when (display-graphic-p) (set-frame-font "Hack 11"))
 
 (add-to-list 'default-frame-alist
              '(font . "Hack 11"))

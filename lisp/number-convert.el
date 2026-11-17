@@ -19,3 +19,8 @@
   (convert-at-point (lambda (text)
                       (format "%X" (string-to-number text)))))
 
+;; Same names as lisp/number-convert/number-convert.el (used by my-keymap.el)
+(defalias 'number-convert/hex-to-dec-at-point #'number-convert-hex-to-dec-at-point)
+(defalias 'number-convert/dec-to-hex-at-point #'number-convert-dec-to-hex-at-point)
+
+(provide 'number-convert)
